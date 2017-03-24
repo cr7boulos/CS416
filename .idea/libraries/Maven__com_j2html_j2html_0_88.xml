@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.j2html:j2html:0.88">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/j2html/j2html/0.88/j2html-0.88.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/j2html/j2html/0.88/j2html-0.88-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/j2html/j2html/0.88/j2html-0.88-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
