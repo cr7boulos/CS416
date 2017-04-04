@@ -19,11 +19,7 @@
             <artifactId>spark-template-velocity</artifactId>
             <version>2.3</version>
         </dependency>
-        <dependency>
-            <groupId>com.j2html</groupId>
-            <artifactId>j2html</artifactId>
-            <version>0.88</version>
-        </dependency>
+
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
