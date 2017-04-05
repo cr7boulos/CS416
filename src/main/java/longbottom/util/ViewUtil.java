@@ -2,6 +2,7 @@ package longbottom.util;
 
 // This file was copied from the following link:
 // https://github.com/tipsy/spark-basic-structure/blob/master/src/main/java/app/util/ViewUtil.java
+// Link to original code license: https://github.com/tipsy/spark-basic-structure/blob/master/LICENSE
 
 import org.apache.velocity.app.*;
 import org.eclipse.jetty.http.*;
