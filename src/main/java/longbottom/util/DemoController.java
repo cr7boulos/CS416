@@ -1,6 +1,10 @@
 package longbottom.util;
 
+import org.apache.commons.collections.map.HashedMap;
 import spark.*;
+import java.util.*;
+
+
 
 
 /**
@@ -20,8 +24,8 @@ public class DemoController {
         //see the Spark docs for more useful methods
         //http://sparkjava.com/documentation.html#response
         //http://sparkjava.com/documentation.html#request
-
-        return "hello";
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(model, "/velocity/test.vm");
     };
 
 }

@@ -14,7 +14,7 @@ import java.util.*;
 public class ViewUtil {
 
 
-    public static String render(Request request, Map<String, Object> model, String templatePath) {
+    public static String render( Map<String, Object> model, String templatePath) {
 
         //will uncomment these lines if needed in application D.B
 
