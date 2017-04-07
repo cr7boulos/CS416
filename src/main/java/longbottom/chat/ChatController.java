@@ -3,17 +3,19 @@ package longbottom.chat;
 import spark.*;
 import java.util.*;
 import longbottom.util.ViewUtil;
+import longbottom.DAO.*;
 
 
 /**
  * Created by jacoford21 on 4/7/2017.
  */
-public class ChatController implements DAO {
+public class ChatController {
 
     public static Route chatHistory = (Request request, Response response) -> {
 
         //The request object will have a parameter containing a projectId.
-        int projectId = Integer.parseInt(request.params("projectId"));
+        int projectId = Integer.parseInt(request.queryParams("projectId"));
+        System.out.println(projectId);
 
         //Next, the controller will then make the following DAO API call: getChatHistory(projectId)
         DAO.getChatMessages(projectId);
