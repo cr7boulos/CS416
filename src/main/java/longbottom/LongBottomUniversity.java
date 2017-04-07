@@ -1,5 +1,6 @@
 package longbottom;
 
+import longbottom.accounts.Dashboard;
 import longbottom.util.DemoController; //import the needed controller classes here
 
 import static spark.Spark.*;
@@ -23,5 +24,7 @@ public class LongBottomUniversity {
         // paste this URL below where is says "Enter request URL":
         // localhost:1250/post?test=456
         post("/post", DemoController.testing);
+
+        get("/dashboard", Dashboard.userDashboard);
     }
 }
