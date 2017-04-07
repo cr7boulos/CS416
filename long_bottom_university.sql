@@ -40,28 +40,82 @@ INSERT INTO `admin` VALUES (0,1);
 UNLOCK TABLES;
 
 --
--- Table structure for table `manages_project`
+-- Table structure for table `chat`
 --
 
-DROP TABLE IF EXISTS `manages_project`;
+DROP TABLE IF EXISTS `chat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `manages_project` (
+CREATE TABLE `chat` (
   `projectId` int(11) NOT NULL,
-  `professorId` int(11) NOT NULL,
+  `text` varchar(500) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `time_stamp` datetime NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `manages_project`
+-- Dumping data for table `chat`
 --
 
-LOCK TABLES `manages_project` WRITE;
-/*!40000 ALTER TABLE `manages_project` DISABLE KEYS */;
-INSERT INTO `manages_project` VALUES (1,0,1);
-/*!40000 ALTER TABLE `manages_project` ENABLE KEYS */;
+LOCK TABLES `chat` WRITE;
+/*!40000 ALTER TABLE `chat` DISABLE KEYS */;
+/*!40000 ALTER TABLE `chat` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `email`
+--
+
+DROP TABLE IF EXISTS `email`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `email` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from` int(11) NOT NULL,
+  `to` int(11) NOT NULL,
+  `subject` varchar(45) DEFAULT NULL,
+  `body` varchar(500) DEFAULT NULL,
+  `time_stamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `email`
+--
+
+LOCK TABLES `email` WRITE;
+/*!40000 ALTER TABLE `email` DISABLE KEYS */;
+/*!40000 ALTER TABLE `email` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posts`
+--
+
+DROP TABLE IF EXISTS `posts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `projectId` int(11) DEFAULT NULL,
+  `header` varchar(45) DEFAULT NULL,
+  `body` varchar(500) DEFAULT NULL,
+  `time_stamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posts`
+--
+
+LOCK TABLES `posts` WRITE;
+/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -99,8 +153,9 @@ DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `name` varchar(45) NOT NULL,
   `description` varchar(500) DEFAULT NULL,
-  `time_created` datetime NOT NULL,
+  `time_stamp` datetime NOT NULL,
   `projectId` int(11) NOT NULL AUTO_INCREMENT,
+  `manager` int(11) NOT NULL,
   PRIMARY KEY (`projectId`),
   UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -112,7 +167,7 @@ CREATE TABLE `projects` (
 
 LOCK TABLES `projects` WRITE;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
-INSERT INTO `projects` VALUES ('Software Engineering Project','This is a description of the Software Engineering project.','2017-04-06 13:25:07',1);
+INSERT INTO `projects` VALUES ('Software Engineering Project','This is a description of the Software Engineering project.','2017-04-06 13:25:07',1,0);
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,6 +234,7 @@ CREATE TABLE `works_in` (
   `projectId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `accepted` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -189,7 +245,7 @@ CREATE TABLE `works_in` (
 
 LOCK TABLES `works_in` WRITE;
 /*!40000 ALTER TABLE `works_in` DISABLE KEYS */;
-INSERT INTO `works_in` VALUES (1,1,1),(1,2,2),(1,3,3),(1,4,4),(1,5,5),(1,6,6),(1,7,7);
+INSERT INTO `works_in` VALUES (1,1,1,NULL),(1,2,2,NULL),(1,3,3,NULL),(1,4,4,NULL),(1,5,5,NULL),(1,6,6,NULL),(1,7,7,NULL);
 /*!40000 ALTER TABLE `works_in` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -202,4 +258,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-06 15:35:03
+-- Dump completed on 2017-04-07 17:42:43

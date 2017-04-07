@@ -1,8 +1,11 @@
 package longbottom.DAO;
 
 import longbottom.accounts.*;
+import org.sql2o.Connection;
+import org.sql2o.Sql2o;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
     Some methods will return booleans to report whether or not there was an error.
@@ -10,8 +13,16 @@ import java.util.ArrayList;
  */
 public class DAO {
 
-    public static ArrayList<User> getAllUsers(int pId){
-        return null;
+    public static Sql2o sql2o;
+
+    public static List<User> getAllUsers(){
+        String sql =
+                "SELECT userId, firstName, lastName, email, password " +
+                        "FROM user";
+
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(User.class);
+        }
     }
 
     public static ProjectUsers getProjectUsers(int pId){
