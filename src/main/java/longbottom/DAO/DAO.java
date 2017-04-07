@@ -7,10 +7,6 @@ import org.sql2o.Sql2o;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
-    Some methods will return booleans to report whether or not there was an error.
-    Check all returned ArrayLists or Objects if they are null. If the object is null then there was an error or it does not exist.
- */
 public class DAO {
 
     public static Sql2o sql2o;
@@ -25,40 +21,52 @@ public class DAO {
         }
     }
 
-    public static ProjectUsers getProjectUsers(int pId){
-        return null;
+    public static List<works_in> getWorksIn(int pId){
+        String sql =
+                "SELECT projectId, userId, accepted FROM works_in WHERE projectId = :projectId";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("projectId", pId)
+                    .executeAndFetch(works_in.class);
+        }
     }
 
-    //returns false if error.
-    public static boolean createProject(String name, String description, long time, int manager){
-        return false;
+    public static void createProject(String name, String description, long time, int manager){
+        String sql =
+                "INSERT INTO projects (name,description,time_stamp,manager)\n" +
+                        "VALUES (:name, :description, :time_stamp, :manager)";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("name", name)
+                    .addParameter("description", description)
+                    .addParameter("time_stamp", time)
+                    .addParameter("manager", manager)
+                    .executeAndFetch(works_in.class);
+        }
     }
 
     //Update project with set parameters. Set parameters to null to not change it. pId is required.
-    public static boolean updateProject(int pId, String name, String description, long time, int manager){
-        return false;
+    public static void updateProject(int pId, String name, String description, long time, int manager){
+
     }
 
-    //returns false if error.
-    public static boolean deleteProject(int pId){
-        return false;
+    public static void deleteProject(int pId){
+
     }
 
     //User is added to project
-    //returns false if error.
-    public static boolean acceptUser(int pId, int uId){
-        return false;
+    public static void acceptUser(int pId, int uId){
+
     }
 
-    //returns false if error.
-    public static boolean leaveProject(int pId, int uId){
-        return false;
+
+    public static void leaveProject(int pId, int uId){
+
     }
 
     //User asks Manager to join project
-    //returns false if error.
-    public static boolean requestJoin(int pId, int uId){
-        return false;
+    public static void requestJoin(int pId, int uId){
+
     }
 
     //Returns false for wrong username or password.
@@ -68,19 +76,16 @@ public class DAO {
     }
 
     //Create post for given project Id
-    //returns false if error.
-    public static boolean createPost(int pId, Post post){
-        return false;
+    public static void createPost(int pId, Post post){
+
     }
 
-    //returns false if error.
-    public static boolean deletePost(int post){
-        return false;
+    public static void deletePost(int post){
+
     }
 
-    //returns false if error.
-    public static boolean createChatMessage(ChatMessage chatMessage){
-        return false;
+    public static void createChatMessage(ChatMessage chatMessage){
+
     }
 
     //gets chat messages for given project Id
@@ -88,9 +93,8 @@ public class DAO {
         return null;
     }
 
-    //returns false if error.
-    public static boolean sendEmail(Email email){
-        return false;
+    public static void sendEmail(Email email){
+
     }
 
     //get emails for given user Id
