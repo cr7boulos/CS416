@@ -34,7 +34,7 @@ public class LongBottomUniversity {
         get("/chat", ChatController.chatHistory);
 
         //CONNECT TO MYSQL DATABASE
-        //DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
+        DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
         //TEST COMMAND
         DAO.getAllUsers();
     }
