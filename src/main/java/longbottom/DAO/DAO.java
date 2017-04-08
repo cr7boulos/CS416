@@ -69,10 +69,10 @@ public class DAO {
 
     }
 
-    //Returns false for wrong email or password.
-    //Returns true if login was successful.
-    public static boolean login(String email, String password){
-        return false;
+    //Returns null if login failed (wrong email or password).
+    //Returns user ID if login was successful.
+    public static String login(String email, String password){
+        return null;
     }
 
     //Create post for given project Id
