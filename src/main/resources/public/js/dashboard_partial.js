@@ -5,7 +5,7 @@
 
 $(document).ready(function () {
     $('#button').click(function(){
-       $.post("/post?test=89", function (data) {
+       $.post("/projects", function (data) {
                $('#dynView').html(data);
            }
        );
