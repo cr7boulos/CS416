@@ -14,11 +14,11 @@ public class ProjectController {
 
     public static Route newProjects = (Request request, Response response) -> {
         LoginController.isAuthenticated(request, response);
-        if (DAO.createProject(
+        if (!DAO.createProject(
                 request.queryParams("name"),
                 request.queryParams("description"),
                 request.queryParams("time"),
-                Integer.parseInt( request.queryParams("manager"))) == false)
+                Integer.parseInt(request.queryParams("manager"))))
         return "Update Unsuccessful";
         else
         return "Update Successful";
@@ -26,12 +26,12 @@ public class ProjectController {
 
     public static Route updateProjects = (Request request, Response response) -> {
         LoginController.isAuthenticated(request, response);
-        if (DAO.updateProject(
+        if (!DAO.updateProject(
                 (Integer.parseInt(request.queryParams("projectId"))),
                 request.queryParams("name"),
                 request.queryParams("description"),
                 request.queryParams("time"),
-                Integer.parseInt( request.queryParams("manager"))) == false)
+                Integer.parseInt(request.queryParams("manager"))))
             return "Update Unsuccessful";
         else
             return "Update Successful";
