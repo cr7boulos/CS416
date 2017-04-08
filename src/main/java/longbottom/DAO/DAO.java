@@ -69,9 +69,9 @@ public class DAO {
 
     }
 
-    //Returns false for wrong username or password.
+    //Returns false for wrong email or password.
     //Returns true if login was successful.
-    public static boolean login(String username, String password){
+    public static boolean login(String email, String password){
         return false;
     }
 
