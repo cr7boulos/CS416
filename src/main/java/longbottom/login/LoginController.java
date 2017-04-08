@@ -17,12 +17,9 @@ public class LoginController {
     };
 
     //Check if a user's email and password exist
-    /*public static boolean isAuthenticated(Request request, Response response){
+    public static boolean isAuthenticated(Request request, Response response){
         String email = request.queryParams("email");
         String password = request.queryParams("password");
-        if(DAO.isUser(email, password))
-            return true;
-        else
-            return false;
-    }*/
+        return (DAO.login(email,password) != -1);
+    }
 }
