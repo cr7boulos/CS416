@@ -83,8 +83,8 @@ public class DAO {
 
     //Returns -1 if login failed (wrong email or password).
     //Returns user ID if login was successful.
-    public static boolean login(String email, String password){
-        return false;
+    public static int login(String email, String password){
+        return NA;
     }
 
     //Returns if the User is an Admin(0), Professor(1), or Student (2). If uID is not found it will return -1 which is equal to NA.
