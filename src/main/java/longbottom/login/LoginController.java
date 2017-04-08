@@ -22,6 +22,8 @@ public class LoginController {
 
         if(DAO.login(request.queryParams("email"), request.queryParams("password")) == DAO.NA){
             //authentication failed. Go back to login page
+            //placeholder
+            return ViewUtil.render(model, "/velocity/test.vm");
         }
         //valid username and password -> dashboard
         //add user email or id to model??
