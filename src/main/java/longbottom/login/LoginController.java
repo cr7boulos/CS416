@@ -1,10 +1,29 @@
 package longbottom.login;
 
+import java.util.*;
 import spark.*;
 import longbottom.DAO.*;
 import longbottom.util.ViewUtil;
+import longbottom.util.RequestUtil;
 
 public class LoginController {
-    //public static Route isAuthenticated = (Request request, Response response) -> {
-    //}
+    //If a user logs out
+    //remove currentUser from attributes, set loggedOut to ture, and redirect the user to the Homepage.
+    public static Route handleLogoutPost = (Request request, Response response) -> {
+        request.session().removeAttribute("currentUser");
+        request.session().attribute("loggedOut", true);
+        response.redirect("/velocity/test.vm");//redirect to loginpage
+        return null;
+    };
+
+    //Check if a user's email and password exist
+    public static boolean isAuthenticated(Request request, Response response){
+        String email = request.queryParams("email");
+        String password = request.queryParams("password");
+        if(DAO.isUser(email)){
+            return true;
+        }
+        else
+            return false;
+    }
 }
