@@ -102,17 +102,10 @@ public class DAO {
         return null;
     }
 
-    //check if a user's email exists
-    //Returns true if the email exists
+    //check if a user's email and password exists
+    //Returns true if both exist
     //I'll work on this in a bit -Kyle
     public static boolean isUser(String email){
         return true;
-    }
-
-    //check if a user's password exists
-    //Returns true if the password exists
-    //I'll work on this in a bit -Kyle
-    public static boolean isPassword(String password){
-        return false;
     }
 }
