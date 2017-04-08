@@ -16,10 +16,24 @@ public class LoginController {
         return null;
     };
 
+    //After login go to dashboard
+    public static Route handleLoginPost = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+
+        if(DAO.login(request.queryParams("email"), request.queryParams("password")) == DAO.NA){
+            //authentication failed. Go back to login page
+        }
+        //valid username and password -> dashboard
+        //add user email or id to model??
+        model.put("currentUser", 1/*placeholder*/);
+        return ViewUtil.render(model, "/velocity/dashboard.vm");
+
+
+    };
+
     //Check if a user's email and password exist
+    //returns true if user exists
     public static boolean isAuthenticated(Request request, Response response){
-        String email = request.queryParams("email");
-        String password = request.queryParams("password");
-        return (DAO.login(email,password) != DAO.NA);
+        return (DAO.login( request.queryParams("email"), request.queryParams("password")) != DAO.NA);
     }
 }
