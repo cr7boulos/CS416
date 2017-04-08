@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-</head>
-<body>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -22,61 +14,57 @@
         <td>Lorem</td>
         <td>ipsum</td>
         <td>dolor</td>
-        <td><div class="btn btn-primary col-sm-3">Request Access</div></td>
+        <td><div class="btn btn-primary col-sm-4">Request Access</div></td>
     </tr>
     <tr>
         <td>1,002</td>
         <td>amet</td>
         <td>consectetur</td>
         <td>adipiscing</td>
-        <td><div class="btn btn-success col-sm-3">Project Page</div></td>
+        <td><div class="btn btn-success col-sm-4">Project Page</div></td>
     </tr>
     <tr>
         <td>1,003</td>
         <td>Integer</td>
         <td>nec</td>
         <td>odio</td>
-        <td><div class="btn btn-primary col-sm-3">Request Access</div></td>
+        <td><div class="btn btn-primary col-md-4">Request Access</div></td>
     </tr>
     <tr>
         <td>1,003</td>
         <td>libero</td>
         <td>Sed</td>
         <td>cursus</td>
-        <td><div class="btn btn-success col-sm-3">Project Page</div></td>
+        <td><div class="btn btn-success  col-md-4">Project Page</div></td>
     </tr>
     <tr>
         <td>1,004</td>
         <td>dapibus</td>
         <td>diam</td>
         <td>Sed</td>
-        <td><div class="btn btn-primary col-sm-3">Request Access</div></td>
+        <td><div class="btn btn-primary col-sm-4">Request Access</div></td>
     </tr>
     <tr>
         <td>1,005</td>
         <td>Nulla</td>
         <td>quis</td>
         <td>sem</td>
-        <td><div class="btn btn-success col-sm-3">Project Page</div></td>
+        <td><div class="btn btn-success col-sm-4">Project Page</div></td>
     </tr>
     <tr>
         <td>1,006</td>
         <td>nibh</td>
         <td>elementum</td>
         <td>imperdiet</td>
-        <td><div class="btn btn-success col-sm-3">Project Page</div></td>
+        <td><div class="btn btn-success col-sm-4">Project Page</div></td>
     </tr>
     <tr>
         <td>1,007</td>
         <td>sagittis</td>
         <td>ipsum</td>
         <td>Praesent</td>
-        <td><div class="btn btn-success col-sm-3">Project Page</div></td>
+        <td><div class="btn btn-success col-sm-4">Project Page</div></td>
     </tr>
 
     </tbody>
 </table>
-
-</body>
-
-</html>
