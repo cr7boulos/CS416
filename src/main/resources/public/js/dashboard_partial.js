@@ -4,7 +4,11 @@
 
 
 $(document).ready(function () {
+    $('#button').click(function(){
+       $.post("/post?test=89", function (data) {
+               $('#dynView').html(data);
+           }
+       );
 
-
-    $('#dynView').html('<h1>This is a test</h1>');
-})
+    });
+});

@@ -18,20 +18,18 @@ public class UserController {
         public static Route getAllUsers = (Request request, Response response) -> {
             //LoginController.isAuthenticated(request, response);
             Map<String, Object> model = new HashMap<>();
-            model.put("users", DAO.getAllUsers());
+            //model.put("users", DAO.getAllUsers());
 
             return ViewUtil.render(model, "/velocity/test.vm");
         };
 
-        /*/
-        public static Route getOneUser = (Request request, Response response) -> {
-            LoginController.isAuthenticated(request, response);
-            HashMap<String, Object> model = new HashMap<>();
-            User user = DAO.getUserByName(getParamUser(request));
-            model.put("user", user);
-            return ViewUtil.render(request, model, "/velocity/test.vm");
-        }
-        /*/
+//        public static Route getOneUser = (Request request, Response response) -> {
+//            LoginController.isAuthenticated(request, response);
+//            HashMap<String, Object> model = new HashMap<>();
+//            User user = userDao.getUserByName(getParamUser(request));
+//            model.put("user", user);
+//            return ViewUtil.render(request, model, "/velocity/test.vm");
+//        };
 
 
 }
