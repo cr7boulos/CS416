@@ -11,6 +11,12 @@ public class DAO {
 
     public static Sql2o sql2o;
 
+    //NA = Not Available.
+    public final static int NA = -1;
+    public final static int ADMIN = 0;
+    public final static int PROFESSOR = 1;
+    public final static int STUDENT = 2;
+
     public static List<User> getAllUsers(){
         String sql =
                 "SELECT userId, firstName, lastName, email, password " +
@@ -69,10 +75,15 @@ public class DAO {
 
     }
 
-    //Returns null if login failed (wrong email or password).
+    //Returns -1 if login failed (wrong email or password).
     //Returns user ID if login was successful.
-    public static String login(String email, String password){
-        return null;
+    public static int login(String email, String password){
+        return NA;
+    }
+
+    //Returns if the User is an Admin(0), Professor(1), or Student (2). If uID is not found it will return -1 which is equal to NA.
+    public static int getIdentity(int uId){
+        return NA;
     }
 
     //Create post for given project Id
@@ -102,10 +113,4 @@ public class DAO {
         return null;
     }
 
-    //check if a user's email and password exists
-    //Returns true if both exist
-    //I'll work on this in a bit -Kyle
-    public static boolean isUser(String email, String password){
-        return true;
-    }
 }
