@@ -35,7 +35,6 @@ public class LongBottomUniversity {
 
         //CONNECT TO MYSQL DATABASE
         DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
-        //TEST COMMAND
-        DAO.getAllUsers();
+
     }
 }

@@ -37,7 +37,8 @@ public class DAO {
         }
     }
 
-    public static void createProject(String name, String description, long time, int manager){
+    //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
+    public static boolean createProject(String name, String description, String time, int manager){
         String sql =
                 "INSERT INTO projects (name,description,time_stamp,manager)\n" +
                         "VALUES (:name, :description, :time_stamp, :manager)";
@@ -47,38 +48,43 @@ public class DAO {
                     .addParameter("description", description)
                     .addParameter("time_stamp", time)
                     .addParameter("manager", manager)
-                    .executeAndFetch(works_in.class);
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
         }
     }
 
     //Update project with set parameters. Set parameters to null to not change it. pId is required.
-    public static void updateProject(int pId, String name, String description, long time, int manager){
-
+    //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
+    public static boolean updateProject(int pId, String name, String description, String time, int manager){
+        return false;
     }
 
-    public static void deleteProject(int pId){
-
+    public static boolean deleteProject(int pId){
+        return false;
     }
 
     //User is added to project
-    public static void acceptUser(int pId, int uId){
-
+    public static boolean acceptUser(int pId, int uId){
+        return false;
     }
 
 
-    public static void leaveProject(int pId, int uId){
-
+    public static boolean leaveProject(int pId, int uId){
+        return false;
     }
 
     //User asks Manager to join project
-    public static void requestJoin(int pId, int uId){
-
+    public static boolean requestJoin(int pId, int uId){
+        return false;
     }
 
     //Returns -1 if login failed (wrong email or password).
     //Returns user ID if login was successful.
-    public static int login(String email, String password){
-        return NA;
+    public static boolean login(String email, String password){
+        return false;
     }
 
     //Returns if the User is an Admin(0), Professor(1), or Student (2). If uID is not found it will return -1 which is equal to NA.
@@ -87,16 +93,16 @@ public class DAO {
     }
 
     //Create post for given project Id
-    public static void createPost(int pId, Post post){
-
+    public static boolean createPost(int pId, Post post){
+        return false;
     }
 
-    public static void deletePost(int post){
-
+    public static boolean deletePost(int post){
+        return false;
     }
 
-    public static void createChatMessage(ChatMessage chatMessage){
-
+    public static boolean createChatMessage(ChatMessage chatMessage){
+        return false;
     }
 
     //gets chat messages for given project Id
@@ -104,8 +110,8 @@ public class DAO {
         return null;
     }
 
-    public static void sendEmail(Email email){
-
+    public static boolean sendEmail(Email email){
+        return false;
     }
 
     //get emails for given user Id

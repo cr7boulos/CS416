@@ -20,7 +20,7 @@ public class LoginController {
     public static boolean isAuthenticated(Request request, Response response){
         String email = request.queryParams("email");
         String password = request.queryParams("password");
-        if(DAO.isUser(email, password))
+        if(DAO.login(email, password))
             return true;
         else
             return false;
