@@ -101,4 +101,11 @@ public class DAO {
     public static ArrayList<Email> getUserEmails(int uId){
         return null;
     }
+
+    //check if a user's email and password exists
+    //Returns true if both exist
+    //I'll work on this in a bit -Kyle
+    public static boolean isUser(String email, String password){
+        return true;
+    }
 }
