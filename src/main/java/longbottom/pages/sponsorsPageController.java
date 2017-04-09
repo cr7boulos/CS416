@@ -16,6 +16,6 @@ public class sponsorsPageController {
 
     public static Route serveSponsorsPage = (Request request, Response response) ->{
         Map<String, Object> model = new HashMap<>();
-        return ViewUtil.render(model, "velocity/test.vm");
+        return ViewUtil.render(model, "velocity/sponsors.vm");
     };
 }
