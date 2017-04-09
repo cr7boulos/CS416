@@ -5,6 +5,8 @@ import longbottom.accounts.Dashboard;
 import longbottom.accounts.User;
 import longbottom.util.DemoController; //import the needed controller classes here
 import longbottom.chat.ChatController;
+import longbottom.pages.contactPageController;
+import longbottom.pages.aboutPageController;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -36,6 +38,8 @@ public class LongBottomUniversity {
         post("/projects", Dashboard.projectPartial);
 
         get("/dashboard", Dashboard.userDashboard);
+        get("/contact", contactPageController.serveContactPage);
+        get("/about", aboutPageController.serveAboutPage);
 
         //CONNECT TO MYSQL DATABASE
         DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
