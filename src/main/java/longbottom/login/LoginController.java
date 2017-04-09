@@ -7,6 +7,12 @@ import longbottom.util.ViewUtil;
 
 public class LoginController {
 
+    // Serves login page
+    public static Route serveLoginPage = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(model, "/velocity/login.vm");
+    };
+
     // If a user logs out
     // remove currentUserId from session attributes, set loggedOut to true, and redirect the user to the login page.
     public static Route handleLogoutPost = (Request request, Response response) -> {
