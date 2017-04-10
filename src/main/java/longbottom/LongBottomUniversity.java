@@ -3,6 +3,8 @@ package longbottom;
 import longbottom.DAO.DAO;
 import longbottom.accounts.Dashboard;
 import longbottom.accounts.User;
+import longbottom.pages.homePageController;
+import longbottom.pages.sponsorsPageController;
 import longbottom.util.DemoController; //import the needed controller classes here
 import longbottom.chat.ChatController;
 import longbottom.pages.contactPageController;
@@ -40,6 +42,8 @@ public class LongBottomUniversity {
         get("/dashboard", Dashboard.userDashboard);
         get("/contact", contactPageController.serveContactPage);
         get("/about", aboutPageController.serveAboutPage);
+        get("/home", homePageController.serveHomePage);
+        get("sponsors", sponsorsPageController.serveSponsorsPage);
 
         //CONNECT TO MYSQL DATABASE
         DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
