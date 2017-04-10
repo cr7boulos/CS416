@@ -43,7 +43,7 @@ public class LongBottomUniversity {
         get("/contact", contactPageController.serveContactPage);
         get("/about", aboutPageController.serveAboutPage);
         get("/home", homePageController.serveHomePage);
-        get("sponsors", sponsorsPageController.serveSponsorsPage);
+        get("/sponsors", sponsorsPageController.serveSponsorsPage);
 
         //CONNECT TO MYSQL DATABASE
         DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
