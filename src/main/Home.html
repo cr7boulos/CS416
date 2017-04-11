@@ -1,0 +1,145 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Home Page</title>
+
+<link rel="stylesheet" href="../../Web Development/finalProject/styles.css" />
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Carrois Gothic SC">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Playball">
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="../../Web Development/jquery.infinitecarousel3.min.js"></script>
+<script type="text/javascript" src="../../Web Development/easing.js"></script>
+<script src="../../Web Development/finalProject/javascript.js"></script>
+<script>
+$(function(){
+	$('#carousel').infiniteCarousel({
+		imagePath: '../images/',
+		transitionSpeed:300,
+		displayTime: 5000,
+		internalThumbnails: false,
+		thumbnailType: 'buttons',
+		customClass: 'myCarousel',
+		progressRingColorOpacity: '0,0,0,.9',
+		progressRingBackgroundOn: false,
+		margin: 10,
+		easeLeft: 'easeOutExpo',
+		easeRight:'easeOutQuart',
+		inView: 1,
+		advance: 1,
+		autoPilot: true,
+		prevNextInternal: true,
+		autoHideCaptions: false
+	});
+
+});
+
+var drawnimages = new Array();
+var i;
+imagefiles = new Array();
+imagefiles[0]="pictures/puka1.jpg"
+imagefiles[1]="pictures/puka2.jpg";
+imagefiles[2]="pictures/puka3.jpg";
+
+for(i=0; i<3; i++)
+{
+	drawnimages[i]= new Image();
+	drawnimages[i].src = imagefiles[i];
+}
+
+function setupCanvas() {
+	var cvas = document.getElementById('myCanvas');
+	var ctx = cvas.getContext('2d');
+	var thisImg = new Image();
+	thisImg.onload = function() {
+		ctx.drawImage(thisImg, 31, 50);
+	}
+	
+	thisImg.src="Vader.jpg";
+	i=1;
+	setInterval('cycleImage()',1000);
+}
+
+function cycleImage() {
+	var cvas = document.getElementById('myCanvas');
+	var ctx = cvas.getContext('2d');
+	var thisImg = new Image();
+	thisImg.onload = function() {
+		ctx.drawImage(thisImg,31,50);
+	}
+	
+	thisImg.src = drawnimages[i].src;
+	i++;
+	if(i==3) i = 0;
+}
+</script>
+<style>
+.outline {
+	border:solid black medium;
+	background-color: black;
+}
+
+#wrapper {width: 900px;
+			margin: 0 auto;
+}
+</style>
+</head>
+
+<body onLoad = "setupCanvas()">
+<div id="container">
+<div id="divf">
+<div id="diva" class="font2"> Longbottom University</div>
+</div>
+<div>
+
+<nav>
+<ul>
+  <li><a href="#">Home</a></li>
+  <li><a href="">Sponsor</a></li>
+  <li><a href="">Projects</a></li>
+  <li><a href="">Contact</a></li>
+  <li><a href="">About</a></li>
+  <li><a href="">Login</a></li>
+</ul>
+</nav>
+</div>
+
+<div class ="Title box">
+<h1 class="font2">Welcome!</h1>
+</div>
+
+<ul id="carousel">
+	<li><img width="600" height="380" alt="" src="../../Web Development/finalProject/pictures/slide1.jpg" /></li>
+	<li><img width="600" height="380" alt="" src="../../Web Development/finalProject/pictures/slide2.jpg" /></li>
+	<li><img width="600" height="380" alt="" src="../../Web Development/finalProject/pictures/slide3.jpg" /></li>
+	<li><img width="600" height="380" alt="" src="../../Web Development/finalProject/pictures/slide4.jpg" /></li>
+    <li><img width="600" height="380" alt="" src="../../Web Development/finalProject/pictures/slide5.jpg" /></li>
+    <li><img width="600" height="380" alt="" src="../../Web Development/finalProject/pictures/slide6.jpg" /></li>
+    <li><img width="600" height="380" alt="" src="../../Web Development/finalProject/pictures/slide7.jpg" /></li>
+    <li><img width="600" height="380" alt="" src="../../Web Development/finalProject/pictures/slide8.jpg" /></li>
+    <li><img width="600" height="380" alt="" src="../../Web Development/finalProject/pictures/slide9.jpg" /></li>
+</ul>
+
+<div class="info box">
+
+
+</div>
+<div class="info2 box">
+
+<div id="divcontent2" class="box">
+
+</div>
+</div>
+<div class="info3 box">
+<div id="divcontent6" class="box">
+
+</div>
+
+
+
+
+</div></div></div>
+
+</body>
+</html>
