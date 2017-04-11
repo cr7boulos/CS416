@@ -164,7 +164,16 @@ public class DAO {
     //Returns -1 if login failed (wrong email or password).
     //Returns user ID if login was successful.
     public static int login(String email, String password){
-        return NA;
+        String sql = "SELECT userId FROM users WHERE email = :email AND password = :password";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("email", email)
+                    .addParameter("password", password)
+                    .executeScalar(Integer.class);
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     //Returns if the User is an Admin(0), Professor(1), or Student (2). If uID is not found it will return -1 which is equal to NA.
