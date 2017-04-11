@@ -57,15 +57,14 @@ public class DAO {
     }
 
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
-    public static boolean createProject(String name, String description, String time, int manager){
+    public static boolean createProject(String name, String description, int manager){
         String sql =
-                "INSERT INTO projects (name,description,time_stamp,manager)\n" +
-                        "VALUES (:name, :description, :time_stamp, :manager)";
+                "INSERT INTO projects (name, description, time_stamp,manager)\n" +
+                        "VALUES (:name, :description, NOW(), :manager)";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("name", name)
                     .addParameter("description", description)
-                    .addParameter("time_stamp", time)
                     .addParameter("manager", manager)
                     .executeUpdate();
             return true;
@@ -191,8 +190,22 @@ public class DAO {
         return null;
     }
 
-    public static boolean sendEmail(Email email){
-        return false;
+    public static boolean sendEmail(int from, int to, String subject, String body){
+        String sql =
+                "INSERT INTO email (from, to, subject, body, time_stamp)" +
+                        "VALUES (:from, :to, :subject, :body, NOW())";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("from", from)
+                    .addParameter("to", to)
+                    .addParameter("subject", subject)
+                    .addParameter("body", body)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //get emails for given user Id

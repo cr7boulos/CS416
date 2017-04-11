@@ -24,6 +24,7 @@ public class ProjectController {
         return "Update Successful";
     };
 
+    /*/
     public static Route updateProjects = (Request request, Response response) -> {
         LoginController.isAuthenticated(request, response);
         if (DAO.updateProject(
@@ -36,4 +37,5 @@ public class ProjectController {
         else
             return "Update Successful";
     };
+    /*/
 }
