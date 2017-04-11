@@ -21,10 +21,12 @@ public class DAO {
 
 
     public static List<Map<String, Object>> getAllProjects(int userId){
-        String sql = "SELECT name, description, time_stamp, projects.projectId, user.firstName, user.lastName ," +
+
+
+        String sql = "SELECT name, description, time_stamp, projectId, firstName, lastName ," +
                 "(projectId in (select projectId from works_in where userId = :userId and accepted = 1)) as 'in'" +
                 "from" +
-                "(projects" +
+                "(projects " +
                 "inner join user on userId = manager)";
         try(Connection con = sql2o.open()){
             return con.createQuery(sql)
@@ -57,15 +59,14 @@ public class DAO {
     }
 
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
-    public static boolean createProject(String name, String description, String time, int manager){
+    public static boolean createProject(String name, String description, int manager){
         String sql =
-                "INSERT INTO projects (name,description,time_stamp,manager)\n" +
-                        "VALUES (:name, :description, :time_stamp, :manager)";
+                "INSERT INTO projects (name, description, time_stamp,manager)\n" +
+                        "VALUES (:name, :description, NOW(), :manager)";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("name", name)
                     .addParameter("description", description)
-                    .addParameter("time_stamp", time)
                     .addParameter("manager", manager)
                     .executeUpdate();
             return true;
@@ -165,7 +166,16 @@ public class DAO {
     //Returns -1 if login failed (wrong email or password).
     //Returns user ID if login was successful.
     public static int login(String email, String password){
-        return NA;
+        String sql = "SELECT userId FROM users WHERE email = :email AND password = :password";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("email", email)
+                    .addParameter("password", password)
+                    .executeScalar(Integer.class);
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     //Returns if the User is an Admin(0), Professor(1), or Student (2). If uID is not found it will return -1 which is equal to NA.
@@ -191,13 +201,36 @@ public class DAO {
         return null;
     }
 
-    public static boolean sendEmail(Email email){
-        return false;
+    public static boolean sendEmail(int from, int to, String subject, String body){
+        String sql =
+                "INSERT INTO email (from, to, subject, body, time_stamp)" +
+                        "VALUES (:from, :to, :subject, :body, NOW())";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("from", from)
+                    .addParameter("to", to)
+                    .addParameter("subject", subject)
+                    .addParameter("body", body)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //get emails for given user Id
-    public static ArrayList<Email> getUserEmails(int uId){
-        return null;
+    public static List<Email> getUserEmails(int uId){
+        String sql = "SELECT * FROM email WHERE userId = :userId";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("userId", uId)
+                    .addColumnMapping("time_stamp", "time")
+                    .executeAndFetch(Email.class);
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

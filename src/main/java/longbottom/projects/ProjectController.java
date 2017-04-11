@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class ProjectController {
 
-    public static Route newProjects = (Request request, Response response) -> {
+    /*public static Route newProjects = (Request request, Response response) -> {
         LoginController.isAuthenticated(request, response);
         if (DAO.createProject(
                 request.queryParams("name"),
@@ -22,8 +22,9 @@ public class ProjectController {
         return "Update Unsuccessful";
         else
         return "Update Successful";
-    };
+    };*/
 
+    /*/
     public static Route updateProjects = (Request request, Response response) -> {
         LoginController.isAuthenticated(request, response);
         if (DAO.updateProject(
@@ -36,4 +37,5 @@ public class ProjectController {
         else
             return "Update Successful";
     };
+    /*/
 }

@@ -13,8 +13,8 @@
             <tr>
                 <td>$map.get("name")</td>
                 <td>$map.get("description")</td>
-                <td>$map.get("startDate")</td>
-                <td>$map.get("manager")</td>
+                <td>$map.get("time_stamp")</td>
+                <td>$map.get("lastname"), $map.get("firstname")</td>
                 <td>
                     #if($map.get("in") == 1) ## user is in the given project
                         <div class="btn btn-primary col-sm-6">Project Page</div>
