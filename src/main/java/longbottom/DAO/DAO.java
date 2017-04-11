@@ -59,15 +59,14 @@ public class DAO {
     }
 
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
-    public static boolean createProject(String name, String description, String time, int manager){
+    public static boolean createProject(String name, String description, int manager){
         String sql =
-                "INSERT INTO projects (name,description,time_stamp,manager)\n" +
-                        "VALUES (:name, :description, :time_stamp, :manager)";
+                "INSERT INTO projects (name, description, time_stamp,manager)\n" +
+                        "VALUES (:name, :description, NOW(), :manager)";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("name", name)
                     .addParameter("description", description)
-                    .addParameter("time_stamp", time)
                     .addParameter("manager", manager)
                     .executeUpdate();
             return true;
@@ -79,9 +78,71 @@ public class DAO {
 
     //Update project with set parameters. Set parameters to null to not change it. pId is required.
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
-    public static boolean updateProject(int pId, String name, String description, String time, int manager){
-        return false;
+    public static boolean updateProjectName(int pId, String name, String description, String time, int manager){
+        String sql = "UPDATE table_name" +
+                "SET name = :name" +
+                "WHERE projectId = :pId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .addParameter("name", name)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
+
+    public static boolean updateProjectDescription(int pId, String description){
+        String sql = "UPDATE table_name" +
+                "SET description = :description" +
+                "WHERE projectId = :pId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .addParameter("description", description)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
+    public static boolean updateProjectTime(int pId, String time){
+        String sql = "UPDATE table_name" +
+                "SET time_stamp = :time_stamp" +
+                "WHERE projectId = :pId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .addParameter("time_stamp", time)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean updateProjectManager(int pId, int manager){
+        String sql = "UPDATE table_name" +
+                "SET manager = :manager" +
+                "WHERE projectId = :pId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .addParameter("manager", manager)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     public static boolean deleteProject(int pId){
         return false;
@@ -105,7 +166,16 @@ public class DAO {
     //Returns -1 if login failed (wrong email or password).
     //Returns user ID if login was successful.
     public static int login(String email, String password){
-        return NA;
+        String sql = "SELECT userId FROM users WHERE email = :email AND password = :password";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("email", email)
+                    .addParameter("password", password)
+                    .executeScalar(Integer.class);
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     //Returns if the User is an Admin(0), Professor(1), or Student (2). If uID is not found it will return -1 which is equal to NA.
@@ -131,8 +201,22 @@ public class DAO {
         return null;
     }
 
-    public static boolean sendEmail(Email email){
-        return false;
+    public static boolean sendEmail(int from, int to, String subject, String body){
+        String sql =
+                "INSERT INTO email (from, to, subject, body, time_stamp)" +
+                        "VALUES (:from, :to, :subject, :body, NOW())";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("from", from)
+                    .addParameter("to", to)
+                    .addParameter("subject", subject)
+                    .addParameter("body", body)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //get emails for given user Id
