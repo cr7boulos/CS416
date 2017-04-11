@@ -21,10 +21,12 @@ public class DAO {
 
 
     public static List<Map<String, Object>> getAllProjects(int userId){
-        String sql = "SELECT name, description, time_stamp, projects.projectId, user.firstName, user.lastName ," +
+
+
+        String sql = "SELECT name, description, time_stamp, projectId, firstName, lastName ," +
                 "(projectId in (select projectId from works_in where userId = :userId and accepted = 1)) as 'in'" +
                 "from" +
-                "(projects" +
+                "(projects " +
                 "inner join user on userId = manager)";
         try(Connection con = sql2o.open()){
             return con.createQuery(sql)
