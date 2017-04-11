@@ -77,9 +77,71 @@ public class DAO {
 
     //Update project with set parameters. Set parameters to null to not change it. pId is required.
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
-    public static boolean updateProject(int pId, String name, String description, String time, int manager){
-        return false;
+    public static boolean updateProjectName(int pId, String name, String description, String time, int manager){
+        String sql = "UPDATE table_name" +
+                "SET name = :name" +
+                "WHERE projectId = :pId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .addParameter("name", name)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
+
+    public static boolean updateProjectDescription(int pId, String description){
+        String sql = "UPDATE table_name" +
+                "SET description = :description" +
+                "WHERE projectId = :pId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .addParameter("description", description)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
+    public static boolean updateProjectTime(int pId, String time){
+        String sql = "UPDATE table_name" +
+                "SET time_stamp = :time_stamp" +
+                "WHERE projectId = :pId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .addParameter("time_stamp", time)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean updateProjectManager(int pId, int manager){
+        String sql = "UPDATE table_name" +
+                "SET manager = :manager" +
+                "WHERE projectId = :pId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .addParameter("manager", manager)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     public static boolean deleteProject(int pId){
         return false;
