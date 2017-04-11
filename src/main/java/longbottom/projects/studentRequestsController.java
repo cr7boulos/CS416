@@ -10,7 +10,7 @@ import spark.Route;
  */
 public class studentRequestsController {
 
-    public Route serveStudent = (Request request, Response response) -> {
+    public Route serveStudentRequest = (Request request, Response response) -> {
 
     /*    if(Integer.parseInt(request.queryParams("status")) == 0)
         {
@@ -18,8 +18,8 @@ public class studentRequestsController {
             DAO.denyUser(Integer.parseInt(request.queryParams("studentId")),
                          Integer.parseInt(request.queryParams("projectId")));
 
-            DAO.sendEmail(request.queryParams("profId"),
-                          request.queryParams("studentId"),
+            DAO.sendEmail(Integer.parseInt(request.queryParams("profId")),
+                          Integer.parseInt(request.queryParams("studentId")),
                           request.queryParams("subject"),
                           request.queryParams("body"));
 
