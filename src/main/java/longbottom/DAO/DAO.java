@@ -220,8 +220,17 @@ public class DAO {
     }
 
     //get emails for given user Id
-    public static ArrayList<Email> getUserEmails(int uId){
-        return null;
+    public static List<Email> getUserEmails(int uId){
+        String sql = "SELECT * FROM email WHERE userId = :userId";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("userId", uId)
+                    .addColumnMapping("time_stamp", "time")
+                    .executeAndFetch(Email.class);
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

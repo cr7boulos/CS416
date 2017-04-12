@@ -12,30 +12,42 @@ public class studentRequestsController {
 
     public Route serveStudentRequest = (Request request, Response response) -> {
 
-    /*    if(Integer.parseInt(request.queryParams("status")) == 0)
+    /*  if(Integer.parseInt(request.queryParams("status")) == 0)
         {
 
-            DAO.denyUser(Integer.parseInt(request.queryParams("studentId")),
+            DAO.leaveProject(Integer.parseInt(request.queryParams("studentId")),
                          Integer.parseInt(request.queryParams("projectId")));
 
             DAO.sendEmail(Integer.parseInt(request.queryParams("profId")),
                           Integer.parseInt(request.queryParams("studentId")),
-                          request.queryParams("subject"),
-                          request.queryParams("body"));
+                          "Request Denied",
+                          request.queryParams("studentName") + ",\n" +
+                          request.queryParams("profName") + "has denied your request to join
+                          the following project: " + requestParams("projectName"));
+
+             return "Message Sent";
 
 
+        }
+        else if(Integer.parseInt(request.queryParams("status")) == 1)
+        {
+            DAO.requestJoin(Integer.parseInt(request.queryParams("studentId")),
+                           Integer.parseInt(request.queryParams("projectId")));
+
+            DAO.sendEmail(Integer.parseInt(request.queryParams("profId")),
+                          Integer.parseInt(request.queryParams("studentId")),
+                          "Request Accepted",
+                          request.queryParams("studentName") + ",\n" +
+                          request.queryParams("profName") + "has accepted your request to join
+                          the following project: " + requestParams("projectName"));
+
+            return "Message Sent";
         }
         else
         {
-            DAO.acceptUser(Integer.parseInt(request.queryParams("studentId")),
-                           Integer.parseInt(request.queryParams("projectId")));
-
-            DAO.sendEmail(request.queryParams("profId"),
-                          request.queryParams("studentId"),
-                          request.queryParams("subject"),
-                          request.queryParams("body"));
+            return "Error";
         }
 
-      */  return "Message Sent";
-    };
+      */
+    return "temp"};
 }
