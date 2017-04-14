@@ -145,7 +145,16 @@ public class DAO {
 
 
     public static boolean deleteProject(int pId){
-        return false;
+        String sql = "DELETE FROM projects WHERE projectId = :projectId";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("projectId", pId)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //User is added to project
@@ -155,12 +164,33 @@ public class DAO {
 
 
     public static boolean leaveProject(int pId, int uId){
-        return false;
+        String sql = "DELETE FROM projects WHERE projectId = :projectId AND userId = :userId";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("projectId", pId)
+                    .addParameter("userId", uId)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //User asks Manager to join project
     public static boolean requestJoin(int pId, int uId){
-        return false;
+        String sql = "INSERT INTO works_in (projectId, userId)" +
+                "VALUES (:projectId, :userId)";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("projectId", pId)
+                    .addParameter("userId", uId)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //Returns -1 if login failed (wrong email or password).
@@ -180,7 +210,43 @@ public class DAO {
 
     //Returns if the User is an Admin(0), Professor(1), or Student (2). If uID is not found it will return -1 which is equal to NA.
     public static int getIdentity(int uId){
-        return NA;
+        String sql_admin = "SELECT userId FROM admin WHERE userId = :userId";
+        try(Connection con = sql2o.open()) {
+            int rId = con.createQuery(sql_admin)
+                    .addParameter("userId", uId)
+                    .executeScalar(Integer.class);
+            if(rId == uId){
+                return ADMIN;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+        String sql_prof = "SELECT userId FROM professor WHERE userId = :userId";
+        try(Connection con = sql2o.open()) {
+            int rId = con.createQuery(sql_prof)
+                    .addParameter("userId", uId)
+                    .executeScalar(Integer.class);
+            if(rId == uId){
+                return PROFESSOR;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+        String sql_student = "SELECT userId FROM student WHERE userId = :userId";
+        try(Connection con = sql2o.open()) {
+            int rId = con.createQuery(sql_admin)
+                    .addParameter("userId", uId)
+                    .executeScalar(Integer.class);
+            if(rId == uId){
+                return STUDENT;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+        return -1;
     }
 
     //Create post for given project Id
