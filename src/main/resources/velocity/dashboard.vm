@@ -100,7 +100,13 @@
 
             <h2 class="sub-header">Section title</h2>
             <div id="dynView" data-userId="$userId" class="table-responsive">
-                #parse("/velocity/project_partial.vm") ## render data + HTML from project_partial.vm here
+                #if ($viewType == 0) ## admin
+                    #parse("/velocity/project_request.vm") ## admin by default sees the project requests
+                #else
+                    #parse("/velocity/project_partial.vm") ## students/professors by default see the project listing
+                #end
+
+
             </div>
         </div>
     </div>
