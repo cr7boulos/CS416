@@ -3,6 +3,7 @@ package longbottom;
 import longbottom.DAO.DAO;
 import longbottom.accounts.Dashboard;
 import longbottom.accounts.User;
+import longbottom.login.LoginController;
 import longbottom.pages.homePageController;
 import longbottom.pages.sponsorsPageController;
 import longbottom.util.DemoController; //import the needed controller classes here
@@ -36,6 +37,7 @@ public class LongBottomUniversity {
         // paste this URL below where is says "Enter request URL":
         // localhost:1250/post?test=456
         post("/post", DemoController.testing);
+        get("/login", LoginController.serveLoginPage);
         get("/chat", ChatController.chatHistory);
         post("/projects", Dashboard.projectPartial);
 
