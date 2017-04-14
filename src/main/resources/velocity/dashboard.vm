@@ -99,7 +99,7 @@
             </div>
 
             <h2 class="sub-header">Section title</h2>
-            <div id="dynView" class="table-responsive">
+            <div id="dynView" data-userId="$userId" class="table-responsive">
                 #parse("/velocity/project_partial.vm") ## render data + HTML from project_partial.vm here
             </div>
         </div>

@@ -17,9 +17,9 @@
                 <td>$map.get("lastname"), $map.get("firstname")</td>
                 <td>
                     #if($map.get("in") == 1) ## user is in the given project
-                        <div class="btn btn-primary col-sm-6">Project Page</div>
+                        <a href="/project?projectId=$map.get("projectid")" <div class="btn btn-primary col-sm-12">Project Page</div></a>
                     #else
-                        <div class="btn btn-success col-sm-6">Request Access</div>
+                        <div class="btn btn-success col-sm-12 requests" data-request="$map.get("projectid")">Request Access</div>
                     #end
 
                 </td>

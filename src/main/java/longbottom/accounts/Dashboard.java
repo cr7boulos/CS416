@@ -18,6 +18,7 @@ public class Dashboard {
     public static Route userDashboard = (Request request, Response response) -> {
         //int userId = LoginController.isAuthenticated(request, response);
 
+        // this will be removed; the userId will come from the Login service
         int uid = Integer.parseInt(request.queryParams("userId"));
 
 
@@ -25,6 +26,7 @@ public class Dashboard {
 
         Map<String, Object> model3 = new HashMap<>();
         model3.put("dataList", list);
+        model3.put("userId", uid);
 
         /*for(Map<String,Object> m : list){
             System.out.println(m.keySet());
@@ -35,7 +37,11 @@ public class Dashboard {
     };
 
     public static Route projectPartial = (Request request, Response response) -> {
+        List<Map<String, Object>> list = DAO.getAllProjects(1);
+
         Map<String, Object> model3 = new HashMap<>();
+        model3.put("dataList", list);
+
         return ViewUtil.render(model3, "/velocity/project_partial.vm");
     };
 }
