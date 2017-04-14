@@ -166,7 +166,7 @@ public class DAO {
     //Returns -1 if login failed (wrong email or password).
     //Returns user ID if login was successful.
     public static int login(String email, String password){
-        String sql = "SELECT userId FROM users WHERE email = :email AND password = :password";
+        String sql = "SELECT userId FROM user WHERE email = :email AND password = :password";
         try(Connection con = sql2o.open()) {
             return con.createQuery(sql)
                     .addParameter("email", email)
