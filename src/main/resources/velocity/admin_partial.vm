@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thread>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+    </thread>
+    <tbody>
+        #foreach($map in $users)
+            <tr>
+                <td>$map.get("userId")</td>
+                <td>$map.get("firstName")</td>
+                <td>$map.get("lastName")</td>
+                <td>$map.get("email")</td>
+                <td>$map.get("password")</td>
+            </tr>
+        #end
+    </tbody>
+</table>

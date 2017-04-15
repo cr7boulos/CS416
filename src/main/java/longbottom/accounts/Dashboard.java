@@ -19,21 +19,27 @@ public class Dashboard {
     public static Route userDashboard = (Request request, Response response) -> {
         int userId = DAO.login(request.queryParams("username"), request.queryParams("password"));
         Map<String, Object> model3 = new HashMap<>();
-        if(userId != DAO.NA){
+        System.out.println(userId);
+        int userIdentity = DAO.getIdentity(userId);
+        System.out.println(userIdentity);
+        if(userIdentity != DAO.NA){
 
             model3.put("userId", userId);
 
-            if(userId == DAO.ADMIN){
+            if(userIdentity == DAO.ADMIN){
                 model3.put("buttonOptions", "/velocity/adminView");
+                System.out.println("Got to admin");
                 model3.put("viewType", DAO.ADMIN); // this is a flag for the JS
             }
             else{ //user is a student or professor
-                if(userId == DAO.PROFESSOR){
+                if(userIdentity == DAO.PROFESSOR){
                     model3.put("buttonOptions", "/velocity/professorView");
+                    System.out.println("Got to professor");
                     model3.put("viewType", DAO.PROFESSOR); // this is a flag for the JS
                 }
-                if(userId == DAO.STUDENT){
+                if(userIdentity == DAO.STUDENT){
                     model3.put("buttonOptions", "/velocity/studentView");
+                    System.out.println("Got to student");
                     model3.put("viewType", DAO.STUDENT); // this is a flag for the JS
                 }
 
@@ -46,7 +52,7 @@ public class Dashboard {
 
         }
         else{
-            return ViewUtil.render(model3, "/velocity/dashboard.vm"); //login failed
+            return ViewUtil.render(model3, "/velocity/login.vm"); //login failed
         }
 
 

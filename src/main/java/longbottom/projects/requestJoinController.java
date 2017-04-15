@@ -9,9 +9,9 @@ import spark.Route;
  */
 public class requestJoinController {
 
-    public Route serveToJoin = (Request request, Response response) -> {
+    public static Route serveToJoin = (Request request, Response response) -> {
 
-        if(DAO.requestJoin(Integer.parseInt(request.queryParams("userId")), Integer.parseInt(request.queryParams("projectId"))))
+        if(DAO.requestJoin(Integer.parseInt(request.queryParams("projectId")), Integer.parseInt(request.queryParams("userId"))))
         {
             return "1";
         }

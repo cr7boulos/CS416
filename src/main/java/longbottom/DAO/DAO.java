@@ -203,7 +203,7 @@ public class DAO {
                     .addParameter("password", password)
                     .executeScalar(Integer.class);
         }catch (Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
             return -1;
         }
     }
@@ -219,8 +219,9 @@ public class DAO {
                 return ADMIN;
             }
         }catch (Exception e){
-            e.printStackTrace();
-            return -1;
+            System.out.println("Tripped on NullPointerException");
+            //e.printStackTrace();
+            //return -1;
         }
         String sql_prof = "SELECT userId FROM professor WHERE userId = :userId";
         try(Connection con = sql2o.open()) {
@@ -231,20 +232,20 @@ public class DAO {
                 return PROFESSOR;
             }
         }catch (Exception e){
-            e.printStackTrace();
-            return -1;
+            //e.printStackTrace();
+            //return -1;
         }
         String sql_student = "SELECT userId FROM student WHERE userId = :userId";
         try(Connection con = sql2o.open()) {
-            int rId = con.createQuery(sql_admin)
+            int rId = con.createQuery(sql_student)
                     .addParameter("userId", uId)
                     .executeScalar(Integer.class);
             if(rId == uId){
                 return STUDENT;
             }
         }catch (Exception e){
-            e.printStackTrace();
-            return -1;
+            //e.printStackTrace();
+            //return -1;
         }
         return -1;
     }
