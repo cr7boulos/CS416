@@ -1,4 +1,5 @@
 package longbottom;
+import longbottom.projects.*;
 
 import longbottom.DAO.DAO;
 import longbottom.accounts.Dashboard;
@@ -6,6 +7,7 @@ import longbottom.accounts.User;
 import longbottom.login.LoginController;
 import longbottom.pages.homePageController;
 import longbottom.pages.sponsorsPageController;
+import longbottom.projects.requestJoinController;
 import longbottom.util.DemoController; //import the needed controller classes here
 import longbottom.chat.ChatController;
 import longbottom.pages.contactPageController;
@@ -46,6 +48,7 @@ public class LongBottomUniversity {
         get("/about", aboutPageController.serveAboutPage);
         get("/home", homePageController.serveHomePage);
         get("/sponsors", sponsorsPageController.serveSponsorsPage);
+        post("/requestJoin", requestJoinController.serveToJoin);
 
         //CONNECT TO MYSQL DATABASE
         DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
