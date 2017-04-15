@@ -11,11 +11,14 @@
     <tbody>
         #foreach($map in $users)
             <tr>
-                <td>$map.get("userId")</td>
-                <td>$map.get("firstName")</td>
-                <td>$map.get("lastName")</td>
-                <td>$map.get("email")</td>
-                <td>$map.get("password")</td>
+                <td>$map.userId</td>
+                <td>$map.firstName</td>
+                <td>$map.lastName</td>
+                <td>$map.email</td>
+                <td>$map.password</td>
+
+                <div class="btn btn-primary col-sm-12">Update User</div>
+                <div class="btn btn-warning col-sm-12">Delete User</div>
             </tr>
         #end
     </tbody>
