@@ -28,6 +28,7 @@ public class Dashboard {
 
             if(userIdentity == DAO.ADMIN){
                 model3.put("buttonOptions", "/velocity/adminView");
+                model3.put("users", DAO.getAllUsers());
                 System.out.println("Got to admin");
                 model3.put("viewType", DAO.ADMIN); // this is a flag for the JS
             }
