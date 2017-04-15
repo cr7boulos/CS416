@@ -203,7 +203,7 @@ public class DAO {
                     .addParameter("password", password)
                     .executeScalar(Integer.class);
         }catch (Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
             return -1;
         }
     }
