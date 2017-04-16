@@ -143,6 +143,70 @@ public class DAO {
         }
     }
 
+    public static boolean updateUserFirstName(int uId, String firstname) {
+        String sql = "UPDATE user" +
+                "SET firstName = :firstname" +
+                "WHERE userId = :uId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("uId", uId)
+                    .addParameter("firstname", firstname)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean updateUserLastName(int uId, String lastname) {
+        String sql = "UPDATE user" +
+                "SET lastName = :lastname" +
+                "WHERE userId = :uId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("uId", uId)
+                    .addParameter("lastname", lastname)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean updateUserEmail(int uId, String email) {
+        String sql = "UPDATE user" +
+                "SET email = :email" +
+                "WHERE userId = :uId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("uId", uId)
+                    .addParameter("email", email)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean updateUserPassword(int uId, String password) {
+        String sql = "UPDATE user" +
+                "SET password = :password" +
+                "WHERE userId = :uId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("uId", uId)
+                    .addParameter("password", password)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     public static boolean deleteProject(int pId){
         String sql = "DELETE FROM projects WHERE projectId = :projectId";
