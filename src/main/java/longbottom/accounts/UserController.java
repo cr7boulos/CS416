@@ -43,4 +43,33 @@ public class UserController {
                 return "0";
             }
         };
+
+        // Method to update various user parameters
+        public static Route updateUser = (Request request, Response response) -> {
+            LoginController.isAuthenticated(request, response);
+
+            int userId = Integer.parseInt(request.queryParams("userId"));
+            String firstname = request.queryParams("firstname");
+            String lastname = request.queryParams("lastname");
+            String email = request.queryParams("email");
+            String password = request.queryParams("password");
+
+            if (firstname != null) {
+                DAO.updateUserFirstName(userId, firstname);
+            }
+
+            if (lastname != null) {
+                DAO.updateUserLastName(userId, lastname);
+            }
+
+            if (email != null) {
+                DAO.updateUserEmail(userId, email);
+            }
+
+            if (password != null) {
+                DAO.updateUserPassword(userId, password);
+            }
+
+            return "User updates finished.";
+        };
 }
