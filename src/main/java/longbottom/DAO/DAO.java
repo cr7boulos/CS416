@@ -157,6 +157,19 @@ public class DAO {
         }
     }
 
+    public static boolean deleteUser(int uId){
+        String sql = "DELETE FROM user WHERE userId = :uId";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("uId", uId)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     //User is added to project
     public static boolean acceptUser(int pId, int uId){
         return false;
