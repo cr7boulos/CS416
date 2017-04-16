@@ -51,6 +51,8 @@ public class LongBottomUniversity {
         get("/sponsors", sponsorsPageController.serveSponsorsPage);
         post("/requestJoin", requestJoinController.serveToJoin);
         post("/deleteUser", deleteUserController.deleteUser);
+        post("/updateProject", ProjectController.updateProject);
+        post("/newProject", ProjectController.newProject);
 
         //CONNECT TO MYSQL DATABASE
         DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
