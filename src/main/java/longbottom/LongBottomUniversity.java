@@ -3,8 +3,7 @@ import longbottom.projects.*;
 
 import longbottom.DAO.DAO;
 import longbottom.accounts.Dashboard;
-import longbottom.accounts.User;
-import longbottom.accounts.deleteUserController;
+import longbottom.accounts.UserController;
 import longbottom.login.LoginController;
 import longbottom.pages.homePageController;
 import longbottom.pages.sponsorsPageController;
@@ -13,10 +12,7 @@ import longbottom.util.DemoController; //import the needed controller classes he
 import longbottom.chat.ChatController;
 import longbottom.pages.contactPageController;
 import longbottom.pages.aboutPageController;
-import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-
-import java.util.List;
 
 import static spark.Spark.*;
 
@@ -50,7 +46,7 @@ public class LongBottomUniversity {
         get("/home", homePageController.serveHomePage);
         get("/sponsors", sponsorsPageController.serveSponsorsPage);
         post("/requestJoin", requestJoinController.serveToJoin);
-        post("/deleteUser", deleteUserController.deleteUser);
+        post("/deleteUser", UserController.deleteUser);
         post("/updateProject", ProjectController.updateProject);
         post("/newProject", ProjectController.newProject);
 

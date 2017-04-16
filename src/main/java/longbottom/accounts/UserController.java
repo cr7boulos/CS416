@@ -32,5 +32,15 @@ public class UserController {
 //            return ViewUtil.render(request, model, "/velocity/test.vm");
 //        };
 
+        // Method to delete a user
+        public static Route deleteUser = (Request request, Response response) -> {
 
+            int userId = Integer.parseInt(request.queryParams("userId"));
+
+            if (DAO.deleteUser(userId)) {
+                return "1";
+            } else {
+                return "0";
+            }
+        };
 }
