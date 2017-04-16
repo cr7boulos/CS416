@@ -4,6 +4,7 @@ import longbottom.projects.*;
 import longbottom.DAO.DAO;
 import longbottom.accounts.Dashboard;
 import longbottom.accounts.User;
+import longbottom.accounts.deleteUserController;
 import longbottom.login.LoginController;
 import longbottom.pages.homePageController;
 import longbottom.pages.sponsorsPageController;
@@ -49,6 +50,7 @@ public class LongBottomUniversity {
         get("/home", homePageController.serveHomePage);
         get("/sponsors", sponsorsPageController.serveSponsorsPage);
         post("/requestJoin", requestJoinController.serveToJoin);
+        post("/deleteUser", deleteUserController.deleteUser);
 
         //CONNECT TO MYSQL DATABASE
         DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
