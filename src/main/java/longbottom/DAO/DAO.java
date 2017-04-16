@@ -61,7 +61,7 @@ public class DAO {
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
     public static boolean createProject(String name, String description, int manager){
         String sql =
-                "INSERT INTO projects (name, description, time_stamp,manager)\n" +
+                "INSERT INTO projects (name, description, time_stamp, manager)\n" +
                         "VALUES (:name, :description, NOW(), :manager)";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
@@ -78,7 +78,7 @@ public class DAO {
 
     //Update project with set parameters. Set parameters to null to not change it. pId is required.
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
-    public static boolean updateProjectName(int pId, String name, String description, String time, int manager){
+    public static boolean updateProjectName(int pId, String name){
         String sql = "UPDATE table_name" +
                 "SET name = :name" +
                 "WHERE projectId = :pId";
