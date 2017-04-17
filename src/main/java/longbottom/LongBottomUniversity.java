@@ -36,20 +36,32 @@ public class LongBottomUniversity {
         // paste this URL below where is says "Enter request URL":
         // localhost:1250/post?test=456
         post("/post", DemoController.testing);
-        get("/login", LoginController.serveLoginPage);
+
         get("/chat", ChatController.chatHistory);
         post("/projects", Dashboard.projectPartial);
 
+        //pages viewable by application users
+        get("/login", LoginController.serveLoginPage);
         get("/dashboard", Dashboard.userDashboard);
         get("/contact", contactPageController.serveContactPage);
         get("/about", aboutPageController.serveAboutPage);
         get("/home", homePageController.serveHomePage);
         get("/sponsors", sponsorsPageController.serveSponsorsPage);
+
+        // student/professor asks to join a project
         post("/requestJoin", requestJoinController.serveToJoin);
+
+
         post("/deleteUser", UserController.deleteUser);
         post("/updateUser", UserController.updateUser);
         post("/updateProject", ProjectController.updateProject);
         post("/newProject", ProjectController.newProject);
+
+        // lists project requests to professors who manage projects
+        post("/projectRequests", studentRequestsController.getUserProjectRequests);
+
+        // professor accepts/denies project join request
+        post("/professorDecision", studentRequestsController.serveStudentRequest);
 
     }
 }
