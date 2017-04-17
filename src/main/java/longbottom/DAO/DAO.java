@@ -19,6 +19,13 @@ public class DAO {
     public final static int PROFESSOR = 1;
     public final static int STUDENT = 2;
 
+    //Static constructor
+    //See: http://www.sql2o.org/docs/configuration/
+    static{
+        //CONNECT TO MYSQL DATABASE
+        DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
+    }
+
 
     public static List<Map<String, Object>> getAllProjects(int userId){
 
