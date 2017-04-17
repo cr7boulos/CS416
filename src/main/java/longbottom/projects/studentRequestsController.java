@@ -10,8 +10,8 @@ import spark.Route;
 // */
 public class studentRequestsController {
 
-    /*
-    public Route serveStudentRequest = (Request request, Response response) -> {
+
+    public static Route serveStudentRequest = (Request request, Response response) -> {
 
       if(Integer.parseInt(request.queryParams("status")) == 0)
         {
@@ -23,8 +23,8 @@ public class studentRequestsController {
                           Integer.parseInt(request.queryParams("studentId")),
                           "Request Denied",
                           request.queryParams("studentName") + ",\n" +
-                          request.queryParams("profName") + "has denied your request to join
-                          the following project: " + requestParams("projectName"));
+                          request.queryParams("profName") + "has denied your request to join" +
+                          "the following project: " + request.queryParams("projectName"));
 
              return "Message Sent";
 
@@ -39,8 +39,8 @@ public class studentRequestsController {
                           Integer.parseInt(request.queryParams("studentId")),
                           "Request Accepted",
                           request.queryParams("studentName") + ",\n" +
-                          request.queryParams("profName") + "has accepted your request to join
-                          the following project: " + requestParams("projectName"));
+                          request.queryParams("profName") + "has accepted your request to join" +
+                          "the following project: " + request.queryParams("projectName"));
 
             return "Message Sent";
         }
@@ -48,7 +48,5 @@ public class studentRequestsController {
         {
             return "Error";
         }
-
-
-    return "temp"}; */
+    };
 }

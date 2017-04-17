@@ -10,8 +10,8 @@ import spark.Route;
 // */
 public class professorRequestsController {
 
-   /*
-    public Route serveProfessorRequest = (Request request, Response response) -> {
+
+    public static Route serveProfessorRequest = (Request request, Response response) -> {
 
         if(Integer.parseInt(request.queryParams("status")) == 0)
         {
@@ -33,11 +33,11 @@ public class professorRequestsController {
         {
             DAO.createProject(request.queryParams("projectName"), request.queryParams("description"), Integer.parseInt("managerId"));
 
-            DAO.sendEmail(Integer.parseInt(request.queryParams("adminId"),
+            DAO.sendEmail(Integer.parseInt(request.queryParams("adminId")),
                           Integer.parseInt(request.queryParams("profId")),
                           "Request Accepted",
                            request.queryParams("profId") + ",\nAdministration has accepted your " +
-                           " request to create the following project: " + request.queryParams("projectName")));
+                           " request to create the following project: " + request.queryParams("projectName"));
 
             return "Message sent";
         }
@@ -46,5 +46,6 @@ public class professorRequestsController {
             return "Error";
         }
 
-    return "temp"}; */
+
+    };
 }
