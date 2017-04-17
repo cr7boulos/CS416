@@ -1,9 +1,11 @@
 package longbottom.projects;
 
 import longbottom.DAO.DAO;
+import longbottom.util.ViewUtil;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+import java.util.*;
 
 /**
 // * Created by Japji on 4/11/2017.
@@ -48,5 +50,19 @@ public class studentRequestsController {
         {
             return "Error";
         }
+    };
+
+    public static Route getUserProjectRequests = (Request request, Response response) -> {
+        int userId = Integer.parseInt(request.queryParams("userId"));
+
+        //Security check
+//        if(DAO.getIdentity(userId) != DAO.PROFESSOR){
+//            return "Access Denied";
+//        }
+
+        //List<Map<String,Object>> joinRequests = DAO.listJoinRequests(userId);
+        Map<String, Object> model = new HashMap<>();
+        //model.put("requests", joinRequests);
+        return ViewUtil.render(model, "/velocity/project_join_partial.vm");
     };
 }
