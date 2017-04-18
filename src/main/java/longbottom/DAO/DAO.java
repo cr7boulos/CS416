@@ -65,6 +65,23 @@ public class DAO {
         }
     }
 
+    public static List<Map<String, Object>> listProjectsForAdmin(int userId){
+        String sql = "select firstName, lastName, projectId, userId, name " +
+                "from " +
+                "projects " +
+                "inner join user on manager = :userId " +
+                "where granted = 0 ";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("userId", userId)
+                    .executeAndFetchTable().asList();
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
     public static boolean createProject(String name, String description, int manager){
         String sql =
@@ -86,7 +103,7 @@ public class DAO {
     //Update project with set parameters. Set parameters to null to not change it. pId is required.
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
     public static boolean updateProjectName(int pId, String name){
-        String sql = "UPDATE table_name" +
+        String sql = "UPDATE projects" +
                 "SET name = :name" +
                 "WHERE projectId = :pId";
         try(Connection con = sql2o.open()){
@@ -228,6 +245,23 @@ public class DAO {
         }
     }
 
+    public static List<Map<String, Object>> listJoinRequests(int userId){
+        String sql = "select firstName, lastName, works_in.projectId, user.userId, name " +
+                "from " +
+                "works_in " +
+                "inner join user on works_in.userId = user.userId " +
+                "inner join projects on projects.projectId = works_in.projectId " +
+                "where accepted = 0 and projects.manager = :userId";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("userId", userId)
+                    .executeAndFetchTable().asList();
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static boolean deleteUser(int uId){
         String sql = "DELETE FROM user WHERE userId = :uId";
         try(Connection con = sql2o.open()) {
@@ -241,9 +275,36 @@ public class DAO {
         }
     }
 
+    public static boolean confirmProject(int pID){
+        String sql = "UPDATE projects " +
+                "SET grant = 1 " +
+                "WHERE projectId = :pId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("pId", pID)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     //User is added to project
-    public static boolean acceptUser(int pId, int uId){
-        return false;
+    public static boolean acceptUser(int pId, int uId) {
+        String sql = "UPDATE works_in " +
+                "SET granted = 1 " +
+                "WHERE userId = :uId && projectId = :pId";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("uId", uId)
+                    .addParameter("pId", pId)
+                    .executeUpdate();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
 
