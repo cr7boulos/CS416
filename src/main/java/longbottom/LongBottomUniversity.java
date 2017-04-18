@@ -51,6 +51,9 @@ public class LongBottomUniversity {
         // student/professor asks to join a project
         post("/requestJoin", requestJoinController.serveToJoin);
 
+        //Admin updating user data
+        post("/useInfo", UserController.updateUser);
+
 
         post("/deleteUser", UserController.deleteUser);
         post("/updateUser", UserController.updateUser);
