@@ -58,11 +58,12 @@ public class studentRequestsController {
         //Security check
 //        if(DAO.getIdentity(userId) != DAO.PROFESSOR){
 //            return "Access Denied";
+//            System.out.println("Non-professor")
 //        }
 
-        //List<Map<String,Object>> joinRequests = DAO.listJoinRequests(userId);
+        List<Map<String,Object>> joinRequests = DAO.listJoinRequests(userId);
         Map<String, Object> model = new HashMap<>();
-        //model.put("requests", joinRequests);
+        model.put("requests", joinRequests);
         return ViewUtil.render(model, "/velocity/project_join_partial.vm");
     };
 }
