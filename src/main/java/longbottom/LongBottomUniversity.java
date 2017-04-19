@@ -59,6 +59,7 @@ public class LongBottomUniversity {
         post("/updateUser", UserController.updateUser);
         post("/updateProject", ProjectController.updateProject);
         post("/newProject", ProjectController.newProject);
+        post("/getEmail", Dashboard.emailPartial);
 
         // lists project requests to professors who manage projects
         post("/projectRequests", studentRequestsController.getUserProjectRequests);

@@ -72,4 +72,12 @@ public class Dashboard {
 
         return ViewUtil.render(model3, "/velocity/project_partial.vm");
     };
+
+    public static Route emailPartial = (Request request, Response response) -> {
+        int userId = Integer.parseInt(request.queryParams("userId"));
+        Map<String, Object> model = new HashMap<>();
+        model.put("emails", DAO.getUserEmails(userId));
+
+        return ViewUtil.render(model, "/velocity/email_partial");
+    };
 }

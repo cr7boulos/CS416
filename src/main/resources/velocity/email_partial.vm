@@ -1,0 +1,76 @@
+<!-- Modal code below from Bootstrap: http://getbootstrap.com/javascript/#modals -->
+<!--
+    email design ideas:
+    http://www.bootply.com/XXmcPas41w
+    http://www.codeply.com/go/20YPYE78ra
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emails</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+</head>
+<body>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>From</th>
+        <th>Subject</th>
+        <th>Arrival</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+<tbody>
+
+<!--create a new  table row ( <tr> ) for each email-->
+<!--
+        the data-target attribute references a unique modal.
+        Therefore, in the data-target attribute below use the following code:
+        "#email$ foreach.count"
+        see the modal code below for more details
+    -->
+#foreach($map in $email)
+<tr>
+    <td><div style="padding-top: 5px;">$map.get("from")</div></td>
+    <td><div style="padding-top: 5px;" type="button" data-toggle="modal" data-target="#email$foreach.count"><a href="#">$map.get("subject")</a></div></td>
+    <td><div style="padding-top: 5px;"><span class="badge">$map.get("time")</span></div></td>
+    <td><span style="font-size: 140%" class=" glyphicon glyphicon-trash"><span style="padding-left: 20px; font-size: 150%" class=" glyphicon glyphicon-share-alt"></span></td>
+</tr>
+
+</tbody>
+</table>
+
+<!--create a new modal for each email-->
+<!--
+    http://velocity.apache.org/engine/1.7/user-guide.html
+    see the docs link above for the $ foreach.count variable.
+
+    so that each modal has a unique id, use the
+    naming convention:
+    email$ foreach.count
+
+-->
+<!--repeat this block of code for each email-->
+
+<div class="modal fade" id="#email$foreach.count" tabindex="-1" >
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">$map.get("subject")</h4>
+            </div>
+            <div class="modal-body">
+                $map.get("body")
+            </div>
+        </div>
+    </div>
+</div>
+<!--end repeat block-->
+#end
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+<script src="../js/jquery-3.2.0.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+</html>
