@@ -78,6 +78,6 @@ public class Dashboard {
         Map<String, Object> model = new HashMap<>();
         model.put("emails", DAO.getUserEmails(userId));
 
-        return ViewUtil.render(model, "/velocity/email_partial");
+        return ViewUtil.render(model, "/velocity/email_partial.vm");
     };
 }
