@@ -23,7 +23,7 @@ public class DAO {
     //See: http://www.sql2o.org/docs/configuration/
     static{
         //CONNECT TO MYSQL DATABASE
-        DAO.sql2o = new Sql2o("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_87bfff0c58d43de", "admin", "$80k");
+        DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
     }
 
 
