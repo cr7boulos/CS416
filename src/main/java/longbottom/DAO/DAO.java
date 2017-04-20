@@ -404,7 +404,7 @@ public class DAO {
         return false;
     }
 
-    public static boolean createChatMessage(ChatMessage chatMessage){
+    public static boolean createChatMessage(int userId,String message){
         return false;
     }
 
