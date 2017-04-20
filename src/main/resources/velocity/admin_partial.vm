@@ -12,11 +12,11 @@
     <tbody>
         #foreach($map in $users)
             <tr>
-                <td><div style="padding-top: 5px;">$map.userId</div></td>
-                <td><div style="padding-top: 5px;">$map.firstName</div></td>
-                <td><div style="padding-top: 5px;">$map.lastName</div></td>
-                <td><div style="padding-top: 5px;">$map.email</div></td>
-                <td><div style="padding-top: 5px;">$map.password</div></td>
+                <td><div style="padding-top: 5px;">$map.get("userId")</div></td>
+                <td><div style="padding-top: 5px;">$map.get("firstName")</div></td>
+                <td><div style="padding-top: 5px;">$map.get("lastName")</div></td>
+                <td><div style="padding-top: 5px;">$map.get("email")</div></td>
+                <td><div style="padding-top: 5px;">$map.get("password")</div></td>
 
                 <td>
                     <div style="padding-top: 5px;" class="glyphicon glyphicon-user" type="button" data-toggle="modal" data-target="#upUser$foreach.count"><a href="#">Modify User</a></div>
