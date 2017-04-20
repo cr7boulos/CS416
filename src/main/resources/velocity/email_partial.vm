@@ -4,14 +4,7 @@
     http://www.bootply.com/XXmcPas41w
     http://www.codeply.com/go/20YPYE78ra
 -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Emails</title>
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-</head>
-<body>
+
 <table class="table table-striped">
     <thead>
     <tr>
@@ -68,9 +61,4 @@
 </div>
 <!--end repeat block-->
 #end
-</body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
-<script src="../js/jquery-3.2.0.min.js"></script>
-<script src="../js/bootstrap.js"></script>
-</html>

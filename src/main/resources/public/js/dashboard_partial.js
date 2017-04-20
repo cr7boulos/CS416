@@ -26,8 +26,16 @@ var projects = function () {
         );
 
     });
+}
 
-
+var email = function () {
+    $('#emailButton').click(function () {
+        $.post("/getEmail?userId=" +
+            $('#dynView').attr('data-userId'),
+            function (data) {
+                $('#dynView').html(data);
+            })
+    })
 }
 
 $(document).ready(function(){
@@ -36,5 +44,6 @@ $(document).ready(function(){
 
     projects(); // if users click the project button
                 // fetch the data and set up the links again.
+    email();
 
 });

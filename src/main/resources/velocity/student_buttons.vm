@@ -10,7 +10,7 @@
 
 <div class="col-xs-6 col-sm-4 placeholder">
 
-    <span class="glyphicon glyphicon-envelope large" ></span>
+    <span id="emailButton" class="glyphicon glyphicon-envelope large" ></span>
     <h4>Email</h4>
 
 </div>

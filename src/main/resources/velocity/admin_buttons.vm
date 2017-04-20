@@ -10,7 +10,7 @@
         <h4>Requests</h4>
 
 </div>
-<div class="col-xs-6 col-sm-3 placeholder">
+<div id="emailButton" class="col-xs-6 col-sm-3 placeholder">
 
         <span class="glyphicon glyphicon-envelope large" ></span>
         <h4>Email</h4>
@@ -20,5 +20,5 @@
 
         <span class="glyphicon glyphicon-user large" ></span>
         <h4>Users</h4>
-    
+
 </div>
