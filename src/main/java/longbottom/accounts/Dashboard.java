@@ -76,7 +76,7 @@ public class Dashboard {
     public static Route emailPartial = (Request request, Response response) -> {
         int userId = Integer.parseInt(request.queryParams("userId"));
         Map<String, Object> model = new HashMap<>();
-        model.put("emails", DAO.getUserEmails(userId));
+        model.put("email", DAO.getUserEmails(userId));
 
         return ViewUtil.render(model, "/velocity/email_partial.vm");
     };
