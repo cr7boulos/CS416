@@ -1,24 +1,28 @@
-<div class="col-xs-6 col-sm-3 placeholder">
+<div class="col-xs-6 col-sm-3 ">
 
-        <a href="#"><span id="button" class="glyphicon glyphicon-folder-open large" ></span></a>
-        <h4>Projects</h4>
 
-</div>
-<div class="col-xs-6 col-sm-3 placeholder">
-
-        <span class="glyphicon glyphicon-tasks large" ></span>
-        <h4>Requests</h4>
-
-</div>
-<div id="emailButton" class="col-xs-6 col-sm-3 placeholder">
-
-        <span class="glyphicon glyphicon-envelope large" ></span>
-        <h4>Email</h4>
+    <button type="button" id="button" class="btn sm-btn btn-primary col-sm-12">
+        <span  class="glyphicon glyphicon-folder-open icon" ></span> Projects</button>
 
 </div>
 <div class="col-xs-6 col-sm-3 placeholder">
 
-        <span class="glyphicon glyphicon-user large" ></span>
-        <h4 id="userButton">Users</h4>
+
+        <button type="button" class="btn sm-btn btn-primary col-sm-12 ">
+            <span class="glyphicon glyphicon-tasks icon" ></span> Requests</button>
+
+</div>
+<div  class="col-xs-6 col-sm-3 placeholder">
+
+
+        <button id="emailButton"  type="button" class="btn sm-btn btn-primary col-sm-12">
+            <span class="glyphicon glyphicon-envelope icon" ></span> Email</button>
+
+</div>
+<div class="col-xs-6 col-sm-3 placeholder">
+
+
+        <button id="userButton" type="button" class="btn sm-btn btn-primary col-sm-12">
+            <span class="glyphicon glyphicon-user icon" ></span> Users</button>
 
 </div>
