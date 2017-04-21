@@ -57,7 +57,7 @@ public class LongBottomUniversity {
         //Admin updating user data
         post("/useInfo", UserController.updateUser);
 
-
+        post("/getAllUsers", UserController.getAllUsers);
         post("/deleteUser", UserController.deleteUser);
         post("/updateUser", UserController.updateUser);
         post("/updateProject", ProjectController.updateProject);

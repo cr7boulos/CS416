@@ -34,8 +34,18 @@ var email = function () {
             $('#dynView').attr('data-userId'),
             function (data) {
                 $('#dynView').html(data);
-            })
+            });
     })
+}
+
+var users = function () {
+    $('#userButton').click(function () {
+        $.post("/getAllUsers",
+            function (data) {
+                $('#dynView').html(data);
+            });
+    })
+
 }
 
 $(document).ready(function(){
@@ -45,5 +55,7 @@ $(document).ready(function(){
     projects(); // if users click the project button
                 // fetch the data and set up the links again.
     email();
+
+    users();
 
 });

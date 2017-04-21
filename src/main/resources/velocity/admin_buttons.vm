@@ -19,6 +19,6 @@
 <div class="col-xs-6 col-sm-3 placeholder">
 
         <span class="glyphicon glyphicon-user large" ></span>
-        <h4>Users</h4>
+        <h4 id="userButton">Users</h4>
 
 </div>
