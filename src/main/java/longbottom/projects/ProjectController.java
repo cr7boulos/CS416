@@ -16,9 +16,9 @@ public class ProjectController {
         int manager = Integer.parseInt(request.queryParams("manager"));
 
         if (DAO.createProject(name, description, manager)) {
-            return "Update Successful";
+            return "Update successful";
         } else {
-            return "Update Failed";
+            return "Update failed";
         }
     };
 
