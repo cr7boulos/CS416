@@ -22,6 +22,18 @@ public class ProjectController {
         }
     };
 
+    // Deletes a project specified by a given project ID
+    public static Route deleteProject = (Request request, Response response) -> {
+        LoginController.isAuthenticated(request, response);
+
+        int projectId = Integer.parseInt(request.queryParams("projectId"));
+
+        if(DAO.deleteProject(projectId))
+            return "Delete successful.";
+        else
+            return "Delete failed.";
+    };
+
 
     public static Route updateProject = (Request request, Response response) -> {
         LoginController.isAuthenticated(request, response);
