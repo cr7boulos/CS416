@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class UserController {
 
-        public static Route deleteEmail = (Request request, Response response) -> {
+        public static Route getAllUsers = (Request request, Response response) -> {
             LoginController.isAuthenticated(request, response);
             Map<String, Object> model = new HashMap<>();
             model.put("users", DAO.getAllUsers());
