@@ -8,7 +8,7 @@
 <div class="col-xs-6 col-sm-3 placeholder">
 
 
-        <button type="button" class="btn sm-btn btn-primary col-sm-12 ">
+        <button type="button" id="requestButton" class="btn sm-btn btn-primary col-sm-12 ">
             <span class="glyphicon glyphicon-tasks icon" ></span> Requests</button>
 
 </div>

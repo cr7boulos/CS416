@@ -6,7 +6,7 @@
 </div>
 <div class="col-xs-6 col-sm-4 placeholder">
 
-    <span class="glyphicon glyphicon-tasks large" ></span>
+    <span id="requestButton" class="glyphicon glyphicon-tasks large" ></span>
     <h4>Requests</h4>
 
 </div>

@@ -19,9 +19,11 @@ var setUpLinks = function () {
 
 var projects = function () {
     $('#button').click(function(){
-        $.post("/projects", function (data) {
+        $.post("/projects?userId=" +
+            $('#dynView').attr('data-userId'),
+            function (data) {
                 $('#dynView').html(data);
-                setUpLinks();
+                //setUpLinks();
             }
         );
 
@@ -48,6 +50,16 @@ var users = function () {
 
 }
 
+var requests = function () {
+    $('#requestButton').click(function () {
+        $.post("/projectRequests?userId=" +
+            $('#dynView').attr('data-userId'),
+            function (data) {
+                $('#dynView').html(data);
+            });
+    });
+}
+
 $(document).ready(function(){
     setUpLinks(); // since projects is the initial view, set
     //up the links that came through on the initial page request
@@ -57,5 +69,7 @@ $(document).ready(function(){
     email();
 
     users();
+
+    requests();
 
 });
