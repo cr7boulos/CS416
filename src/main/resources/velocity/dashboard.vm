@@ -21,8 +21,25 @@
 
     <style>
         .large{
-            font-size: 1000%;
+            font-size: 750%;
         }
+
+        .icon{
+
+            margin-right: 10px;
+        }
+        /*Redefined the bootstap btn-sm class
+          to only kick-in at the desired breakpoints
+         */
+        @media (min-width: 768px) and (max-width: 850px){
+            .sm-btn{
+                padding: 5px 10px;
+                font-size: 12px;
+                line-height: 1.5;
+                border-radius: 3px;
+            }
+        }
+
     </style>
 
 </head>
