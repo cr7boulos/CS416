@@ -3,37 +3,64 @@ package longbottom.projects;
 import longbottom.DAO.DAO;
 import longbottom.login.LoginController;
 import spark.Response;
-import longbottom.util.ViewUtil;
 import spark.Request;
-import spark.Response;
 import spark.Route;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ProjectController {
 
-    public static Route newProjects = (Request request, Response response) -> {
+    public static Route newProject = (Request request, Response response) -> {
         LoginController.isAuthenticated(request, response);
-        if (!DAO.createProject(
-                request.queryParams("name"),
-                request.queryParams("description"),
-                request.queryParams("time"),
-                Integer.parseInt(request.queryParams("manager"))))
-        return "Update Unsuccessful";
-        else
-        return "Update Successful";
+
+        String name = request.queryParams("name");
+        String description = request.queryParams("description");
+        int manager = Integer.parseInt(request.queryParams("manager"));
+
+        if (DAO.createProject(name, description, manager)) {
+            return "Update successful";
+        } else {
+            return "Update failed";
+        }
     };
 
-    public static Route updateProjects = (Request request, Response response) -> {
+    // Deletes a project specified by a given project ID
+    public static Route deleteProject = (Request request, Response response) -> {
         LoginController.isAuthenticated(request, response);
-        if (!DAO.updateProject(
-                (Integer.parseInt(request.queryParams("projectId"))),
-                request.queryParams("name"),
-                request.queryParams("description"),
-                request.queryParams("time"),
-                Integer.parseInt(request.queryParams("manager"))))
-            return "Update Unsuccessful";
+
+        int projectId = Integer.parseInt(request.queryParams("projectId"));
+
+        if(DAO.deleteProject(projectId))
+            return "Delete successful.";
         else
-            return "Update Successful";
+            return "Delete failed.";
+    };
+
+
+    public static Route updateProject = (Request request, Response response) -> {
+        LoginController.isAuthenticated(request, response);
+
+        int projectId = Integer.parseInt(request.queryParams("projectId"));
+        String name = request.queryParams("name");
+        String description = request.queryParams("description");
+        String timeStarted = request.queryParams("time");
+        int manager;
+
+        if (request.queryParams("manager") != null) {
+            manager = Integer.parseInt(request.queryParams("manager"));
+            DAO.updateProjectManager(projectId, manager);
+        }
+
+        if (name != null) {
+            DAO.updateProjectName(projectId, name);
+        }
+
+        if (description != null) {
+            DAO.updateProjectDescription(projectId, description);
+        }
+
+        if (timeStarted != null) {
+            DAO.updateProjectTime(projectId, timeStarted);
+        }
+
+        return "Update complete";
     };
 }

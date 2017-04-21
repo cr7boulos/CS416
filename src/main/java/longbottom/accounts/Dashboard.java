@@ -8,10 +8,8 @@ import spark.Response;
 import spark.Route;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.swing.text.View;
+import java.util.*;
 
 /**
  * Created by cr7bo on 4/7/2017.
@@ -19,34 +17,67 @@ import java.util.Map;
 public class Dashboard {
 
     public static Route userDashboard = (Request request, Response response) -> {
-        //int userId = LoginController.isAuthenticated(request, response);
-
-        Map<String, Object> model1 = new HashMap<>();
-        model1.put("name", "Daniel");
-        Map<String, Object> model2 = new HashMap<>();
-        model2.put("description", "Emergence of consensus");
-
-        List<Map<String, Object>> list = new ArrayList<>();
-        list.add(model1);
-        list.add(model2);
+        int userId = DAO.login(request.queryParams("username"), request.queryParams("password"));
         Map<String, Object> model3 = new HashMap<>();
-        model3.put("dataList", list);
-        return ViewUtil.render(model3, "/velocity/dashboard.vm");
-        /*if(userId == 0){
-            // DAO.getProjectRequests()
-            //model.put("requests", //put requests here)
+        System.out.println(userId);
+        int userIdentity = DAO.getIdentity(userId);
+        System.out.println(userIdentity);
+        if(userIdentity != DAO.NA){
+
+            model3.put("userId", userId);
+
+            if(userIdentity == DAO.ADMIN){
+                model3.put("buttonOptions", "/velocity/adminView");
+                model3.put("users", DAO.getAllUsers());
+                System.out.println("Got to admin");
+                model3.put("viewType", DAO.ADMIN); // this is a flag for the JS
+            }
+            else{ //user is a student or professor
+                if(userIdentity == DAO.PROFESSOR){
+                    model3.put("buttonOptions", "/velocity/professorView");
+                    System.out.println("Got to professor");
+                    model3.put("viewType", DAO.PROFESSOR); // this is a flag for the JS
+                }
+                if(userIdentity == DAO.STUDENT){
+                    model3.put("buttonOptions", "/velocity/studentView");
+                    System.out.println("Got to student");
+                    model3.put("viewType", DAO.STUDENT); // this is a flag for the JS
+                }
+
+                //both students and professors get access to the project view.
+                List<Map<String, Object>> list = DAO.getAllProjects(userId);
+                model3.put("dataList", list);
+            }
+
+            return ViewUtil.render(model3, "/velocity/dashboard.vm");
+
+        }
+        else{
+            return ViewUtil.render(model3, "/velocity/login.vm"); //login failed
         }
 
 
-        if(userId == 2){
-            //List<Map<String,Object>> projectDetails = DAO.getAllProjects();
-            model.put("projects", projectDetails);
-        }
-*/
+
+
+        // this will be removed; the userId will come from the Login service
+//        int uid = Integer.parseInt(request.queryParams("userId"));
+
     };
 
     public static Route projectPartial = (Request request, Response response) -> {
+        List<Map<String, Object>> list = DAO.getAllProjects(1);
+
         Map<String, Object> model3 = new HashMap<>();
+        model3.put("dataList", list);
+
         return ViewUtil.render(model3, "/velocity/project_partial.vm");
+    };
+
+    public static Route emailPartial = (Request request, Response response) -> {
+        int userId = Integer.parseInt(request.queryParams("userId"));
+        Map<String, Object> model = new HashMap<>();
+        model.put("email", DAO.getUserEmails(userId));
+
+        return ViewUtil.render(model, "/velocity/email_partial.vm");
     };
 }

@@ -4,37 +4,45 @@ import java.util.*;
 import spark.*;
 import longbottom.DAO.*;
 import longbottom.util.ViewUtil;
-import longbottom.util.RequestUtil;
 
 public class LoginController {
-    //If a user logs out
-    //remove currentUser from attributes, set loggedOut to true, and redirect the user to the login page.
+
+    // Serves login page
+    public static Route serveLoginPage = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(model, "/velocity/login.vm");
+    };
+
+    // If a user logs out
+    // remove currentUserId from session attributes, set loggedOut to true, and redirect the user to the login page.
     public static Route handleLogoutPost = (Request request, Response response) -> {
-        request.session().removeAttribute("currentUser");
+        request.session().removeAttribute("currentUserId");
         request.session().attribute("loggedOut", true);
-        response.redirect("/velocity/test.vm");//redirect to login page
+        response.redirect("/velocity/login.vm");
         return null;
     };
 
-    //After login go to dashboard
+    // If credentials checkout goto the dashboard
     public static Route handleLoginPost = (Request request, Response response) -> {
         Map<String, Object> model = new HashMap<>();
 
-        if(DAO.login(request.queryParams("email"), request.queryParams("password")) == DAO.NA){
-            //authentication failed. Go back to login page
-            //placeholder
-            return ViewUtil.render(model, "/velocity/test.vm");
+        // valid username and password -> dashboard
+        // Add the user email to the model
+        // Add the user id to the session
+        // goto dashboard
+        if(DAO.login(request.queryParams("email"), request.queryParams("password")) != DAO.NA){
+            model.put("currentUserEmail", request.queryParams("email"));
+            request.session().attribute("currentUserId", "ID"/*placeholder*/);
+            return ViewUtil.render(model, "/velocity/dashboard.vm");
         }
-        //valid username and password -> dashboard
-        //add user email or id to model??
-        model.put("currentUser", 1/*placeholder*/);
-        return ViewUtil.render(model, "/velocity/dashboard.vm");
-
-
+        else{
+            // authentication failed. Go back to login page
+            return ViewUtil.render(model, "/velocity/login.vm");
+        }
     };
 
-    //Check if a user's email and password exist
-    //returns true if user exists
+    // Check if a user's email and password exist
+    // returns true if user exists
     public static boolean isAuthenticated(Request request, Response response){
         return (DAO.login( request.queryParams("email"), request.queryParams("password")) != DAO.NA);
     }

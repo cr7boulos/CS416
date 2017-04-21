@@ -25,7 +25,9 @@ DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `userId` int(11) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `userId_idx` (`userId`),
+  CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -35,7 +37,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (0,1);
+INSERT INTO `admin` VALUES (8,1);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,9 +130,12 @@ DROP TABLE IF EXISTS `professor`;
 CREATE TABLE `professor` (
   `salary` double NOT NULL DEFAULT '0',
   `hiredDate` date DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
-  PRIMARY KEY (`userId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `userId_idx` (`userId`),
+  CONSTRAINT `p_userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +144,7 @@ CREATE TABLE `professor` (
 
 LOCK TABLES `professor` WRITE;
 /*!40000 ALTER TABLE `professor` DISABLE KEYS */;
-INSERT INTO `professor` VALUES (80000,'2017-04-06',0);
+INSERT INTO `professor` VALUES (80000,'2017-04-06',1,1);
 /*!40000 ALTER TABLE `professor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,9 +161,10 @@ CREATE TABLE `projects` (
   `time_stamp` datetime NOT NULL,
   `projectId` int(11) NOT NULL AUTO_INCREMENT,
   `manager` int(11) NOT NULL,
+  `granted` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`projectId`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,7 +173,7 @@ CREATE TABLE `projects` (
 
 LOCK TABLES `projects` WRITE;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
-INSERT INTO `projects` VALUES ('Software Engineering Project','This is a description of the Software Engineering project.','2017-04-06 13:25:07',1,0);
+INSERT INTO `projects` VALUES ('Software Engineering Project','This is a description of the Software Engineering project.','2017-04-06 13:25:07',1,0,1),('Big Data','Parallel Programming','2017-04-14 21:48:56',2,0,0);
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,9 +186,12 @@ DROP TABLE IF EXISTS `student`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `student` (
   `major` varchar(45) NOT NULL DEFAULT 'Undeclared',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
-  PRIMARY KEY (`userId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `s_userId_idx` (`userId`),
+  CONSTRAINT `s_userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -191,7 +200,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES ('Undeclared',1),('Undeclared',2),('Undeclared',3),('Undeclared',4),('Undeclared',5),('Undeclared',6),('Undeclared',7);
+INSERT INTO `student` VALUES ('Undeclared',1,0),('Undeclared',2,0),('Undeclared',3,0),('Undeclared',4,0),('Undeclared',5,0),('Undeclared',6,0),('Undeclared',7,0);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,7 +228,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (0,'Ruijian','Zhang','rZhang@longBottom.edu','123'),(1,'Max','Hastings','mhastin@longBottom.edu',NULL),(2,'Japji','Multani','jMultani@longBottom.edu',NULL),(3,'Brian','Fultman','bFultman@longBottom.edu',NULL),(4,'Daniel','Boulos','dBoulos@longBottom.edu',NULL),(5,'Kaitie','Holden','kHolden@longBottom.edu',NULL),(6,'Jacob','Ford','jFord@longBottom.edu',NULL),(7,'Kyle','Smith','kSmith@longBottom.edu',NULL);
+INSERT INTO `user` VALUES (0,'Ruijian','Zhang','rZhang@longBottom.edu','123'),(1,'Max','Hastings','mhastin@longBottom.edu','wilfred'),(2,'Japji','Multani','jMultani@longBottom.edu','jayw3king'),(3,'Brian','Fultman','bFultman@longBottom.edu','doctordes'),(4,'Daniel','Boulos','dBoulos@longBottom.edu','cr7boulos'),(5,'Kaitie','Holden','kHolden@longBottom.edu','katie.holden'),(6,'Jacob','Ford','jFord@longBottom.edu','polo'),(7,'Kyle','Smith','kSmith@longBottom.edu','kylephonedial'),(8,'Ruijian','Zhang','admin@longBottom.edu','123');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,8 +244,10 @@ CREATE TABLE `works_in` (
   `userId` int(11) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `accepted` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `projectId_idx` (`projectId`),
+  CONSTRAINT `projectId` FOREIGN KEY (`projectId`) REFERENCES `projects` (`projectId`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +256,7 @@ CREATE TABLE `works_in` (
 
 LOCK TABLES `works_in` WRITE;
 /*!40000 ALTER TABLE `works_in` DISABLE KEYS */;
-INSERT INTO `works_in` VALUES (1,1,1,NULL),(1,2,2,NULL),(1,3,3,NULL),(1,4,4,NULL),(1,5,5,NULL),(1,6,6,NULL),(1,7,7,NULL);
+INSERT INTO `works_in` VALUES (1,1,1,NULL),(1,2,2,1),(1,3,3,1),(1,4,4,1),(1,5,5,1),(1,6,6,1),(1,7,7,1),(1,1,8,0),(1,1,9,0),(1,1,10,0);
 /*!40000 ALTER TABLE `works_in` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -258,4 +269,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-07 17:42:43
+-- Dump completed on 2017-04-18 14:13:12

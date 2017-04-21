@@ -15,7 +15,7 @@ public class ChatController {
 
         //The request object will have a parameter containing a projectId.
         int projectId = Integer.parseInt(request.queryParams("projectId"));
-        System.out.println(projectId);
+        //System.out.println(projectId);
 
         //Next, the controller will then make the following DAO API call: getChatHistory(projectId)
         DAO.getChatMessages(projectId);

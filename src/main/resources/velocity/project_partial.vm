@@ -1,7 +1,7 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>name</th>
+        <th>Name</th>
         <th>Description</th>
         <th>Start Date</th>
         <th>Manager</th>
@@ -9,62 +9,21 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>1,001</td>
-        <td>Lorem</td>
-        <td>ipsum</td>
-        <td>dolor</td>
-        <td><div class="btn btn-primary col-sm-4">Request Access</div></td>
-    </tr>
-    <tr>
-        <td>1,002</td>
-        <td>amet</td>
-        <td>consectetur</td>
-        <td>adipiscing</td>
-        <td><div class="btn btn-success col-sm-4">Project Page</div></td>
-    </tr>
-    <tr>
-        <td>1,003</td>
-        <td>Integer</td>
-        <td>nec</td>
-        <td>odio</td>
-        <td><div class="btn btn-primary col-md-4">Request Access</div></td>
-    </tr>
-    <tr>
-        <td>1,003</td>
-        <td>libero</td>
-        <td>Sed</td>
-        <td>cursus</td>
-        <td><div class="btn btn-success  col-md-4">Project Page</div></td>
-    </tr>
-    <tr>
-        <td>1,004</td>
-        <td>dapibus</td>
-        <td>diam</td>
-        <td>Sed</td>
-        <td><div class="btn btn-primary col-sm-4">Request Access</div></td>
-    </tr>
-    <tr>
-        <td>1,005</td>
-        <td>Nulla</td>
-        <td>quis</td>
-        <td>sem</td>
-        <td><div class="btn btn-success col-sm-4">Project Page</div></td>
-    </tr>
-    <tr>
-        <td>1,006</td>
-        <td>nibh</td>
-        <td>elementum</td>
-        <td>imperdiet</td>
-        <td><div class="btn btn-success col-sm-4">Project Page</div></td>
-    </tr>
-    <tr>
-        <td>1,007</td>
-        <td>sagittis</td>
-        <td>ipsum</td>
-        <td>Praesent</td>
-        <td><div class="btn btn-success col-sm-4">Project Page</div></td>
-    </tr>
+        #foreach($map in $dataList)
+            <tr>
+                <td>$map.get("name")</td>
+                <td>$map.get("description")</td>
+                <td>$map.get("time_stamp")</td>
+                <td>$map.get("lastname"), $map.get("firstname")</td>
+                <td>
+                    #if($map.get("in") == 1) ## user is in the given project
+                        <a href="/project?projectId=$map.get("projectid")" <div class="btn btn-primary col-sm-12">Project Page</div></a>
+                    #else
+                        <div class="btn btn-success col-sm-12 requests" data-request="$map.get("projectid")">Request Access</div>
+                    #end
 
+                </td>
+            </tr>
+        #end
     </tbody>
 </table>
