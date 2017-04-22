@@ -53,6 +53,24 @@ var getUsers = function () {
             });
 
             //set up users for potential updates
+            $("#submitChanges").click(function (){
+                $.post('/updateUser?userId=' +
+                    $(this).attr('data-userId') +
+                        '&firstName=' +
+                        $("newFirstName").val() +
+                        '&lastName=' +
+                        $("newLastName").val() +
+                        '&email=' +
+                        $("newEmail").val() +
+                        '&password=' +
+                        $("newPassword").val(),
+                        function (data) {
+                            console.log(data);
+                            getUsers();
+                        }
+
+                    )
+            });
 
 
         });
