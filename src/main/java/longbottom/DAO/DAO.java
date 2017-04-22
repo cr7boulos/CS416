@@ -26,9 +26,19 @@ public class DAO {
         DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
     }
 
+    public static List<Map<String, Object>> getUsersFromProject(int pId){
+        String sql = "SELECT u.userId, u.firstName, u.lastName, u.email FROM user u INNER JOIN works_in w ON u.userId = w.userId AND w.projectId = :pId";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .executeAndFetchTable().asList();
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public static List<Map<String, Object>> getAllProjects(int userId){
-
 
         String sql = "SELECT name, description, time_stamp, projectId, firstName, lastName ," +
                 "(projectId in (select projectId from works_in where userId = :userId and accepted = 1)) as 'in'" +
@@ -396,21 +406,66 @@ public class DAO {
     }
 
     //Create post for given project Id
-    public static boolean createPost(int pId, Post post){
-        return false;
+    public static boolean createPost(int pId, String header, String body){
+        String sql =
+                "INSERT INTO posts (projectId, header, body, time_stamp)" +
+                        "VALUES (:pId, :header, :message, NOW())";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("pId" , pId)
+                    .addParameter("header", header)
+                    .addParameter("body", body)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public static boolean deletePost(int post){
-        return false;
+    public static boolean deletePost(int postId){
+        String sql =
+                "DELETE FROM posts WHERE id = :postId";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("postId", postId)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public static boolean createChatMessage(ChatMessage chatMessage){
-        return false;
+    public static boolean createChatMessage(int pId, int uId, String message){
+        String sql =
+                "INSERT INTO chat (projectId, userId, text, time_stamp)" +
+                        "VALUES (:pId, :uId, :message, NOW())";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("pId" , pId)
+                    .addParameter("uId", uId)
+                    .addParameter("message", message)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //gets chat messages for given project Id
-    public static ArrayList<ChatMessage> getChatMessages(int pId){
-        return null;
+    public static List<Map<String, Object>> getChatMessages(int pId){
+        String sql = "SELECT u.userId, u.firstName, u.lastName, u.email FROM user u INNER JOIN chat c ON c.userId = u.userId AND c.projectId = :pId";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .addColumnMapping("time_stamp", "time")
+                    .executeAndFetchTable().asList();
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static boolean sendEmail(int from, int to, String subject, String body){
@@ -423,6 +478,20 @@ public class DAO {
                     .addParameter("to", to)
                     .addParameter("subject", subject)
                     .addParameter("body", body)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean deleteEmail(int eId){
+        String sql =
+                "DELETE FROM email WHERE id = :eId";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("eId", eId)
                     .executeUpdate();
             return true;
         }catch (Exception e){
