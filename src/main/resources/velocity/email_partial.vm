@@ -33,7 +33,7 @@
 #end
 </tbody>
 </table>
-
+<button type="button" class="pull-right btn btn-success">Compose</button>
 <!--create a new modal for each email-->
 <!--
     http://velocity.apache.org/engine/1.7/user-guide.html
