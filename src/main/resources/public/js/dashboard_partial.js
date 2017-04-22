@@ -53,17 +53,17 @@ var getUsers = function () {
             });
 
             //set up users for potential updates
-            $("#submitChanges").click(function (){
+            $('.btn-default').click(function (){
                 $.post('/updateUser?userId=' +
                     $(this).attr('data-userId') +
                         '&firstName=' +
-                        $("newFirstName").val() +
+                        $("#newFirstName").val() +
                         '&lastName=' +
-                        $("newLastName").val() +
+                        $("#newLastName").val() +
                         '&email=' +
-                        $("newEmail").val() +
+                        $("#newEmail").val() +
                         '&password=' +
-                        $("newPassword").val(),
+                        $("#newPassword").val(),
                         function (data) {
                             console.log(data);
                             getUsers();
