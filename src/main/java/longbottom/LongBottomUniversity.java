@@ -1,4 +1,5 @@
 package longbottom;
+import longbottom.accounts.EmailController;
 import longbottom.chat.ChatWebSocketHandler;
 import longbottom.projects.*;
 
@@ -62,7 +63,8 @@ public class LongBottomUniversity {
         post("/updateUser", UserController.updateUser);
         post("/updateProject", ProjectController.updateProject);
         post("/newProject", ProjectController.newProject);
-        post("/getEmail", Dashboard.emailPartial);
+        post("/email", Dashboard.emailPartial);
+        post("/deleteEmail", EmailController.deleteEmail);
 
         // lists project requests to professors who manage projects
         post("/projectRequests", studentRequestsController.getUserProjectRequests);

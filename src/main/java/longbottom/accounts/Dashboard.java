@@ -75,6 +75,7 @@ public class Dashboard {
 
     public static Route emailPartial = (Request request, Response response) -> {
         int userId = Integer.parseInt(request.queryParams("userId"));
+        System.out.println(userId + " from emailPartial");
         Map<String, Object> model = new HashMap<>();
         model.put("email", DAO.getUserEmails(userId));
 

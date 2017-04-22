@@ -10,10 +10,10 @@ public class EmailController {
 
     //this method is a Java 8 feature called a functional interface
 
-    /*
-    public static Route sendEmail = (Request request, Response response) -> {
 
-    };
+//    public static Route sendEmail = (Request request, Response response) -> {
+//
+//    };
 
     public static Route deleteEmail = (Request request, Response response) -> {
 
@@ -24,5 +24,5 @@ public class EmailController {
         else
             return "Delete failed.";
     };
-*/
+
 }

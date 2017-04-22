@@ -32,12 +32,32 @@ var projects = function () {
 
 var email = function () {
     $('#emailButton').click(function () {
-        $.post("/getEmail?userId=" +
-            $('#dynView').attr('data-userId'),
-            function (data) {
-                $('#dynView').html(data);
+        getEmail();
+
+    });
+
+var getEmail = function () {
+    $.post("/email?userId=" +
+        $('#dynView').attr('data-userId'),
+        function (data) {
+            $('#dynView').html(data);
+
+            //set up the emails for deleting
+            $('.deleteEmail').click(function () {
+                $.post('/deleteEmail?emailId='+
+                    $(this).attr('data-eid'),
+                    function (data) {
+                        console.log(data);
+                        getEmail(); // only when the user clicks to delete
+                                    // an email, does this function recursively
+                                    // calls itself and sets up the handler
+                                    // again thus it is not infinite recursion.
+                    });
+
             });
-    })
+        });
+}
+
 }
 
 var users = function () {

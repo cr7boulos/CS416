@@ -374,7 +374,7 @@ public class DAO {
                 return ADMIN;
             }
         }catch (Exception e){
-            System.out.println("Tripped on NullPointerException");
+            //System.out.println("Tripped on NullPointerException");
             //e.printStackTrace();
             //return -1;
         }
@@ -502,7 +502,7 @@ public class DAO {
 
     //get emails for given user Id
     public static List<Email> getUserEmails(int uId){
-        String sql = "SELECT * FROM email WHERE userId = :userId";
+        String sql = "SELECT * FROM email WHERE email.to = :userId";
         try(Connection con = sql2o.open()){
             return con.createQuery(sql)
                     .addParameter("userId", uId)
