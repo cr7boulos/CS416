@@ -19,7 +19,7 @@
                 <td><div style="padding-top: 5px;">$!map.password</div></td>
 
                 <td>
-                    <div style="padding-top: 5px;" class="glyphicon glyphicon-user" type="button" data-toggle="modal" data-target="#upUser$foreach.count"><a href="#">Modify User</a></div>
+                    <div style="padding-top: 5px;" class="glyphicon glyphicon-user" type="button" data-userId="$!map.userId" data-toggle="modal" data-target="#updateModal"><a href="#">Modify User</a></div>
                     <div style="padding-top: 5px;"  type="button">
                         <span data-userId="$!map.userId" class="glyphicon glyphicon-trash deleteUser"></span>
                     </div>
@@ -34,8 +34,8 @@
 </table>
 
 
-#foreach($map in $users)
-    <div class="modal fade" id="upUser$foreach.count" tabindex="-1">
+
+    <div class="modal fade" id="updateModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -44,20 +44,23 @@
                 <div class="modal-body">
                     <form>
                         First Name:<br>
-                        <input type="text" name="firstName"><br>
+##                         use jquery to grab the input values below using the .val() function
+##                        e.g $('#newFirstName').val() Note: to select a class in jquery
+##                        use: $('.className').someMethod(). To get an id use: $('#idName').someMethod())
+                        <input id="newFirstName" type="text" name="firstName"><br>
                         Last Name:<br>
-                        <input type="text" name="lastName"><br>
+                        <input id="newLastName" type="text" name="lastName"><br>
                         Email:<br>
-                        <input type="text" name="email"><br>
+                        <input id="newEmail" type="text" name="email"><br>
                         Password:<br>
-                        <input type="text" name="password"><br>
+                        <input id="newPassword" type="text" name="password"><br>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="submitChanges" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+##                             //^ add a click handler for this id
                     <button type="button" class="btn btn-primary">Submit Changes</button>
                 </div>
             </div>
         </div>
     </div>
-#end
