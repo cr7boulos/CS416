@@ -16,10 +16,22 @@ public class ProjectController {
         int manager = Integer.parseInt(request.queryParams("manager"));
 
         if (DAO.createProject(name, description, manager)) {
-            return "Update Successful";
+            return "Update successful";
         } else {
-            return "Update Failed";
+            return "Update failed";
         }
+    };
+
+    // Deletes a project specified by a given project ID
+    public static Route deleteProject = (Request request, Response response) -> {
+        LoginController.isAuthenticated(request, response);
+
+        int projectId = Integer.parseInt(request.queryParams("projectId"));
+
+        if(DAO.deleteProject(projectId))
+            return "Delete successful.";
+        else
+            return "Delete failed.";
     };
 
 

@@ -15,7 +15,6 @@ import java.util.Map;
  */
 public class UserController {
 
-        //this method is a Java 8 feature called a functional interface
         public static Route getAllUsers = (Request request, Response response) -> {
             LoginController.isAuthenticated(request, response);
             Map<String, Object> model = new HashMap<>();

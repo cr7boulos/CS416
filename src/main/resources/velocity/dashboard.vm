@@ -21,8 +21,25 @@
 
     <style>
         .large{
-            font-size: 1000%;
+            font-size: 750%;
         }
+
+        .icon{
+
+            margin-right: 10px;
+        }
+        /*Redefined the bootstap btn-sm class
+          to only kick-in at the desired breakpoints
+         */
+        @media (min-width: 768px) and (max-width: 850px){
+            .sm-btn{
+                padding: 5px 10px;
+                font-size: 12px;
+                line-height: 1.5;
+                border-radius: 3px;
+            }
+        }
+
     </style>
 
 </head>
@@ -80,47 +97,15 @@
             <h1 class="page-header">Dashboard</h1>
 
             <div class="row placeholders">
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    #if($viewType == 0)
-                        <a href="#"><span id="button" class="glyphicon glyphicon-folder-open large" ></span></a>
-                        <h4>Projects</h4>
-                    #else
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    #end
-                </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    #if($viewType == 0)
-                        <span class="glyphicon glyphicon-tasks large" ></span>
-                        <h4>Requests</h4>
-                    #else
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    #end
+##                add conditional logic to render buttons based on user type.
+            #if($viewType == 0) ## admin login
+                #parse("/velocity/admin_buttons.vm")
+            #elseif($viewType == 1) ## professor login
+                #parse("/velocity/professor_buttons.vm")
+            #else ## student login
+                #parse("/velocity/student_buttons.vm")
+            #end
 
-                </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    #if($viewType == 0)
-                        <span class="glyphicon glyphicon-envelope large" ></span>
-                        <h4>Email</h4>
-                    #else
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    #end
-                </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    #if($viewType == 0)
-                        <span class="glyphicon glyphicon-user large" ></span>
-                        <h4>Users</h4>
-                    #else
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    #end
-                </div>
             </div>
 
             <h2 class="sub-header">Section title</h2>

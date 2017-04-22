@@ -19,15 +19,45 @@ var setUpLinks = function () {
 
 var projects = function () {
     $('#button').click(function(){
-        $.post("/projects", function (data) {
+        $.post("/projects?userId=" +
+            $('#dynView').attr('data-userId'),
+            function (data) {
                 $('#dynView').html(data);
-                setUpLinks();
+                //setUpLinks();
             }
         );
 
     });
+}
 
+var email = function () {
+    $('#emailButton').click(function () {
+        $.post("/getEmail?userId=" +
+            $('#dynView').attr('data-userId'),
+            function (data) {
+                $('#dynView').html(data);
+            });
+    })
+}
 
+var users = function () {
+    $('#userButton').click(function () {
+        $.post("/getAllUsers",
+            function (data) {
+                $('#dynView').html(data);
+            });
+    })
+
+}
+
+var requests = function () {
+    $('#requestButton').click(function () {
+        $.post("/projectRequests?userId=" +
+            $('#dynView').attr('data-userId'),
+            function (data) {
+                $('#dynView').html(data);
+            });
+    });
 }
 
 $(document).ready(function(){
@@ -36,5 +66,10 @@ $(document).ready(function(){
 
     projects(); // if users click the project button
                 // fetch the data and set up the links again.
+    email();
+
+    users();
+
+    requests();
 
 });

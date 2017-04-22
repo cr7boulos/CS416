@@ -1,4 +1,5 @@
 package longbottom;
+import longbottom.chat.ChatWebSocketHandler;
 import longbottom.projects.*;
 
 import longbottom.DAO.DAO;
@@ -25,6 +26,8 @@ public class LongBottomUniversity {
         //which local port application binds to
         port(1250);
         staticFiles.location("/public");
+
+        webSocket("/chatSocket", ChatWebSocketHandler.class);
 
         get("/hello", (req, res) -> {
             return "hello world!";
@@ -54,11 +57,12 @@ public class LongBottomUniversity {
         //Admin updating user data
         post("/useInfo", UserController.updateUser);
 
-
+        post("/getAllUsers", UserController.getAllUsers);
         post("/deleteUser", UserController.deleteUser);
         post("/updateUser", UserController.updateUser);
         post("/updateProject", ProjectController.updateProject);
         post("/newProject", ProjectController.newProject);
+        post("/getEmail", Dashboard.emailPartial);
 
         // lists project requests to professors who manage projects
         post("/projectRequests", studentRequestsController.getUserProjectRequests);
