@@ -2,11 +2,12 @@ package longbottom.chat;
 
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import longbottom.DAO.*;
+
 
 @WebSocket
 public class ChatWebSocketHandler {
@@ -21,11 +22,15 @@ public class ChatWebSocketHandler {
 
         //if there are no more users in the chat room delete the chat room
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
-        String username = "User" + Chat.nextUserNumber++;
+        int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(1));
 
-        Chat.chatMap.put(projectId, new HashMap(){{put(user, username);}});
+        if (Chat.chatMap.containsKey(projectId)){
 
-        Chat.broadcastMessage("Server", message = (username + " joined the chat."), projectId);
+        }
+        else{
+
+        }
+
     }
 
     @OnWebSocketClose
