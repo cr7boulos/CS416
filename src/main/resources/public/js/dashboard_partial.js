@@ -44,12 +44,12 @@ var getUsers = function () {
 
             $('.deleteUser').click(function (){
                 $.post('/deleteUser?userId=' +
-                    $(this.attr('data-userId'),
+                    $(this).attr('data-userId'),
                     function (data) {
                         console.log(data);
                         getUsers();
-                    }))
-            })
+                    });
+            });
 
             //set up users for deleting
         });
