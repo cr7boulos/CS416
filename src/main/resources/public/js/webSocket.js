@@ -2,6 +2,8 @@
  * Created by cr7bo on 4/22/2017.
  */
 //Copied from here: https://github.com/tipsy/spark-websocket/blob/master/src/main/resources/public/websocketDemo.js
+
+
 //Establish the WebSocket connection and set up event handlers
 
     $(document).ready(function () {

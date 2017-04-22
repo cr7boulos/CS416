@@ -53,9 +53,11 @@ var getUsers = function () {
             });
 
             //set up users for potential updates
-            $('.btn-default').click(function (){
-                $.post('/updateUser?userId=' +
-                    $(this).attr('data-userId') +
+            //this code gets called when the user clicks to open the modal
+            $('#updateModal').on('show.bs.modal', function (event) {
+                $('#submitChanges').click(function (){
+                    $.post('/updateUser?userId=' +
+                        $(this).attr('data-userId') +
                         '&firstName=' +
                         $("#newFirstName").val() +
                         '&lastName=' +
@@ -68,7 +70,9 @@ var getUsers = function () {
                             console.log(data);
                             getUsers();
                         });
+                });
             });
+
 
 
         });
