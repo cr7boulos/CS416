@@ -72,12 +72,32 @@ var users = function () {
 
 var requests = function () {
     $('#requestButton').click(function () {
-        $.post("/projectRequests?userId=" +
-            $('#dynView').attr('data-userId'),
-            function (data) {
-                $('#dynView').html(data);
-            });
+        getRequests();
     });
+}
+
+var getRequests = function () {
+    $.post("/projectRequests?userId=" +
+        $('#dynView').attr('data-userId'),
+        function (data) {
+            $('#dynView').html(data);
+            $('.requests').click(function () {
+                $.post("/professorDecision?status=" +
+                    $(this).attr('data-status') + "&wid=" +
+                    $(this).attr('data-wid') + "&studentId=" +
+                    $(this).attr('data-sid') + "&profId=" +
+                    $(this).attr('data-profid') + "&studentName=" +
+                    $(this).attr('data-sfname') + " " +
+                    $(this).attr('data-slname') + "&profName=" +
+                    $(this).attr('data-pfname') + " " +
+                    $(this).attr('data-plname') + "&projectName=" +
+                    $(this).attr('data-projname'),
+                    function (data) {
+                        console.log(data);
+                        getRequests();
+                    });
+            });
+        });
 }
 
 $(document).ready(function(){

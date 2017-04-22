@@ -9,14 +9,34 @@
     <tbody>
         #foreach($request_map in $requests)
         <tr>
-            <td>$request_map.get("firstname")</td>
-            <td>$request_map.get("lastname")</td>
-            <td>$request_map.get("name")</td>
+            <td>$!request_map.get("sfirst")</td>
+            <td>$!request_map.get("slast")</td>
+            <td>$!request_map.get("name")</td>
             <td>
-                <div class="btn btn-success col-sm-12 requests" data-uid="$request_map.get("userid")" data-pid="$request_map.get("projectid")">Accept</div>
+                <div class="btn btn-success col-sm-12 requests"
+                     data-sid="$request_map.get("stuid")"
+                     data-status="1"
+                     data-profid="$!request_map.get("profid")"
+                     data-sfname="$!request_map.get("sfirst")"
+                     data-slname="$!request_map.get("slast")"
+                     data-projname="$!request_map.get("name")"
+                     data-pfname="$!request_map.get("pfirst")"
+                     data-plname="$!request_map.get("plast")"
+                     data-wid="$!request_map.get("wid")"
+                     data-projid="$!request_map.get("projectid")">Accept</div>
             </td>
             <td>
-                <div class="btn btn-danger col-sm-12 requests" data-uid="$request_map.get("userid")" data-pid="$request_map.get("projectid")">Deny</div>
+                <div class="btn btn-danger col-sm-12 requests"
+                     data-sid="$!request_map.get("stuid")"
+                     data-status="0"
+                     data-profid="$!request_map.get("profid")"
+                     data-sfname="$!request_map.get("sfirst")"
+                     data-slname="$!request_map.get("slast")"
+                     data-projname="$!request_map.get("name")"
+                     data-pfname="$!request_map.get("pfirst")"
+                     data-plname="$!request_map.get("plast")"
+                     data-wid="$!request_map.get("wid")"
+                     data-projid="$!request_map.get("projectid")">Deny</div>
             </td>
 
         </tr>

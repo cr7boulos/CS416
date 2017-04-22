@@ -54,7 +54,7 @@
                 <h4 class="modal-title" id="myModalLabel">$map.subject</h4>
             </div>
             <div class="modal-body">
-                $map.body
+                <pre>$map.body</pre>
             </div>
         </div>
     </div>

@@ -18,14 +18,13 @@ public class studentRequestsController {
       if(Integer.parseInt(request.queryParams("status")) == 0)
         {
 
-            DAO.leaveProject(Integer.parseInt(request.queryParams("studentId")),
-                         Integer.parseInt(request.queryParams("projectId")));
+            DAO.leaveProject(Integer.parseInt(request.queryParams("wid")));
 
             DAO.sendEmail(Integer.parseInt(request.queryParams("profId")),
                           Integer.parseInt(request.queryParams("studentId")),
                           "Request Denied",
                           request.queryParams("studentName") + ",\n" +
-                          request.queryParams("profName") + "has denied your request to join" +
+                          request.queryParams("profName") + " has denied your request to join " +
                           "the following project: " + request.queryParams("projectName"));
 
              return "Message Sent";
@@ -34,14 +33,20 @@ public class studentRequestsController {
         }
         else if(Integer.parseInt(request.queryParams("status")) == 1)
         {
-            DAO.requestJoin(Integer.parseInt(request.queryParams("studentId")),
-                           Integer.parseInt(request.queryParams("projectId")));
+            DAO.acceptUser(Integer.parseInt(request.queryParams("wid")));
+
+//            System.out.println(request.queryParams("wid"));
+//            System.out.println(request.queryParams("profName"));
+//            System.out.println(request.queryParams("studentName"));
+//            System.out.println(request.queryParams("studentId"));
+//            System.out.println(request.queryParams("profId"));
+//            System.out.println(request.queryParams("projectName"));
 
             DAO.sendEmail(Integer.parseInt(request.queryParams("profId")),
                           Integer.parseInt(request.queryParams("studentId")),
                           "Request Accepted",
                           request.queryParams("studentName") + ",\n" +
-                          request.queryParams("profName") + "has accepted your request to join" +
+                          request.queryParams("profName") + " has accepted your request to join " +
                           "the following project: " + request.queryParams("projectName"));
 
             return "Message Sent";
