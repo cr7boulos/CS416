@@ -42,6 +42,15 @@ var getUsers = function () {
         function (data) {
             $('#dynView').html(data);
 
+            $('.deleteUser').click(function (){
+                $.post('/deleteUser?userId=' +
+                    $(this.attr('data-userId'),
+                    function (data) {
+                        console.log(data);
+                        getUsers();
+                    }))
+            })
+
             //set up users for deleting
         });
 }
