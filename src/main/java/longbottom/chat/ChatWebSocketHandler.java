@@ -23,14 +23,16 @@ public class ChatWebSocketHandler {
         //if there are no more users in the chat room delete the chat room
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
         int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(1));
-
+        String username = DAO.getUserEmails(userId).get(0).toString();
+        //chat room already exists
         if (Chat.chatMap.containsKey(projectId)){
-
+            Chat.chatMap.get(projectId).put(user, Integer.toString(projectId));
         }
         else{
-
+            Chat.chatMap.put(projectId, new HashMap(){{put(user, Integer.toString(userId));}});
         }
 
+        Chat.broadcastMessage(sender = "Server", message = (username + " has joined the chat."), projectId);
     }
 
     @OnWebSocketClose
