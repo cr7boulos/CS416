@@ -10,6 +10,7 @@ public class Email {
     private int to;
     private String subject;
     private String body;
+    private String time;
 
     public Email(int id, int from, int to, String subject, String body, String time) {
         this.id = id;
@@ -68,7 +69,5 @@ public class Email {
     public void setTime(String time) {
         this.time = time;
     }
-
-    private String time;
 
 }
