@@ -126,6 +126,14 @@ footer article h3 {
     float: none;
     overflow: auto;
 }
+/*
+    Use these id rules to control how the
+    nav bar holding the chat messages behaves
+*/
+#chatNav{
+    max-height: 500px;
+    overflow-y: scroll;
+}
 nav ul li {
     list-style-type: none;
     padding-top: 8px;

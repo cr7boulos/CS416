@@ -496,7 +496,9 @@ public class DAO {
 
     //gets chat messages for given project Id
     public static List<Map<String, Object>> getChatMessages(int pId){
-        String sql = "SELECT u.userId, u.firstName, u.lastName, u.email FROM user u INNER JOIN chat c ON c.userId = u.userId AND c.projectId = :pId";
+        String sql = "SELECT u.userId, u.firstName, u.lastName, u.email, c.text, " +
+                "c.time_stamp FROM user u " +
+                "INNER JOIN chat c ON c.userId = u.userId AND c.projectId = :pId";
         try(Connection con = sql2o.open()){
             return con.createQuery(sql)
                     .addParameter("pId", pId)

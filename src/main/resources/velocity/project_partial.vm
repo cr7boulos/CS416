@@ -17,7 +17,8 @@
                 <td>$map.get("lastname"), $map.get("firstname")</td>
                 <td>
                     #if($map.get("in") == 1) ## user is in the given project
-                        <a href="/project?projectId=$map.get("projectid")" <div class="btn btn-primary col-sm-12">Project Page</div></a>
+##                        change the /chat to /project later and update the chatCOntroller accordingly
+                        <a href="/chat?projectId=$map.get("projectid")" <div class="btn btn-primary col-sm-12">Project Page</div></a>
                     #else
                         <div class="btn btn-success col-sm-12 requests" data-request="$map.get("projectid")">Request Access</div>
                     #end

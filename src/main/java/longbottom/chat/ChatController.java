@@ -1,5 +1,6 @@
 package longbottom.chat;
 
+import longbottom.accounts.ChatMessage;
 import spark.*;
 import java.util.*;
 import longbottom.util.ViewUtil;
@@ -18,10 +19,13 @@ public class ChatController {
         //System.out.println(projectId);
 
         //Next, the controller will then make the following DAO API call: getChatHistory(projectId)
-        DAO.getChatMessages(projectId);
+        List<Map<String, Object>> chatMessages = DAO.getChatMessages(projectId);
 
         //the resulting data of the API call will be stored in a model object and passed to the Velocity renderer along with the appropriate template.
         Map<String, Object> model = new HashMap<>();
-        return ViewUtil.render(model, "/velocity/chatHistory.vm");
+        model.put("messages", chatMessages);
+        System.out.println(chatMessages.get(0).keySet());
+        return ViewUtil.render(model, "/velocity/project.vm");
+
     };
 }
