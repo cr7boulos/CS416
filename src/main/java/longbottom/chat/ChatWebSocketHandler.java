@@ -45,7 +45,7 @@ public class ChatWebSocketHandler {
         if(Chat.chatMap.containsKey(projectId)){
             Chat.chatMap.get(projectId).remove(user);
             //if the chat room is empty delete the chat room
-            if (Chat.chatMap.get(projectId) == null){
+            if (Chat.chatMap.get(projectId).isEmpty()){
                 Chat.chatMap.remove(projectId);
             }
             else{
