@@ -67,9 +67,7 @@ var getUsers = function () {
                         function (data) {
                             console.log(data);
                             getUsers();
-                        }
-
-                    )
+                        });
             });
 
 
