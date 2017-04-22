@@ -10,7 +10,7 @@
         //var userId = $('#chatNav').attr('data-userId');
         var webSocket = new WebSocket("ws://" + location.hostname + ":"
             + location.port + "/chatSocket?projectId=" + 1 +
-            "&userId=" + 4);
+            "&username=" + 4);
         webSocket.onmessage = function (msg) { updateChat(msg); };
         webSocket.onclose = function () { alert("WebSocket connection closed") };
 
