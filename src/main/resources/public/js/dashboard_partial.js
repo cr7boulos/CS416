@@ -90,13 +90,13 @@ var getEmail = function () {
 
 
 
-var requests = function () {
+var profRequests = function () {
     $('#requestButton').click(function () {
-        getRequests();
+        getProfRequests();
     });
 }
 
-var getRequests = function () {
+var getProfRequests = function () {
     $.post("/projectRequests?userId=" +
         $('#dynView').attr('data-userId'),
         function (data) {
@@ -114,7 +114,7 @@ var getRequests = function () {
                     $(this).attr('data-projname'),
                     function (data) {
                         console.log(data);
-                        getRequests();
+                        getProfRequests();
                     });
             });
         });
@@ -130,6 +130,18 @@ $(document).ready(function(){
 
     users();
 
-    requests();
+    //admin view: show project requests
+    if($('#dynView').attr('data-viewType') == 0){
+        console.log("You forgot to set up the view Logic ");
+    }
+    else if($('#dynView').attr('data-viewType') == 1){
+        //professor viewType: show project join requests
+        profRequests();
+    }
+    else {
+        console.log("unrecognized view tyep: ");
+        console.log($('#dynView').attr('data-viewType'));
+    }
+
 
 });
