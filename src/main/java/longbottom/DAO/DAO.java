@@ -24,6 +24,9 @@ public class DAO {
     static{
         //CONNECT TO MYSQL DATABASE
         DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
+
+        //This connects to the hosted database
+        //DAO.sql2o = new Sql2o("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_87bfff0c58d43de", "b02c57b7d3684b", "de935215");
     }
 
     public static List<Map<String, Object>> getUsersFromProject(int pId){
