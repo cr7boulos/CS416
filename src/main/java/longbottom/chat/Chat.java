@@ -13,17 +13,14 @@ import static j2html.TagCreator.*;
 import static spark.Spark.*;
 public class Chat {
 
-    //     Map<projectId, List< Map<Session, User>>>
-    static Map<Integer, List<Map<Session, String>>> chatMap = new ConcurrentHashMap<>();
-    static int nextUserNumber = 1;
+    //     Map<projectId, Map<Session, User>>>
+    static Map<Integer, Map<Session, String>> chatMap = new ConcurrentHashMap<>();
 
     public static void broadcastMessage(String userId, String message, int projectId) {
         //add chat message to the database
-        //DAO.createChatMessage(userId, message);
+        DAO.createChatMessage(projectId, Integer.parseInt(userId), message);
 
-        /*
         // Find the chat room and send a message to all users in that chat rooom
-        List<Map<Session, String>> roomMap = new ArrayList<>(chatMap.get(projectId));
         chatMap.get(projectId).keySet().stream().filter(Session::isOpen).forEach(session -> {
             try {
                 session.getRemote().sendString(String.valueOf(new JSONObject()
@@ -34,7 +31,6 @@ public class Chat {
                 e.printStackTrace();
             }
         });
-        */
 
     }
 
