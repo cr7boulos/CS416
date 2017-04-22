@@ -20,11 +20,14 @@ public class ChatController {
 
         //Next, the controller will then make the following DAO API call: getChatHistory(projectId)
         List<Map<String, Object>> chatMessages = DAO.getChatMessages(projectId);
-
+        //int userId = Integer.parseInt(request.session().attribute("userId"));
+        //System.out.println("User Id from session: " + userId);
         //the resulting data of the API call will be stored in a model object and passed to the Velocity renderer along with the appropriate template.
         Map<String, Object> model = new HashMap<>();
         model.put("messages", chatMessages);
-        System.out.println(chatMessages.get(0).keySet());
+        model.put("projectId", projectId);
+        //model.put("userId", userId);
+        //System.out.println(chatMessages.get(0).keySet());
         return ViewUtil.render(model, "/velocity/project.vm");
 
     };

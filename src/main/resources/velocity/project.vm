@@ -44,7 +44,7 @@
           ****************************************************************************-->
             <input type="text" placeholder="Enter Messsage">
 
-            <nav id="chatNav">
+            <nav id="chatNav" data-projectId="$projectId" >
                 <!--enter list of chat messages here-->
                 #foreach($message_map in $messages)
                     #set($firstname = $message_map.get("firstname"))
@@ -73,5 +73,8 @@
     </div>
     <div id="footerbar"><!-- Small footerbar at the bottom --></div>
 </div>
+<script src="../js/jquery-3.2.0.min.js"></script>
+<script src="../js/webSocket.js"></script>
 </body>
+
 </html>

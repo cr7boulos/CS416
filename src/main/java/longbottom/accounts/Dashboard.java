@@ -18,8 +18,9 @@ public class Dashboard {
 
     public static Route userDashboard = (Request request, Response response) -> {
         int userId = DAO.login(request.queryParams("username"), request.queryParams("password"));
+        //request.session(true).attribute("userId", userId); //add userId to session
         Map<String, Object> model3 = new HashMap<>();
-        System.out.println(userId);
+        //System.out.println(userId);
         int userIdentity = DAO.getIdentity(userId);
         System.out.println(userIdentity);
         if(userIdentity != DAO.NA){

@@ -23,7 +23,6 @@ public class ChatWebSocketHandler {
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
         String username = "User" + Chat.nextUserNumber++;
 
-        Chat.chatMap.put(projectId, new HashMap(){{put(user, username);}});
 
         Chat.broadcastMessage("Server", message = (username + " joined the chat."), projectId);
     }
