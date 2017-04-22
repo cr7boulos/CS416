@@ -24,6 +24,7 @@ public class ChatWebSocketHandler {
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
         int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(1));
         String username = DAO.getUserEmails(userId).get(0).toString();
+
         //chat room already exists
         if (Chat.chatMap.containsKey(projectId)){
             Chat.chatMap.get(projectId).put(user, Integer.toString(projectId));
@@ -36,7 +37,21 @@ public class ChatWebSocketHandler {
     }
 
     @OnWebSocketClose
-    public void onClose(Session user, int statusCode, String reason){
+    public void onClose(Session user){
+        int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
+        int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(1));
+        String username = DAO.getUserEmails(userId).get(0).toString();
+
+        if(Chat.chatMap.containsKey(projectId)){
+            Chat.chatMap.get(projectId).remove(user);
+            //if the chat room is empty delete the chat room
+            if (Chat.chatMap.get(projectId) == null){
+                Chat.chatMap.remove(projectId);
+            }
+            else{
+                Chat.broadcastMessage(sender = "Server", message = (username + " has left the chat."), projectId);
+            }
+        }
     }
 
 
