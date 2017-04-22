@@ -30,6 +30,22 @@ var projects = function () {
     });
 }
 
+var users = function () {
+    $('#userButton').click(function () {
+        getUsers();
+    });
+
+}
+
+var getUsers = function () {
+    $.post("/getAllUsers",
+        function (data) {
+            $('#dynView').html(data);
+
+            //set up users for deleting
+        });
+}
+
 var email = function () {
     $('#emailButton').click(function () {
         getEmail();
@@ -60,15 +76,7 @@ var getEmail = function () {
 
 }
 
-var users = function () {
-    $('#userButton').click(function () {
-        $.post("/getAllUsers",
-            function (data) {
-                $('#dynView').html(data);
-            });
-    })
 
-}
 
 var requests = function () {
     $('#requestButton').click(function () {

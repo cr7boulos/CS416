@@ -20,7 +20,8 @@
 
                 <td>
                     <div style="padding-top: 5px;" class="glyphicon glyphicon-user" type="button" data-toggle="modal" data-target="#upUser$foreach.count"><a href="#">Modify User</a></div>
-                    <div style="padding-top: 5px;" class="glyphicon glyphicon-trash" type="button"></div>
+                    <div style="padding-top: 5px;" data-userId="$!map.userId" class="glyphicon glyphicon-trash deleteUser" type="button"></div>
+##                                                                     //^ use jquery to set up a click handler for this deleteUser class
 
                 </td>
             </tr>
