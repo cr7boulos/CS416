@@ -23,7 +23,7 @@ public class ChatWebSocketHandler {
         //if there are no more users in the chat room delete the chat room
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
         int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(1));
-        String username = DAO.getUserEmails(userId).get(0).toString();
+        String username = DAO.getEmailByUserId(userId);
 
         //chat room already exists
         if (Chat.chatMap.containsKey(projectId)){
@@ -40,7 +40,7 @@ public class ChatWebSocketHandler {
     public void onClose(Session user){
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
         int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(1));
-        String username = DAO.getUserEmails(userId).get(0).toString();
+        String username = DAO.getEmailByUserId(userId);
 
         if(Chat.chatMap.containsKey(projectId)){
             Chat.chatMap.get(projectId).remove(user);
