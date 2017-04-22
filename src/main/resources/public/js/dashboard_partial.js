@@ -51,7 +51,7 @@ var getEmail = function () {
                         getEmail(); // only when the user clicks to delete
                                     // an email, does this function recursively
                                     // calls itself and sets up the handler
-                                    // again thus it is not infinite recursion.
+                                    // again. Thus, it is not infinite recursion.
                     });
 
             });

@@ -65,6 +65,26 @@ public class DAO {
         }
     }
 
+    public static int getUserIdByEmail(String email){
+        String sql = "SELECT userId from user WHERE email = :email";
+
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql).
+                    addParameter("email", email).
+                    executeScalar(Integer.class);
+        }
+    }
+
+    public static String getEmailByUserId(int uid){
+        String sql = "SELECT email from user WHERE userId = :userId";
+
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql).
+                    addParameter("userId", uid).
+                    executeScalar(String.class);
+        }
+    }
+
     public static List<works_in> getWorksIn(int pId){
         String sql =
                 "SELECT projectId, userId, accepted FROM works_in WHERE projectId = :projectId";
@@ -288,7 +308,7 @@ public class DAO {
 
     public static boolean confirmProject(int pID){
         String sql = "UPDATE projects " +
-                "SET grant = 1 " +
+                "SET granted = 1 " +
                 "WHERE projectId = :pId";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)

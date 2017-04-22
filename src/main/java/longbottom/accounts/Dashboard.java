@@ -77,6 +77,7 @@ public class Dashboard {
         int userId = Integer.parseInt(request.queryParams("userId"));
         System.out.println(userId + " from emailPartial");
         Map<String, Object> model = new HashMap<>();
+        model.put("DAO", DAO.class);
         model.put("email", DAO.getUserEmails(userId));
 
         return ViewUtil.render(model, "/velocity/email_partial.vm");

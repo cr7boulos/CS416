@@ -25,7 +25,7 @@
     -->
 #foreach($map in $email)
 <tr>
-    <td><div style="padding-top: 5px;">$map.from</div></td>
+    <td><div style="padding-top: 5px;">$DAO.getEmailByUserId($map.from)</div></td>
     <td><div style="padding-top: 5px;" type="button" data-toggle="modal" data-target="#email$foreach.count"><a href="#">$map.subject</a></div></td>
     <td><div style="padding-top: 5px;"><span class="badge">$map.time</span></div></td>
     <td><span style="font-size: 140%" data-eid="$map.id"  class=" glyphicon glyphicon-trash deleteEmail"><span style="padding-left: 20px; font-size: 150%" class=" glyphicon glyphicon-share-alt"></span></td>
