@@ -57,6 +57,9 @@ public class ChatWebSocketHandler {
 
     @OnWebSocketMessage
     public void onMessage(Session user, String message){
-
+        int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
+        int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(1));
+        String username = DAO.getEmailByUserId(userId);
+        Chat.broadcastMessage(username, message, projectId);
     }
 }
