@@ -1,4 +1,4 @@
-package longbottom.accounts;
+package longbottom.email;
 import longbottom.DAO.DAO;
 import spark.Response;
 import spark.Request;

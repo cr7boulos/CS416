@@ -1,10 +1,9 @@
 package longbottom;
-import longbottom.accounts.EmailController;
+import longbottom.email.EmailController;
 import longbottom.chat.ChatWebSocketHandler;
 import longbottom.projects.*;
 
-import longbottom.DAO.DAO;
-import longbottom.accounts.Dashboard;
+import longbottom.dashboard.Dashboard;
 import longbottom.accounts.UserController;
 import longbottom.login.LoginController;
 import longbottom.pages.homePageController;

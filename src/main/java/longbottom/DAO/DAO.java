@@ -1,13 +1,12 @@
 package longbottom.DAO;
 
 import longbottom.accounts.*;
+import longbottom.email.Email;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class DAO {
 

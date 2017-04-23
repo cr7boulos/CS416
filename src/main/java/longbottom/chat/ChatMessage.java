@@ -1,4 +1,4 @@
-package longbottom.accounts;
+package longbottom.chat;
 
 /**
  * Created by Maxwell on 4/7/2017.
