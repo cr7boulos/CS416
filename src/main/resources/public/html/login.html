@@ -18,17 +18,22 @@
 <body>
   
 <div class="container">
-    <div class="info">
-
-    </div>
+  <div class="info">
+    
+  </div>
 </div>
 <div class="form">
   <div class="thumbnail"><img src="../images/logo2.png"/></div>
-
-  <form class="login-form">
-    <input type="text" placeholder="username"/>
-    <input type="password" placeholder="password"/>
-    <button>login</button>
+  <!--<form class="register-form">-->
+    <!--<input type="text" placeholder="name"/>-->
+    <!--<input type="password" placeholder="password"/>-->
+    <!--<input type="text" placeholder="email address"/>-->
+    <!--<button>create</button>-->
+  <!--</form>-->
+  <form action="/dashboard" method="get" class="login-form">
+    <input type="email" name="username" placeholder="username"/>
+    <input type="password" name="password" placeholder="password"/>
+    <button type="submit">login</button>
     
   </form>
 </div>

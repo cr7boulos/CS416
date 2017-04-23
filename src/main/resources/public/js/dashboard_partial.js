@@ -82,9 +82,26 @@ var getUsers = function () {
         });
 }
 
+var sendEmail = function () {
+    $('#submitEmailButton').click(function (){
+        $.post('/sendEmail?from=' +
+            $('#dynView').attr('data-userId') +
+            '&to=' +
+            $("#toInput").val() +
+            '&subject=' +
+            $("#subjectInput").val() +
+            '&message=' +
+            $("#messageInput").val(),
+            function (data) {
+                console.log(data);
+            });
+    });
+}
+
 var email = function () {
     $('#emailButton').click(function () {
         getEmail();
+
 
     });
 
@@ -93,6 +110,8 @@ var getEmail = function () {
         $('#dynView').attr('data-userId'),
         function (data) {
             $('#dynView').html(data);
+
+            sendEmail();
 
             //set up the emails for deleting
             $('.deleteEmail').click(function () {
@@ -154,9 +173,11 @@ $(document).ready(function(){
 
     users();
 
+    //sendEmail();
+
     //admin view: show project requests
     if($('#dynView').attr('data-viewType') == 0){
-        console.log("You forgot to set up the view Logic ");
+        //console.log("You forgot to set up the view Logic ");
         profRequests();
     }
     else if($('#dynView').attr('data-viewType') == 1){
