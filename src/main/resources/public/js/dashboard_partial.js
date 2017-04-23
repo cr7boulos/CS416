@@ -82,6 +82,20 @@ var getUsers = function () {
         });
 }
 
+var sendEmail = function () {
+    $('#submitEmailButton').click(function (){
+        $.post('/sendEmail?to=' +
+            $("#toInput").val() +
+            '&subject=' +
+            $("#subjectInput").val() +
+            '&message=' +
+            $("#messageInput").val(),
+            function (data) {
+                console.log(data);
+            });
+    });
+}
+
 var email = function () {
     $('#emailButton').click(function () {
         getEmail();
@@ -153,6 +167,8 @@ $(document).ready(function(){
     email();
 
     users();
+
+    sendEmail();
 
     //admin view: show project requests
     if($('#dynView').attr('data-viewType') == 0){
