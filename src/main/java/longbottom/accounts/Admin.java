@@ -10,4 +10,5 @@ public class Admin extends User {
     public boolean deleteUser(int userId){
         return DAO.deleteUser(userId);
     }
+
 }

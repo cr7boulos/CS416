@@ -1,4 +1,4 @@
-package longbottom.accounts;
+package longbottom.projects;
 
 import java.util.ArrayList;
 

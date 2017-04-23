@@ -1,6 +1,5 @@
 package longbottom.chat;
 
-import longbottom.accounts.ChatMessage;
 import spark.*;
 import java.util.*;
 import longbottom.util.ViewUtil;

@@ -1,4 +1,4 @@
-package longbottom.accounts;
+package longbottom.dashboard;
 
 import longbottom.DAO.DAO;
 import longbottom.login.LoginController;
