@@ -102,6 +102,7 @@ var email = function () {
     $('#emailButton').click(function () {
         getEmail();
 
+
     });
 
 var getEmail = function () {
@@ -109,6 +110,8 @@ var getEmail = function () {
         $('#dynView').attr('data-userId'),
         function (data) {
             $('#dynView').html(data);
+
+            sendEmail();
 
             //set up the emails for deleting
             $('.deleteEmail').click(function () {
@@ -170,7 +173,7 @@ $(document).ready(function(){
 
     users();
 
-    sendEmail();
+    //sendEmail();
 
     //admin view: show project requests
     if($('#dynView').attr('data-viewType') == 0){

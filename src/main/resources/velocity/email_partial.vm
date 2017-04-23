@@ -25,10 +25,10 @@
     -->
 #foreach($map in $email)
 <tr>
-    <td><div style="padding-top: 5px;">$DAO.getEmailByUserId($map.from)</div></td>
-    <td><div style="padding-top: 5px;" type="button" data-toggle="modal" data-target="#email$foreach.count"><a href="#">$map.subject</a></div></td>
-    <td><div style="padding-top: 5px;"><span class="badge">$map.time</span></div></td>
-    <td><span style="font-size: 140%" data-eid="$map.id"  class=" glyphicon glyphicon-trash deleteEmail"><span style="padding-left: 20px; font-size: 150%" class=" glyphicon glyphicon-share-alt"></span></td>
+    <td><div style="padding-top: 5px;">$DAO.getEmailByUserId($!map.from)</div></td>
+    <td><div style="padding-top: 5px;" type="button" data-toggle="modal" data-target="#email$foreach.count"><a href="#">$!map.subject</a></div></td>
+    <td><div style="padding-top: 5px;"><span class="badge">$!map.time</span></div></td>
+    <td><span style="font-size: 140%" data-eid="$!map.id"  class=" glyphicon glyphicon-trash deleteEmail"><span style="padding-left: 20px; font-size: 150%" class=" glyphicon glyphicon-share-alt"></span></td>
 </tr>
 #end
 </tbody>
@@ -36,7 +36,7 @@
 
 <button type="button" class="pull-right btn btn-success" data-toggle="modal" data-target="#compose">Compose</button>
 
-<div class = "modal fade" id="compose" tabindex="-1">
+<div class = "modal" id="compose" tabindex="-1">
     <div class = "modal-dialog" >
         <div class = "modal-content">
             <div class = "modal-header">
@@ -72,7 +72,7 @@
                         data-dismiss="modal">
                     Discard
                 </button>
-                <button id = "submitEmailButton" type="button" class="btn btn-primary">
+                <button id="submitEmailButton"  type="button" class="btn btn-primary">
                     Send
                 </button>
             </div>
@@ -97,10 +97,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">$map.subject</h4>
+                <h4 class="modal-title" id="myModalLabel">$!map.subject</h4>
             </div>
             <div class="modal-body">
-                <pre>$map.body</pre>
+                <pre>$!map.body</pre>
             </div>
         </div>
     </div>
