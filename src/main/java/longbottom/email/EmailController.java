@@ -10,10 +10,10 @@ import spark.Route;
 public class EmailController {
 
   public static Route sendEmail = (Request request, Response response) -> {
-      int from = Integer.parseInt(request.queryParams("userId"));
-      int sendTo =  DAO.getUserIdByEmail(request.queryParams("email"));
+      int from = Integer.parseInt(request.queryParams("from"));
+      int sendTo =  DAO.getUserIdByEmail(request.queryParams("to"));
       String subject = request.queryParams("subject");
-      String body = request.queryParams("body");
+      String body = request.queryParams("message");
 
       if(DAO.sendEmail(from, sendTo, subject, body))
           return "Message Sent";
