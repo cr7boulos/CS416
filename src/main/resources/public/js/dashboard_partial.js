@@ -84,7 +84,9 @@ var getUsers = function () {
 
 var sendEmail = function () {
     $('#submitEmailButton').click(function (){
-        $.post('/sendEmail?to=' +
+        $.post('/sendEmail?from=' +
+            $('#dynView').attr('data-userId') +
+            '&to=' +
             $("#toInput").val() +
             '&subject=' +
             $("#subjectInput").val() +
