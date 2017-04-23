@@ -72,7 +72,7 @@
                         data-dismiss="modal">
                     Discard
                 </button>
-                <button id = "submitEmailButton" type="button" class="btn btn-primary">
+                <button id = "submitEmailButton" type="button" data-dismiss="modal" class="btn btn-primary">
                     Send
                 </button>
             </div>
