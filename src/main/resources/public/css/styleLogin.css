@@ -13,12 +13,13 @@
   text-align: center;
 }
 .form .thumbnail {
-  padding: 30px 10px;
+  padding: 5px 10px;
   border-top-left-radius: 100%;
   border-top-right-radius: 100%;
   border-bottom-left-radius: 100%;
   border-bottom-right-radius: 100%;
   box-sizing: border-box;
+  background: #d3a625;
 }
 .form .thumbnail img {
   display: block;
