@@ -156,7 +156,7 @@ $(document).ready(function(){
 
     //admin view: show project requests
     if($('#dynView').attr('data-viewType') == 0){
-        console.log("You forgot to set up the view Logic ");
+        //console.log("You forgot to set up the view Logic ");
         profRequests();
     }
     else if($('#dynView').attr('data-viewType') == 1){
