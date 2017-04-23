@@ -1,5 +1,6 @@
 package longbottom.email;
 import longbottom.DAO.DAO;
+import longbottom.accounts.User;
 import spark.Response;
 import spark.Request;
 import spark.Route;
@@ -8,12 +9,19 @@ import spark.Route;
  */
 public class EmailController {
 
-    //this method is a Java 8 feature called a functional interface
+  public static Route sendEmail = (Request request, Response response) -> {
+      int from = Integer.parseInt(request.queryParams("userId"));
+      int sendTo =  DAO.getUserIdByEmail(request.queryParams("email"));
+      String subject = request.queryParams("subject");
+      String body = request.queryParams("body");
+
+      if(DAO.sendEmail(from, sendTo, subject, body))
+          return "Message Sent";
+      else
+          return "Send Failure. Retry";
 
 
-//    public static Route sendEmail = (Request request, Response response) -> {
-//
-//    };
+  };
 
     public static Route deleteEmail = (Request request, Response response) -> {
 
