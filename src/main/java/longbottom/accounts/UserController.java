@@ -48,24 +48,29 @@ public class UserController {
             LoginController.isAuthenticated(request, response);
 
             int userId = Integer.parseInt(request.queryParams("userId"));
+            System.out.println(userId);
             String firstname = request.queryParams("firstname");
+            System.out.println(firstname);
             String lastname = request.queryParams("lastname");
+            System.out.println(lastname);
             String email = request.queryParams("email");
+            System.out.println(email);
             String password = request.queryParams("password");
+            System.out.println(password);
 
-            if (firstname != null) {
+            if (firstname != null && (!firstname.equals(""))) {
                 DAO.updateUserFirstName(userId, firstname);
             }
 
-            if (lastname != null) {
+            if (lastname != null && (!lastname.equals(""))) {
                 DAO.updateUserLastName(userId, lastname);
             }
 
-            if (email != null) {
+            if (email != null && (!email.equals(""))) {
                 DAO.updateUserEmail(userId, email);
             }
 
-            if (password != null) {
+            if (password != null && (!password.equals(""))) {
                 DAO.updateUserPassword(userId, password);
             }
 

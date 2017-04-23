@@ -27,8 +27,10 @@ public class LongBottomUniversity {
         //which local port application binds to
         port(1250);
         staticFiles.location("/public");
-
         webSocket("/chatSocket", ChatWebSocketHandler.class);
+
+
+
 
         get("/hello", (req, res) -> {
             return "hello world!";

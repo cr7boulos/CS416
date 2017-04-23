@@ -16,15 +16,13 @@ public class Chat {
     //     Map<projectId, Map<Session, User>>>
     static Map<Integer, Map<Session, String>> chatMap = new ConcurrentHashMap<>();
 
-    public static void broadcastMessage(String userId, String message, int projectId) {
-        //add chat message to the database
-        DAO.createChatMessage(projectId, Integer.parseInt(userId), message);
+    public static void broadcastMessage(String sender, String message, int projectId) {
 
         // Find the chat room and send a message to all users in that chat rooom
         chatMap.get(projectId).keySet().stream().filter(Session::isOpen).forEach(session -> {
             try {
                 session.getRemote().sendString(String.valueOf(new JSONObject()
-                        .put("userMessage", createHtmlMessageFromSender(userId, message))
+                        .put("userMessage", createHtmlMessageFromSender(sender, message))
                         .put("userlist", chatMap.get(projectId).values())
                 ));
             } catch (Exception e) {

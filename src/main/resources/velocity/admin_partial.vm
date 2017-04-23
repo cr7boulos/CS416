@@ -34,8 +34,11 @@
 </table>
 
 
-
-    <div class="modal fade" id="updateModal" tabindex="-1">
+##    for some reason leaving the "fade" class on this modal
+##    causes the background to remain greyed out on occasion
+##    thus it has been removed. See this SO post for the solution:
+##    http://stackoverflow.com/a/34665045
+    <div class="modal" id="updateModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -57,9 +60,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="submitChanges" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-##                             //^ add a click handler for this id
-                    <button type="button" class="btn btn-primary">Submit Changes</button>
+                    <button  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="submitChanges" data-dismiss="modal" type="button" class="btn btn-primary">Submit Changes</button>
                 </div>
             </div>
         </div>

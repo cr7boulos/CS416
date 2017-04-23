@@ -118,7 +118,7 @@ public class DAO {
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
     public static boolean createProject(String name, String description, int manager){
         String sql =
-                "INSERT INTO projects (name, description, time_stamp, manager)\n" +
+                "INSERT INTO projects (name, description, time_stamp, manager) " +
                         "VALUES (:name, :description, NOW(), :manager)";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
@@ -136,8 +136,8 @@ public class DAO {
     //Update project with set parameters. Set parameters to null to not change it. pId is required.
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
     public static boolean updateProjectName(int pId, String name){
-        String sql = "UPDATE projects" +
-                "SET name = :name" +
+        String sql = "UPDATE projects " +
+                "SET name = :name " +
                 "WHERE projectId = :pId";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -152,8 +152,8 @@ public class DAO {
     }
 
     public static boolean updateProjectDescription(int pId, String description){
-        String sql = "UPDATE table_name" +
-                "SET description = :description" +
+        String sql = "UPDATE table_name " +
+                "SET description = :description " +
                 "WHERE projectId = :pId";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -169,8 +169,8 @@ public class DAO {
 
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
     public static boolean updateProjectTime(int pId, String time){
-        String sql = "UPDATE table_name" +
-                "SET time_stamp = :time_stamp" +
+        String sql = "UPDATE table_name " +
+                "SET time_stamp = :time_stamp " +
                 "WHERE projectId = :pId";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -185,8 +185,8 @@ public class DAO {
     }
 
     public static boolean updateProjectManager(int pId, int manager){
-        String sql = "UPDATE table_name" +
-                "SET manager = :manager" +
+        String sql = "UPDATE table_name " +
+                "SET manager = :manager " +
                 "WHERE projectId = :pId";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -201,8 +201,8 @@ public class DAO {
     }
 
     public static boolean updateUserFirstName(int uId, String firstname) {
-        String sql = "UPDATE user" +
-                "SET firstName = :firstname" +
+        String sql = "UPDATE user " +
+                "SET firstName = :firstname " +
                 "WHERE userId = :uId";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -217,8 +217,8 @@ public class DAO {
     }
 
     public static boolean updateUserLastName(int uId, String lastname) {
-        String sql = "UPDATE user" +
-                "SET lastName = :lastname" +
+        String sql = "UPDATE user " +
+                "SET lastName = :lastname " +
                 "WHERE userId = :uId";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -233,8 +233,8 @@ public class DAO {
     }
 
     public static boolean updateUserEmail(int uId, String email) {
-        String sql = "UPDATE user" +
-                "SET email = :email" +
+        String sql = "UPDATE user " +
+                "SET email = :email " +
                 "WHERE userId = :uId";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -249,8 +249,8 @@ public class DAO {
     }
 
     public static boolean updateUserPassword(int uId, String password) {
-        String sql = "UPDATE user" +
-                "SET password = :password" +
+        String sql = "UPDATE user " +
+                "SET password = :password " +
                 "WHERE userId = :uId";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -499,9 +499,11 @@ public class DAO {
 
     //gets chat messages for given project Id
     public static List<Map<String, Object>> getChatMessages(int pId){
-        String sql = "SELECT u.userId, u.firstName, u.lastName, u.email, c.text, " +
+        String sql = "select * from " +
+                "(SELECT u.userId, u.firstName, u.lastName, u.email, c.text, " +
                 "c.time_stamp FROM user u " +
-                "INNER JOIN chat c ON c.userId = u.userId AND c.projectId = :pId";
+                "INNER JOIN chat c ON c.userId = u.userId AND c.projectId = :pId) as chat " +
+                "order by chat.time_stamp desc";
         try(Connection con = sql2o.open()){
             return con.createQuery(sql)
                     .addParameter("pId", pId)

@@ -22,7 +22,8 @@ public class ChatWebSocketHandler {
 
         //if there are no more users in the chat room delete the chat room
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
-        int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(1));
+
+        int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(0));
         String username = DAO.getEmailByUserId(userId);
 
         //chat room already exists
@@ -37,9 +38,9 @@ public class ChatWebSocketHandler {
     }
 
     @OnWebSocketClose
-    public void onClose(Session user){
+    public void onClose(Session user, int statusCode, String reason){
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
-        int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(1));
+        int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(0));
         String username = DAO.getEmailByUserId(userId);
 
         if(Chat.chatMap.containsKey(projectId)){
@@ -49,7 +50,8 @@ public class ChatWebSocketHandler {
                 Chat.chatMap.remove(projectId);
             }
             else{
-                Chat.broadcastMessage(sender = "Server", message = (username + " has left the chat."), projectId);
+                Chat.broadcastMessage("Server", message = (username + " has left the chat."), projectId);
+                //Chat.broadcastMessage(sender = "Server", message = (username + " has left the chat."), projectId);
             }
         }
     }
@@ -58,8 +60,11 @@ public class ChatWebSocketHandler {
     @OnWebSocketMessage
     public void onMessage(Session user, String message){
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
-        int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(1));
+        int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(0));
         String username = DAO.getEmailByUserId(userId);
+        //add chat message to the database
+        DAO.createChatMessage(projectId, userId, message);
+
         Chat.broadcastMessage(username, message, projectId);
     }
 }

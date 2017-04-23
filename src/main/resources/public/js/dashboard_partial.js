@@ -54,13 +54,17 @@ var getUsers = function () {
 
             //set up users for potential updates
             //this code gets called when the user clicks to open the modal
+            //see the bootstrap example code: http://getbootstrap.com/javascript/#modals-related-target
             $('#updateModal').on('show.bs.modal', function (event) {
+                console.log("Hello from updateModal");
+                var btn = $(event.relatedTarget); // button that toggled the modal
+                console.log(btn.attr('data-userId'));
                 $('#submitChanges').click(function (){
                     $.post('/updateUser?userId=' +
-                        $(this).attr('data-userId') +
-                        '&firstName=' +
+                        btn.attr('data-userId') +
+                        '&firstname=' +
                         $("#newFirstName").val() +
-                        '&lastName=' +
+                        '&lastname=' +
                         $("#newLastName").val() +
                         '&email=' +
                         $("#newEmail").val() +
@@ -153,6 +157,7 @@ $(document).ready(function(){
     //admin view: show project requests
     if($('#dynView').attr('data-viewType') == 0){
         console.log("You forgot to set up the view Logic ");
+        profRequests();
     }
     else if($('#dynView').attr('data-viewType') == 1){
         //professor viewType: show project join requests
