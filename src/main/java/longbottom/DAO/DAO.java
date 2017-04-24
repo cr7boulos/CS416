@@ -22,10 +22,10 @@ public class DAO {
     //See: http://www.sql2o.org/docs/configuration/
     static{
         //CONNECT TO MYSQL DATABASE
-        //DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
+        DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
 
         //This connects to the hosted database
-        DAO.sql2o = new Sql2o("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_87bfff0c58d43de", "b02c57b7d3684b", "de935215");
+        //DAO.sql2o = new Sql2o("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_87bfff0c58d43de", "b02c57b7d3684b", "de935215");
     }
 
     public static List<Map<String, Object>> getUsersFromProject(int pId){
@@ -97,15 +97,14 @@ public class DAO {
         }
     }
 
-    public static List<Map<String, Object>> listProjectsForAdmin(int userId){
+    public static List<Map<String, Object>> listProjectsForAdmin(){
         String sql = "select firstName, lastName, projectId, userId, name " +
                 "from " +
                 "projects " +
-                "inner join user on manager = :userId " +
+                "inner join user on manager = userId " +
                 "where granted = 0 ";
         try(Connection con = sql2o.open()){
             return con.createQuery(sql)
-                    .addParameter("userId", userId)
                     .executeAndFetchTable().asList();
         }catch(Exception e){
             e.printStackTrace();

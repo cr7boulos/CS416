@@ -1,0 +1,37 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Project Name</th>
+    </tr>
+    </thead>
+    <tbody>
+        #foreach($request_map in $requests)
+        <tr>
+            <td>$!request_map.get("firstname")</td>
+            <td>$!request_map.get("lastname")</td>
+            <td>$!request_map.get("name")</td>
+            <td>
+                <div class="btn btn-success col-sm-12 requests"
+                     data-status="1"
+                     data-profid="$!request_map.get("userid")"
+                     data-projectid="$!request_map.get("projectid")"
+                     data-pfname="$!request_map.get("firstname")"
+                     data-plname="$!request_map.get("lastname")"
+                     data-projName="$!request_map.get("name")">Accept</div>
+            </td>
+            <td>
+                <div class="btn btn-danger col-sm-12 requests"
+                    data-status="0"
+                    data-profid="$!request_map.get("userid")"
+                    data-projectid="$!request_map.get("projectid")"
+                    data-pfname="$!request_map.get("firstname")"
+                    data-plname="$!request_map.get("lastname")"
+                    data-projName="$!request_map.get("name")">Deny</div>
+            </td>
+
+        </tr>
+        #end
+    </tbody>
+</table>

@@ -131,6 +131,34 @@ var getEmail = function () {
 
 }
 
+var adminRequests = function () {
+    $('#requestButton').click(function () {
+        getAdminRequests();
+    });
+}
+
+var getAdminRequests = function () {
+    $.post("/adminRequests?userId=" +
+        $('#dynView').attr('data-userId'),
+        function (data) {
+            $('#dynView').html(data);
+            $('.requests').click(function () {
+                $.post("/adminDecision?status=" +
+                    $(this).attr('data-status') +"&adminId="+
+                    $('#dynView').attr('data-userId') + "&profId=" +
+                    $(this).attr('data-profid') + "&projectName=" +
+                    $(this).attr('data-projName') + "&projectId=" +
+                    $(this).attr('data-projectid') + "&profName=" +
+                    $(this).attr('data-pfname') + " " +
+                    $(this).attr('data-plname'),
+                    function (data) {
+                        console.log(data);
+                        getAdminRequests();
+                    });
+            });
+        });
+}
+
 
 
 var profRequests = function () {
@@ -171,21 +199,22 @@ $(document).ready(function(){
                 // fetch the data and set up the links again.
     email();
 
-    users();
+
 
     //sendEmail();
 
     //admin view: show project requests
     if($('#dynView').attr('data-viewType') == 0){
-        //console.log("You forgot to set up the view Logic ");
-        profRequests();
+        console.log('Calling admin requests');
+        adminRequests();
+        users();
     }
     else if($('#dynView').attr('data-viewType') == 1){
         //professor viewType: show project join requests
         profRequests();
     }
     else {
-        console.log("unrecognized view tyep: ");
+        console.log("unrecognized view type: ");
         console.log($('#dynView').attr('data-viewType'));
     }
 
