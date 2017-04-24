@@ -56,7 +56,7 @@ var getUsers = function () {
             //this code gets called when the user clicks to open the modal
             //see the bootstrap example code: http://getbootstrap.com/javascript/#modals-related-target
             $('#updateModal').on('show.bs.modal', function (event) {
-                console.log("Hello from updateModal");
+
                 var btn = $(event.relatedTarget); // button that toggled the modal
                 console.log(btn.attr('data-userId'));
                 $('#submitChanges').click(function (){
