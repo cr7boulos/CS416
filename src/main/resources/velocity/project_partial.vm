@@ -29,11 +29,11 @@
     </tbody>
 </table>
 #if($viewType == 1) ## only professors can create projects
-    <button type="button" class="pull-right btn btn-success"  data-toggle="modal" data-target="#compose">Create Project</button>
+    <button type="button" class="pull-right btn btn-success"  data-toggle="modal" data-target="#create">Create Project</button>
 
 
 
-<div class = "modal" id="compose" tabindex="-1">
+<div class = "modal" id="create" tabindex="-1">
     <div class = "modal-dialog" >
         <div class = "modal-content">
             <div class = "modal-header">
@@ -49,17 +49,17 @@
                     <div class="form-group">
                         <label for="toInput">Name</label>
                         <input type="text" class="form-control"
-                               id="toInput" placeholder="Enter project name"/>
+                               id="pName" placeholder="Enter project name"/>
                     </div>
                     <div class="form-group">
                         <label for="subjectInput">Description</label>
                         <input type="text" class="form-control"
-                               id="subjectInput" placeholder="Enter project Description"/>
+                               id="pDescription" placeholder="Enter project Description"/>
                     </div>
                     <div class="form-group">
                         <label for="messageInput">Manager</label>
                         <input type="text" class="form-control"
-                               id="messageInput" placeholder="Enter project manager (email address)"/>
+                               id="pManager" placeholder="Enter project manager (email address)"/>
                     </div>
                 </form>
             </div>
@@ -69,7 +69,7 @@
                         data-dismiss="modal">
                     Discard
                 </button>
-                <button id="submitEmailButton" data-dismiss="modal"  type="button" class="btn btn-primary">
+                <button id="createProjectBtn" data-dismiss="modal"  type="button" class="btn btn-primary">
                     Submit for Approval
                 </button>
             </div>

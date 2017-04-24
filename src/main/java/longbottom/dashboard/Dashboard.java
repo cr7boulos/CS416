@@ -67,10 +67,15 @@ public class Dashboard {
     };
 
     public static Route projectPartial = (Request request, Response response) -> {
+        int userId = Integer.parseInt(request.queryParams("userId"));
+
+        int viewType = DAO.getIdentity(userId);
         List<Map<String, Object>> list = DAO.getAllProjects(1);
 
         Map<String, Object> model3 = new HashMap<>();
+
         model3.put("dataList", list);
+        model3.put("viewType", viewType);
 
         return ViewUtil.render(model3, "/velocity/project_partial.vm");
     };
