@@ -19,15 +19,35 @@ var setUpLinks = function () {
 
 var projects = function () {
     $('#button').click(function(){
-        $.post("/projects?userId=" +
-            $('#dynView').attr('data-userId'),
-            function (data) {
-                $('#dynView').html(data);
-                //setUpLinks();
-            }
-        );
-
+        getProjects();
     });
+}
+
+var getProjects = function () {
+    $.post("/projects?userId=" +
+        $('#dynView').attr('data-userId'),
+        function (data) {
+            $('#dynView').html(data);
+            //setUpLinks();
+            createProject(); //sets up the create-project btn
+
+        }
+    );
+}
+
+var createProject = function () {
+    $('#createProjectBtn').click(function () {
+        console.log("Hello from create project!");
+        $.post('/newProject?name=' +
+            $('#pName').val() +
+            '&description=' +
+            $("#pDescription").val() +
+            '&manager=' +
+            $("#pManager").val(),
+            function (data) {
+                console.log(data);
+            });
+    })
 }
 
 var users = function () {
@@ -168,6 +188,7 @@ var profRequests = function () {
 }
 
 var getProfRequests = function () {
+    console.log("Hello from professor requests");
     $.post("/projectRequests?userId=" +
         $('#dynView').attr('data-userId'),
         function (data) {

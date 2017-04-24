@@ -13,12 +13,14 @@ public class ProjectController {
 
         String name = request.queryParams("name");
         String description = request.queryParams("description");
-        int manager = Integer.parseInt(request.queryParams("manager"));
+        String managerEmail = (request.queryParams("manager"));
 
-        if (DAO.createProject(name, description, manager)) {
-            return "Update successful";
+        int managerId = DAO.getUserIdByEmail(managerEmail);
+
+        if (DAO.createProject(name, description, managerId)) {
+            return "Project created successfully";
         } else {
-            return "Update failed";
+            return "Project creation failed";
         }
     };
 
