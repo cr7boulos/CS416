@@ -87,10 +87,10 @@
                 <version>0.4.4</version>
                 <configuration>
                     <jdkVersion>1.8</jdkVersion>
-                    <appName>spark-heroku-example</appName>
+                    <appName>vast-lowlands-10084</appName>
                     <processTypes>
                         <!-- Tell Heroku how to launch your application -->
-                        <web>java -jar ./target/university-1.0-jar-with-dependencies.jar</web>
+                        <web>java -jar target/university-1.0-jar-with-dependencies.jar</web>
                     </processTypes>
                 </configuration>
             </plugin>
