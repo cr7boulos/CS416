@@ -25,7 +25,7 @@ public class LongBottomUniversity {
 
         //which local port application binds to
         port(getHerokuAssignedPort());
-        staticFiles.location("/public");
+        staticFiles.location("public");
         webSocket("/chatSocket", ChatWebSocketHandler.class);
 
 
