@@ -47,7 +47,7 @@ public class LongBottomUniversity {
 
         //pages viewable by application users
         get("/login", LoginController.serveLoginPage);
-        get("/dashboard", Dashboard.userDashboard);
+        post("/dashboard", Dashboard.userDashboard);
         get("/contact", contactPageController.serveContactPage);
         get("/about", aboutPageController.serveAboutPage);
         get("/home", homePageController.serveHomePage);
