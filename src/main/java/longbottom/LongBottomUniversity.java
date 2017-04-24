@@ -42,6 +42,8 @@ public class LongBottomUniversity {
         // localhost:1250/post?test=456
         post("/post", DemoController.testing);
 
+        get("/login", LoginController.serveLoginPage);
+
         get("/chat", ChatController.chatHistory);
         post("/projects", Dashboard.projectPartial);
 
