@@ -25,7 +25,7 @@ public class LongBottomUniversity {
 
         //which local port application binds to
         port(getHerokuAssignedPort());
-        staticFiles.location("/public");
+        staticFiles.location("public");
         webSocket("/chatSocket", ChatWebSocketHandler.class);
 
 
@@ -41,6 +41,8 @@ public class LongBottomUniversity {
         // paste this URL below where is says "Enter request URL":
         // localhost:1250/post?test=456
         post("/post", DemoController.testing);
+
+        get("/login", LoginController.serveLoginPage);
 
         get("/chat", ChatController.chatHistory);
         post("/projects", Dashboard.projectPartial);
