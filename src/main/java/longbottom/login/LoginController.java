@@ -46,4 +46,17 @@ public class LoginController {
     public static boolean isAuthenticated(Request request, Response response){
         return (DAO.login( request.queryParams("email"), request.queryParams("password")) != DAO.NA);
     }
+
+    public static void login(Request request, Response response){
+        request.session().attribute("loggedin", true);
+    }
+
+    public static void logout(Request request, Response response){
+        request.session().attribute("loggedin", false);
+    }
+
+    public static boolean isLoggedIn (Request request, Response response){
+
+        return (boolean)request.session().attribute("loggedin");
+    }
 }
