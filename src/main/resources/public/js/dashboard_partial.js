@@ -103,7 +103,7 @@ var getUsers = function () {
 }
 
 var sendEmail = function () {
-    $('#submitEmailButton').click(function (){
+    $('.submitEmailButton').click(function (){
         $.post('/sendEmail?from=' +
             $('#dynView').attr('data-userId') +
             '&to=' +
