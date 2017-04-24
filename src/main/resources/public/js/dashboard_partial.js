@@ -56,7 +56,7 @@ var getUsers = function () {
             //this code gets called when the user clicks to open the modal
             //see the bootstrap example code: http://getbootstrap.com/javascript/#modals-related-target
             $('#updateModal').on('show.bs.modal', function (event) {
-                console.log("Hello from updateModal");
+
                 var btn = $(event.relatedTarget); // button that toggled the modal
                 console.log(btn.attr('data-userId'));
                 $('#submitChanges').click(function (){
@@ -102,6 +102,7 @@ var email = function () {
     $('#emailButton').click(function () {
         getEmail();
 
+
     });
 
 var getEmail = function () {
@@ -109,6 +110,8 @@ var getEmail = function () {
         $('#dynView').attr('data-userId'),
         function (data) {
             $('#dynView').html(data);
+
+            sendEmail();
 
             //set up the emails for deleting
             $('.deleteEmail').click(function () {
@@ -170,11 +173,11 @@ $(document).ready(function(){
 
     users();
 
-    sendEmail();
+    //sendEmail();
 
     //admin view: show project requests
     if($('#dynView').attr('data-viewType') == 0){
-        console.log("You forgot to set up the view Logic ");
+        //console.log("You forgot to set up the view Logic ");
         profRequests();
     }
     else if($('#dynView').attr('data-viewType') == 1){

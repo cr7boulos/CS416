@@ -1,25 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!--<link rel="icon" href="../../favicon.ico">-->
+    <meta charset="UTF-8">
+    <title>login</title>
 
-    <title>Signin Template for Bootstrap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet prefetch" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900">
+    <link rel="stylesheet prefetch" href="http://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-
-
-
-
-    <!-- Custom styles for this template -->
-    <link href="../css/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styleLogin.css">
 
 
 </head>
@@ -27,22 +18,16 @@
 <body>
 
 <div class="container">
-
-    <form method="get" action="/dashboard" class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" name="username" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn b btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <div class="info"></div>
+</div>
+<div class="form">
+    <div class="thumbnail"><img src="../images/logo2.png"/></div>
+    <form action="/dashboard" method="get" class="login-form">
+        <input type="email" name="username" placeholder="username" required autofocus/>
+        <input type="password" name="password" placeholder="password"/>
+        <button type="submit">Login</button>
     </form>
-
-</div> <!-- /container -->
+</div>
 
 
 </body>

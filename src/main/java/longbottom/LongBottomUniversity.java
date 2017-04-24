@@ -66,6 +66,7 @@ public class LongBottomUniversity {
         post("/newProject", ProjectController.newProject);
         post("/email", Dashboard.emailPartial);
         post("/deleteEmail", EmailController.deleteEmail);
+        post("/sendEmail", EmailController.sendEmail);
 
         // lists project requests to professors who manage projects
         post("/projectRequests", studentRequestsController.getUserProjectRequests);
