@@ -103,6 +103,22 @@ var getUsers = function () {
 }
 
 var sendEmail = function () {
+    $('.replyEmailButton').click(function (){
+        $.post('/sendEmail?from=' +
+            $('#dynView').attr('data-userId') +
+            '&to=' +
+            $("#replyTo").val() +
+            '&subject=' +
+            $("#replySubject").val() +
+            '&message=' +
+            $("#replyMessage").val(),
+            function (data) {
+                console.log(data);
+            });
+    });
+}
+
+var replyEmail = function () {
     $('.submitEmailButton').click(function (){
         $.post('/sendEmail?from=' +
             $('#dynView').attr('data-userId') +
@@ -132,6 +148,7 @@ var getEmail = function () {
             $('#dynView').html(data);
 
             sendEmail();
+            replyEmail();
 
             //set up the emails for deleting
             $('.deleteEmail').click(function () {
