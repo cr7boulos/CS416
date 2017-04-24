@@ -24,7 +24,7 @@ public class LongBottomUniversity {
     public static void main(String[] args){
 
         //which local port application binds to
-        port(1250);
+        port(getHerokuAssignedPort());
         staticFiles.location("/public");
         webSocket("/chatSocket", ChatWebSocketHandler.class);
 
@@ -79,5 +79,14 @@ public class LongBottomUniversity {
         // professor accepts/denies project join request
         post("/professorDecision", studentRequestsController.serveStudentRequest);
 
+    }
+
+    //Method to get port on Heroku server
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 1250; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 }
