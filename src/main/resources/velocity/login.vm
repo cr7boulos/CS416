@@ -22,7 +22,7 @@
 </div>
 <div class="form">
     <div class="thumbnail"><img src="../images/logo2.png"/></div>
-    <form action="/dashboard" method="get" class="login-form">
+    <form action="/dashboard" method="post" class="login-form">
         <input type="email" name="username" placeholder="username" required autofocus/>
         <input type="password" name="password" placeholder="password"/>
         <button type="submit">Login</button>
