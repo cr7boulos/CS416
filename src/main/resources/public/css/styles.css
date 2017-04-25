@@ -166,10 +166,8 @@ nav ul li ul li:hover a {background:rgba(116,0,1, 1.00); color:white;}
 }
 
 #container .Title {
-	margin-left: 32%;
+	margin: -45px auto 95px;
 	font-size: xx-large;
-	margin-top: -45px;
-	margin-bottom: -95px;
 	width: 455px;
 	text-align:center;
 }
