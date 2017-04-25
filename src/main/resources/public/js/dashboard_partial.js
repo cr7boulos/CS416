@@ -97,7 +97,7 @@ var getUsers = function () {
                 });
             });
 
-            $('#userCreateFormButton').on('show.bs.modal', function (event) {
+            $('#userCreateButton').click(function (event) {
 
                 var btn = $(event.relatedTarget); // button that toggled the modal
                 console.log(btn.attr('data-userId'));
