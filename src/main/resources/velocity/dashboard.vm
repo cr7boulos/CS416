@@ -142,20 +142,20 @@
                             </form>
                             <form>
                                 <div class="form-group">
-                                    <label for="newFirstName">First name</label>
-                                    <input type="text" class="form-control" id="newFirstName" placeholder="Enter the user's first name.">
+                                    <label for="FirstName">First name</label>
+                                    <input type="text" class="form-control" id="FirstName" placeholder="Enter the user's first name.">
                                 </div>
                                 <div class="form-group">
-                                    <label for="newLastName">Last name</label>
-                                    <input type="text" class="form-control" id="newLastName" placeholder="Enter the user's last name.">
+                                    <label for="LastName">Last name</label>
+                                    <input type="text" class="form-control" id="LastName" placeholder="Enter the user's last name.">
                                 </div>
                                 <div class="form-group">
                                     <label for="newEmail">Email</label>
-                                    <input type="text" class="form-control" id="newEmail" placeholder="Enter the user's email.">
+                                    <input type="text" class="form-control" id="Email" placeholder="Enter the user's email.">
                                 </div>
                                 <div class="form-group">
-                                    <label for="newPassword">Password</label>
-                                    <input type="text" class="form-control" id="newPassword" placeholder="Enter the new password.">
+                                    <label for="Password">Password</label>
+                                    <input type="text" class="form-control" id="Password" placeholder="Enter the user's password.">
                                 </div>
                             </form>
 
