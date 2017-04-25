@@ -118,6 +118,8 @@ var replyEmail = function () {
     });
 }
 
+
+
 var sendEmail = function () {
     $('.submitEmailButton').click(function (){
         console.log()
