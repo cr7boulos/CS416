@@ -76,4 +76,18 @@ public class UserController {
 
             return "User updates finished.";
         };
+
+    public static Route createUser = (Request request, Response response) -> {
+        LoginController.isAuthenticated(request, response);
+
+        DAO.createUser(request.queryParams("firstname"),
+                        request.queryParams("lastname"),
+                        request.queryParams("email"),
+                        request.queryParams("password"));
+
+
+
+
+        return "User creation finished.";
+    };
 }
