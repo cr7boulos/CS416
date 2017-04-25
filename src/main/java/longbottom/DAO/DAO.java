@@ -473,8 +473,8 @@ public class DAO {
     // message parameter has not been added
     public static boolean createPost(int pId, String header, String body){
         String sql =
-                "INSERT INTO posts (projectId, header, body, time_stamp)" +
-                        "VALUES (:pId, :header, :message, NOW())";
+                "INSERT INTO posts (projectId, header, body, time_stamp) " +
+                        "VALUES (:pId, :header, :body, NOW())";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("pId" , pId)
@@ -581,6 +581,11 @@ public class DAO {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static void createUser(String firstname, String lastname, String email, String password){
+
+
     }
 
 }

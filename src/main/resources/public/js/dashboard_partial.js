@@ -97,7 +97,27 @@ var getUsers = function () {
                 });
             });
 
+            $('#userCreateButton').click(function (event) {
 
+                var btn = $(event.relatedTarget); // button that toggled the modal
+                console.log(btn.attr('data-userId'));
+                $('#createUser').click(function (){
+                    $.post('/createUser?userId=' +
+                        btn.attr('data-userId') +
+                        '&firstname=' +
+                        $("#newFirstName").val() +
+                        '&lastname=' +
+                        $("#newLastName").val() +
+                        '&email=' +
+                        $("#newEmail").val() +
+                        '&password=' +
+                        $("#newPassword").val(),
+                        function (data) {
+                            console.log(data);
+                            getUsers();
+                        });
+                });
+            });
 
         });
 }
@@ -117,6 +137,8 @@ var replyEmail = function () {
             });
     });
 }
+
+
 
 var sendEmail = function () {
     $('.submitEmailButton').click(function (){
