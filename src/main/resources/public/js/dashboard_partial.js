@@ -24,6 +24,7 @@ var projects = function () {
 }
 
 var getProjects = function () {
+    $('#creationUser').hide();
     $.post("/projects?userId=" +
         $('#dynView').attr('data-userId'),
         function (data) {
@@ -58,6 +59,7 @@ var users = function () {
 }
 
 var getUsers = function () {
+    $('#creationUser').show();
     $.post("/getAllUsers",
         function (data) {
             $('#dynView').html(data);
@@ -97,7 +99,7 @@ var getUsers = function () {
                 });
             });
 
-            $('#userCreateFormButton').on('show.bs.modal', function (event) {
+            $('#userCreateButton').click(function (event) {
 
                 var btn = $(event.relatedTarget); // button that toggled the modal
                 console.log(btn.attr('data-userId'));
@@ -138,6 +140,8 @@ var replyEmail = function () {
     });
 }
 
+
+
 var sendEmail = function () {
     $('.submitEmailButton').click(function (){
         console.log("sending email");
@@ -167,6 +171,7 @@ var getEmail = function () {
         $('#dynView').attr('data-userId'),
         function (data) {
             $('#dynView').html(data);
+            $('#creationUser').hide();
 
             sendEmail();
             replyEmail();
@@ -231,6 +236,7 @@ var getProfRequests = function () {
         $('#dynView').attr('data-userId'),
         function (data) {
             $('#dynView').html(data);
+            $('#creationUser').hide();
             $('.requests').click(function () {
                 $.post("/professorDecision?status=" +
                     $(this).attr('data-status') + "&wid=" +
