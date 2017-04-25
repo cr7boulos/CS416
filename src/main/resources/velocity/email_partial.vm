@@ -35,7 +35,7 @@
 </tbody>
 </table>
 
-<button type="button" class="pull-right btn btn-success submitEmailButton" data-toggle="modal" data-target="#compose">Compose</button>
+<button type="button" class="pull-right btn btn-success" data-toggle="modal" data-target="#compose">Compose</button>
 
 <div class = "modal" id="compose" tabindex="-1">
     <div class = "modal-dialog" >
@@ -50,7 +50,7 @@
                     <div class="form-group">
                         <label for="toInput">To</label>
                         <input type="text" class="form-control"
-                               id="toInput" placeholder="Enter recepient address"/>
+                               id="toInput" placeholder="Enter recepient address" required/>
                     </div>
                     <div class="form-group">
                         <label for="subjectInput">Subject</label>

@@ -120,7 +120,7 @@ var replyEmail = function () {
 
 var sendEmail = function () {
     $('.submitEmailButton').click(function (){
-        console.log()
+        console.log("sending email");
         $.post('/sendEmail?from=' +
             $('#dynView').attr('data-userId') +
             '&to=' +
@@ -253,6 +253,7 @@ $(document).ready(function(){
     else if($('#dynView').attr('data-viewType') == 1){
         //professor viewType: show project join requests
         profRequests();
+        getProjects();
     }
     else {
         console.log("unrecognized view type: ");
