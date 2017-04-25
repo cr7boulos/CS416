@@ -1,1 +1,1 @@
-web:    java $JAVA_OPTS -cp target/classes:target/dependency/* longbottom.LongBottomUniversity
+web:    java $JAVA_OPTS -cp target/classes:target/dependency/* longbottom.LongbottomUniversity

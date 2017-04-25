@@ -22,10 +22,10 @@ public class DAO {
     //See: http://www.sql2o.org/docs/configuration/
     static{
         //CONNECT TO MYSQL DATABASE
-        //DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
+        DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
 
         //This connects to the hosted database
-        DAO.sql2o = new Sql2o("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_d4c6b1cbcafb5a7", "b97ef38c93ad46", "9a133bff");
+        //DAO.sql2o = new Sql2o("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_d4c6b1cbcafb5a7", "b97ef38c93ad46", "9a133bff");
     }
 
     public static List<Map<String, Object>> getUsersFromProject(int pId){
@@ -37,6 +37,20 @@ public class DAO {
         }catch(Exception e){
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public static int getWorksInId(int projectId, int userId){
+        String sql = "SELECT id from works_in where userId = :userId " +
+                "and projectId = :projectId";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("userId", userId)
+                    .addParameter("projectId", projectId)
+                    .executeScalar(Integer.class);
+        }catch( Exception e){
+            e.printStackTrace();
+            return -1;
         }
     }
 
@@ -335,7 +349,7 @@ public class DAO {
     //User is added to project
     public static boolean acceptUser(int pId, int uId) {
         String sql = "UPDATE works_in " +
-                "SET granted = 1 " +
+                "SET accepted = 1 " +
                 "WHERE userId = :uId AND projectId = :pId";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -567,6 +581,11 @@ public class DAO {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static void createUser(String firstname, String lastname, String email, String password){
+
+
     }
 
 }

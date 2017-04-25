@@ -8,7 +8,7 @@
 
     $(document).ready(function () {
         console.log("Hello from web socket");
-        var projectId = $('#chatNav').attr('data-projectId')
+        var projectId = $('#chatNav').attr('data-projectId');
         var userId = $('#chatNav').attr('data-userId');
         // console.log(userId + " is the user id");
         var webSocket = new WebSocket("ws://" + location.hostname + ":"

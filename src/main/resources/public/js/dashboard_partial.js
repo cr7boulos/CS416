@@ -97,7 +97,27 @@ var getUsers = function () {
                 });
             });
 
+            $('#userCreateFormButton').on('show.bs.modal', function (event) {
 
+                var btn = $(event.relatedTarget); // button that toggled the modal
+                console.log(btn.attr('data-userId'));
+                $('#createUser').click(function (){
+                    $.post('/createUser?userId=' +
+                        btn.attr('data-userId') +
+                        '&firstname=' +
+                        $("#newFirstName").val() +
+                        '&lastname=' +
+                        $("#newLastName").val() +
+                        '&email=' +
+                        $("#newEmail").val() +
+                        '&password=' +
+                        $("#newPassword").val(),
+                        function (data) {
+                            console.log(data);
+                            getUsers();
+                        });
+                });
+            });
 
         });
 }
@@ -120,7 +140,7 @@ var replyEmail = function () {
 
 var sendEmail = function () {
     $('.submitEmailButton').click(function (){
-        console.log()
+        console.log("sending email");
         $.post('/sendEmail?from=' +
             $('#dynView').attr('data-userId') +
             '&to=' +
@@ -246,11 +266,14 @@ $(document).ready(function(){
     if($('#dynView').attr('data-viewType') == 0){
         console.log('Calling admin requests');
         adminRequests();
+        getAdminRequests();
         users();
+        getUsers();
     }
     else if($('#dynView').attr('data-viewType') == 1){
         //professor viewType: show project join requests
         profRequests();
+        getProjects();
     }
     else {
         console.log("unrecognized view type: ");

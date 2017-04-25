@@ -40,6 +40,8 @@ public class LongBottomUniversity {
         // In Postman, set the request type to POST then
         // paste this URL below where is says "Enter request URL":
         // localhost:1250/post?test=456
+
+        //HelloWorld
         post("/post", DemoController.testing);
 
         get("/login", LoginController.serveLoginPage);
@@ -50,6 +52,7 @@ public class LongBottomUniversity {
         //pages viewable by application users
         get("/login", LoginController.serveLoginPage);
         post("/dashboard", Dashboard.userDashboard);
+        get("/dashboard", Dashboard.userDashboard);
         get("/contact", contactPageController.serveContactPage);
         get("/about", aboutPageController.serveAboutPage);
         get("/home", homePageController.serveHomePage);
@@ -69,7 +72,7 @@ public class LongBottomUniversity {
         post("/email", Dashboard.emailPartial);
         post("/deleteEmail", EmailController.deleteEmail);
         post("/sendEmail", EmailController.sendEmail);
-
+        post("/createUser", UserController.createUser);
         // lists project creation requests for admin
         post("/adminRequests", professorRequestsController.getAdminRequests);
 
