@@ -102,8 +102,25 @@ var getUsers = function () {
         });
 }
 
+var replyEmail = function () {
+    $('.replyEmailButton').click(function (){
+        $.post('/sendEmail?from=' +
+            $('#dynView').attr('data-userId') +
+            '&to=' +
+            $("#replyTo").val() +
+            '&subject=' +
+            $("#replySubject").val() +
+            '&message=' +
+            $("#replyMessage").val(),
+            function (data) {
+                console.log(data);
+            });
+    });
+}
+
 var sendEmail = function () {
     $('.submitEmailButton').click(function (){
+        console.log()
         $.post('/sendEmail?from=' +
             $('#dynView').attr('data-userId') +
             '&to=' +
@@ -132,6 +149,7 @@ var getEmail = function () {
             $('#dynView').html(data);
 
             sendEmail();
+            replyEmail();
 
             //set up the emails for deleting
             $('.deleteEmail').click(function () {

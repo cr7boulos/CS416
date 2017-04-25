@@ -29,7 +29,7 @@
     <td><div style="padding-top: 5px;" type="button" data-toggle="modal" data-target="#email$foreach.count"><a href="#">$!map.subject</a></div></td>
     <td><div style="padding-top: 5px;"><span class="badge">$!map.time</span></div></td>
     <td><span style="font-size: 140%" data-eid="$!map.id"  class=" glyphicon glyphicon-trash deleteEmail"></span>
-        <span data-subject="$!map.subject" data-toggle="modal" data-target="#emailReply$foreach.count" data-from="$DAO.getEmailByUserId($!map.from)" style="padding-left: 20px; font-size: 150%" class=" glyphicon glyphicon-share-alt submitEmailButton"></span></td>
+        <span data-subject="$!map.subject" data-toggle="modal" data-target="#emailReply$foreach.count" data-from="$DAO.getEmailByUserId($!map.from)" style="padding-left: 20px; font-size: 150%" class=" glyphicon glyphicon-share-alt "></span></td>
 </tr>
 #end
 </tbody>
@@ -120,17 +120,17 @@
                     <div class="form-group">
                         <label for="toInput">To Address</label>
                         <input type="text" class="form-control"
-                               id="toInput" value=$DAO.getEmailByUserId($!map.from) />
+                               id="replyTo" value=$DAO.getEmailByUserId($!map.from) />
                     </div>
                     <div class="form-group">
                         <label for="subjectInput">Subject</label>
                         <input type="text" class="form-control"
-                               id="subjectInput" value="RE: $!map.subject" />
+                               id="replySubject" value="RE: $!map.subject" />
                     </div>
                     <div class="form-group">
                         <label for="messageInput">Body</label>
                         <input type="text" class="form-control"
-                               id="messageInput" placeholder="Enter message" />
+                               id="replyMessage" placeholder="Enter message" />
                     </div>
                 </form>
             </div>
@@ -140,7 +140,7 @@
                         data-dismiss="modal">
                     Discard
                 </button>
-                <button id="submitEmailButton" data-dismiss="modal"  type="button" class="btn btn-primary submitEmailButton">
+                <button id="submitEmailButton" data-dismiss="modal"  type="button" class="btn btn-primary replyEmailButton">
                     Send
                 </button>
             </div>
