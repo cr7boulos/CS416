@@ -473,8 +473,8 @@ public class DAO {
     // message parameter has not been added
     public static boolean createPost(int pId, String header, String body){
         String sql =
-                "INSERT INTO posts (projectId, header, body, time_stamp)" +
-                        "VALUES (:pId, :header, :message, NOW())";
+                "INSERT INTO posts (projectId, header, body, time_stamp) " +
+                        "VALUES (:pId, :header, :body, NOW())";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("pId" , pId)
@@ -583,9 +583,66 @@ public class DAO {
         }
     }
 
-    public static void createUser(String firstname, String lastname, String email, String password){
-
-
+    public static boolean createUser(String firstName, String lastName, String email, String password){
+        String sql =
+                "INSERT INTO user (firstName, lastName, email, password) " +
+                        "VALUES (:firstName, :lastName, :email, :password)";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("firstName" , firstName)
+                    .addParameter("lastName", lastName)
+                    .addParameter("email", email)
+                    .addParameter("password", password)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
+    public static boolean createAdmin(int uId){
+        String sql =
+                "INSERT INTO admin (userId) " +
+                        "VALUES (:userId)";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("userId" , uId)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean createStudent(int uId){
+        String sql =
+                "INSERT INTO student (userId) " +
+                        "VALUES (:userId)";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("userId" , uId)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean createProfessor(int uId){
+        String sql =
+                "INSERT INTO professor (userId) " +
+                        "VALUES (:userId)";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("userId" , uId)
+                    .executeUpdate();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

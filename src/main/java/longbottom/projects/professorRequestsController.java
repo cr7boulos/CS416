@@ -41,6 +41,7 @@ public class professorRequestsController {
             int profId = Integer.parseInt(request.queryParams("profId"));
             DAO.confirmProject(pid);
             //int wid = DAO.getWorksInId(pid, profId); // add the professor the project they are now managing
+            DAO.requestJoin(pid, profId);
             DAO.acceptUser(pid, profId);
             DAO.sendEmail(Integer.parseInt(request.queryParams("adminId")),
                           Integer.parseInt(request.queryParams("profId")),
