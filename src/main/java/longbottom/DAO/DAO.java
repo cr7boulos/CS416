@@ -57,6 +57,16 @@ public class DAO {
         }
     }
 
+    public static User getUser(int userId){
+        String sql = "SELECT * from user where userId = :userId";
+
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql).
+                    addParameter("userId", userId).
+                    executeAndFetchFirst(User.class);
+        }
+    }
+
     public static List<User> getAllUsers(){
         String sql =
                 "SELECT userId, firstName, lastName, email, password " +

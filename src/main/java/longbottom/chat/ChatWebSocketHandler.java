@@ -1,5 +1,6 @@
 package longbottom.chat;
 
+import longbottom.accounts.User;
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
 import java.util.HashMap;
@@ -24,7 +25,8 @@ public class ChatWebSocketHandler {
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
 
         int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(0));
-        String username = DAO.getEmailByUserId(userId);
+        User u = DAO.getUser(userId);
+        //String username = DAO.getEmailByUserId(userId);
 
         //chat room already exists
         if (Chat.chatMap.containsKey(projectId)){
@@ -34,7 +36,7 @@ public class ChatWebSocketHandler {
             Chat.chatMap.put(projectId, new HashMap(){{put(user, Integer.toString(userId));}});
         }
 
-        Chat.broadcastMessage(sender = "Server", message = (username + " has joined the chat."), projectId);
+        Chat.broadcastMessage(sender = "Server", message = (u.getFullName() + " has joined the chat."), projectId);
     }
 
     @OnWebSocketClose
@@ -61,10 +63,12 @@ public class ChatWebSocketHandler {
     public void onMessage(Session user, String message){
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
         int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(0));
-        String username = DAO.getEmailByUserId(userId);
+        User u = DAO.getUser(userId);
+
+        //String username = DAO.getEmailByUserId(userId);
         //add chat message to the database
         DAO.createChatMessage(projectId, userId, message);
 
-        Chat.broadcastMessage(username, message, projectId);
+        Chat.broadcastMessage(u.getFullName(), message, projectId);
     }
 }
