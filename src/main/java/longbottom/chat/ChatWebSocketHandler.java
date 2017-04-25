@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import longbottom.DAO.*;
 
 
-@WebSocket
+@WebSocket (maxIdleTime = 999999999)
 public class ChatWebSocketHandler {
 
     private String sender;

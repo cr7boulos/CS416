@@ -55,6 +55,7 @@ public class Dashboard {
 
         }
         else{
+            response.redirect("/login");
             return ViewUtil.render(model3, "/velocity/login.vm"); //login failed
         }
 
@@ -70,7 +71,8 @@ public class Dashboard {
         int userId = Integer.parseInt(request.queryParams("userId"));
 
         int viewType = DAO.getIdentity(userId);
-        List<Map<String, Object>> list = DAO.getAllProjects(1);
+
+        List<Map<String, Object>> list = DAO.getAllProjects(userId);
 
         Map<String, Object> model3 = new HashMap<>();
 

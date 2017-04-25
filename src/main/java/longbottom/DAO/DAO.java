@@ -40,6 +40,20 @@ public class DAO {
         }
     }
 
+    public static int getWorksInId(int projectId, int userId){
+        String sql = "SELECT id from works_in where userId = :userId " +
+                "and projectId = :projectId";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("userId", userId)
+                    .addParameter("projectId", projectId)
+                    .executeScalar(Integer.class);
+        }catch( Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
     public static List<Map<String, Object>> getAllProjects(int userId){
 
         String sql = "SELECT name, description, time_stamp, projectId, firstName, lastName ," +
@@ -335,7 +349,7 @@ public class DAO {
     //User is added to project
     public static boolean acceptUser(int pId, int uId) {
         String sql = "UPDATE works_in " +
-                "SET granted = 1 " +
+                "SET accepted = 1 " +
                 "WHERE userId = :uId AND projectId = :pId";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -567,6 +581,11 @@ public class DAO {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static void createUser(String firstname, String lastname, String email, String password){
+
+
     }
 
 }
