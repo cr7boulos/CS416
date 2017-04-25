@@ -113,7 +113,7 @@
                 <div class="pull-right col-xs-6 col-sm-3 placeholder">
 
 
-                    <div data-toggle="modal" type="button" data-target="#userCreateFormButton" class="btn sm-btn btn-primary col-sm-12">
+                    <div id="creationUser" data-toggle="modal" type="button" data-target="#userCreateFormButton" class="btn sm-btn btn-primary col-sm-12">
                         <span class="glyphicon glyphicon-user icon" ></span> Create User</div>
 
                 </div>
@@ -127,6 +127,19 @@
                         </div>
 
                         <div class="modal-body">
+                            <form>
+                                <label>Choose User Type:</label>
+                                <br/>
+                                <label class="radio-inline">
+                                    <input type="radio" name="User" value="0"> Admin
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="User" value="1">Professor
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="User" value="2">Student
+                                </label>
+                            </form>
                             <form>
                                 <div class="form-group">
                                     <label for="newFirstName">First name</label>

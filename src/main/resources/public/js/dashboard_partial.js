@@ -24,6 +24,7 @@ var projects = function () {
 }
 
 var getProjects = function () {
+    $('#creationUser').hide();
     $.post("/projects?userId=" +
         $('#dynView').attr('data-userId'),
         function (data) {
@@ -58,6 +59,7 @@ var users = function () {
 }
 
 var getUsers = function () {
+    $('#creationUser').show();
     $.post("/getAllUsers",
         function (data) {
             $('#dynView').html(data);
@@ -167,6 +169,7 @@ var getEmail = function () {
         $('#dynView').attr('data-userId'),
         function (data) {
             $('#dynView').html(data);
+            $('#creationUser').hide();
 
             sendEmail();
             replyEmail();
@@ -231,6 +234,7 @@ var getProfRequests = function () {
         $('#dynView').attr('data-userId'),
         function (data) {
             $('#dynView').html(data);
+            $('#creationUser').hide();
             $('.requests').click(function () {
                 $.post("/professorDecision?status=" +
                     $(this).attr('data-status') + "&wid=" +
