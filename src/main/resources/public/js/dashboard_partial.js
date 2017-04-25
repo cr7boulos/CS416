@@ -246,7 +246,9 @@ $(document).ready(function(){
     if($('#dynView').attr('data-viewType') == 0){
         console.log('Calling admin requests');
         adminRequests();
+        getAdminRequests();
         users();
+        getUsers();
     }
     else if($('#dynView').attr('data-viewType') == 1){
         //professor viewType: show project join requests
