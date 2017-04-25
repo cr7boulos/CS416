@@ -76,7 +76,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>LongBottomUniversity</mainClass>
+                            <mainClass>longbottom.LongBottomUniversity</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
