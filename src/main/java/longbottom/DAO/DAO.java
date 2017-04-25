@@ -547,7 +547,7 @@ public class DAO {
 
     //get emails for given user Id
     public static List<Email> getUserEmails(int uId){
-        String sql = "SELECT * FROM email WHERE email.to = :userId";
+        String sql = "SELECT * FROM email WHERE email.to = :userId ORDER BY time_stamp DESC";
         try(Connection con = sql2o.open()){
             return con.createQuery(sql)
                     .addParameter("userId", uId)
