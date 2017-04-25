@@ -1,5 +1,6 @@
 package longbottom.chat;
 
+import longbottom.accounts.User;
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.Session;
 import org.json.*;
@@ -17,6 +18,8 @@ public class Chat {
     static Map<Integer, Map<Session, String>> chatMap = new ConcurrentHashMap<>();
 
     public static void broadcastMessage(String sender, String message, int projectId) {
+
+
 
         // Find the chat room and send a message to all users in that chat rooom
         chatMap.get(projectId).keySet().stream().filter(Session::isOpen).forEach(session -> {

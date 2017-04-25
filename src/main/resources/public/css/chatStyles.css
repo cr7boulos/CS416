@@ -39,14 +39,14 @@ li {
 }
 
 #userlist {
-    position: fixed;
-    left: 50%;
+    /*position: fixed;*/
+    /*left: 50%;*/
     list-style: none;
-    margin-left: 250px;
+    /*margin-left: 250px;*/
     background: #f0f0f9;
     padding: 5px 10px;
-    width: 150px;
-    top: 11px;
+    /*width: 150px;*/
+    /*top: 11px;*/
 }
 
 #chat p {

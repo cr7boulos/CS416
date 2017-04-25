@@ -39,10 +39,10 @@
         function updateChat(msg) {
             var data = JSON.parse(msg.data);
             insert("chat", data.userMessage);
-            // id("userlist").innerHTML = "";
-            // data.userlist.forEach(function (user) {
-            //     insert("userlist", "<li>" + user + "</li>");
-            // });
+             id("userlist").innerHTML = "";
+             data.userlist.forEach(function (user) {
+                 insert("userlist", "<li>" + user + "</li>");
+             });
         }
 
         //Helper function for inserting HTML as the first child of an element

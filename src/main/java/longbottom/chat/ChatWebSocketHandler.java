@@ -30,10 +30,10 @@ public class ChatWebSocketHandler {
 
         //chat room already exists
         if (Chat.chatMap.containsKey(projectId)){
-            Chat.chatMap.get(projectId).put(user, Integer.toString(projectId));
+            Chat.chatMap.get(projectId).put(user, DAO.getUser(userId).getFullName());
         }
         else{
-            Chat.chatMap.put(projectId, new HashMap(){{put(user, Integer.toString(userId));}});
+            Chat.chatMap.put(projectId, new HashMap(){{put(user, (DAO.getUser(userId).getFullName()));}});
         }
 
         Chat.broadcastMessage(sender = "Server", message = (u.getFullName() + " has joined the chat."), projectId);
@@ -43,7 +43,8 @@ public class ChatWebSocketHandler {
     public void onClose(Session user, int statusCode, String reason){
         int projectId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("projectId").get(0));
         int userId = Integer.parseInt(user.getUpgradeRequest().getParameterMap().get("username").get(0));
-        String username = DAO.getEmailByUserId(userId);
+        //String username = DAO.getEmailByUserId(userId);
+        User u = DAO.getUser(userId);
 
         if(Chat.chatMap.containsKey(projectId)){
             Chat.chatMap.get(projectId).remove(user);
@@ -52,7 +53,7 @@ public class ChatWebSocketHandler {
                 Chat.chatMap.remove(projectId);
             }
             else{
-                Chat.broadcastMessage("Server", message = (username + " has left the chat."), projectId);
+                Chat.broadcastMessage("Server", message = (u.getFullName() + " has left the chat."), projectId);
                 //Chat.broadcastMessage(sender = "Server", message = (username + " has left the chat."), projectId);
             }
         }

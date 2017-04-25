@@ -1,6 +1,8 @@
 package longbottom.chat;
 
 import spark.*;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 import longbottom.util.ViewUtil;
 import longbottom.DAO.*;
@@ -26,6 +28,7 @@ public class ChatController {
         model.put("messages", chatMessages);
         model.put("projectId", projectId);
         model.put("userId", userId);
+        //System.out.println((new SimpleDateFormat()).parse(chatMessages.get(0).get("time_stamp").toString()));
         //System.out.println(chatMessages.get(0).keySet());
         return ViewUtil.render(model, "/velocity/project.vm");
 

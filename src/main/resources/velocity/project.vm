@@ -43,18 +43,25 @@
             <!--************************************************************************
           Sidebar starts here. It contains a searchbox, sample ad image and 6 links
           ****************************************************************************-->
+            <div>
+                <h3>Online Users</h3>
+                <ul id="userlist">
+
+                </ul>
+            </div>
             <input id="message" type="texta" placeholder="Enter Messsage">
 
             <nav id="chatNav" data-userId="$userId" data-projectId="$projectId">
                 <!--enter list of chat messages here-->
                 <div id="chat">
                     #foreach($message_map in $messages)
-                        #set($firstname = $message_map.get("firstname"))
-                        #set($lastname = $message_map.get("lastname"))
+                        #set($firstname = $!message_map.get("firstname"))
+                        #set($lastname = $!message_map.get("lastname"))
                         #set($fullName = "$firstname $lastname")
                         <article>
                             <b>$fullName</b>
-                            <p>$message_map.get("text")</p>
+                            <p>$!message_map.get("text")</p>
+                            <span class="timestamp">$!message_map.get("time_stamp")</span>
                         </article>
                     #end
                 </div>

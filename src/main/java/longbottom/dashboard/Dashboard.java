@@ -19,7 +19,7 @@ public class Dashboard {
     public static Route userDashboard = (Request request, Response response) -> {
         int userId = DAO.login(request.queryParams("username"), request.queryParams("password"));
         request.session().attribute("userId", userId); //add userId to session
-        System.out.println("Hello");
+        //System.out.println("Hello");
         Map<String, Object> model3 = new HashMap<>();
 
         int userIdentity = DAO.getIdentity(userId);
