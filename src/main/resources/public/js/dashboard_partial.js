@@ -102,7 +102,7 @@ var getUsers = function () {
         });
 }
 
-var sendEmail = function () {
+var replyEmail = function () {
     $('.replyEmailButton').click(function (){
         $.post('/sendEmail?from=' +
             $('#dynView').attr('data-userId') +
@@ -118,8 +118,9 @@ var sendEmail = function () {
     });
 }
 
-var replyEmail = function () {
+var sendEmail = function () {
     $('.submitEmailButton').click(function (){
+        console.log()
         $.post('/sendEmail?from=' +
             $('#dynView').attr('data-userId') +
             '&to=' +
