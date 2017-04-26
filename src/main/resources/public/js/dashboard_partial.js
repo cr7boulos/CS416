@@ -99,18 +99,16 @@ var getUsers = function () {
                 });
             });
 
-            $('#userCreateFormButton').click(function () {
+            // $('#userCreateFormButton').click(function () {
 
 
 
                 $('#createUser').click(function (){
-                    $.post('/createUser?' +
-                        'firstname=' +
-                        $("#FirstName").val() +
+
                     $.post('/createUser?userType=' +
                         $('input[name=userType]:checked').val()+
                         '&firstname=' +
-                        $("#newFirstName").val() +
+                        $("#FirstName").val() +
                         '&lastname=' +
                         $("#LastName").val() +
                         '&email=' +
@@ -122,7 +120,7 @@ var getUsers = function () {
                             getUsers();
                         });
                 });
-            });
+            // });
 
         });
 }
