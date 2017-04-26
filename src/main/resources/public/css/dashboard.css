@@ -5,6 +5,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  font-family: Carrois Gothic SC;
 }
 
 
@@ -23,6 +24,7 @@ body {
  */
 .navbar-fixed-top {
   border: 0;
+  background-color: #740001;
 }
 
 /*
@@ -63,7 +65,7 @@ body {
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: #740001;
 }
 
 
@@ -108,3 +110,6 @@ body {
   text-align: center;
 }
 
+.img-circle {
+  border-radius: 50%;
+}

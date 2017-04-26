@@ -80,11 +80,36 @@ public class UserController {
     public static Route createUser = (Request request, Response response) -> {
         LoginController.isAuthenticated(request, response);
 
-        DAO.createUser(request.queryParams("firstname"),
-                        request.queryParams("lastname"),
-                        request.queryParams("email"),
-                        request.queryParams("password"));
+       int typeOfUser = Integer.parseInt(request.queryParams("userType"));
 
+
+       boolean creationUser =   DAO.createUser(request.queryParams("firstname"),
+                            request.queryParams("lastname"),
+                            request.queryParams("email"),
+                            request.queryParams("password"));
+
+       if(creationUser == true)
+       {
+           int userId = DAO.getUserIdByEmail(request.queryParams("email"));
+
+           if(typeOfUser == 0)
+           {
+               DAO.createAdmin(userId);
+           }
+           else if(typeOfUser == 1)
+           {
+               DAO.createProfessor(userId);
+           }
+           else
+           {
+               DAO.createStudent(userId);
+           }
+
+       }
+       else
+       {
+           return "User not created.";
+       }
 
 
 
