@@ -4,29 +4,29 @@
 */
 
 /** {*/
-    /*box-sizing: border-box;*/
+/*box-sizing: border-box;*/
 /*}*/
 
 /*html {*/
-    /*overflow-y: scroll;*/
+/*overflow-y: scroll;*/
 /*}*/
 
 /*body {*/
-    /*font-family: monospace;*/
-    /*font-size: 14px;*/
-    /*max-width: 480px;*/
-    /*margin: 0 auto;*/
-    /*padding: 20px*/
+/*font-family: monospace;*/
+/*font-size: 14px;*/
+/*max-width: 480px;*/
+/*margin: 0 auto;*/
+/*padding: 20px*/
 /*}*/
 
 /*input {*/
-    /*width: 100%;*/
-    /*padding: 5px;*/
-    /*margin: 5px 0;*/
+/*width: 100%;*/
+/*padding: 5px;*/
+/*margin: 5px 0;*/
 /*}*/
 
 /*button {*/
-    /*float: right;*/
+/*float: right;*/
 /*}*/
 
 li {
@@ -51,7 +51,7 @@ li {
 
 #chat p {
     margin: 5px 0;
-    font-weight: 300
+    font-weight: 300;
 }
 
 #chat .timestamp {
