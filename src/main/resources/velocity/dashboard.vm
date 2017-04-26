@@ -93,7 +93,7 @@
 
             </div>
 
-            <h2 class="sub-header">Section title </h2>
+            <h2 class="sub-header" id="tableTitle">Projects</h2>
             <div id="dynView" data-viewType="$viewType" data-userId="$userId" class="table-responsive">
                 #if ($viewType == 0) ## admin
                     #parse("/velocity/admin_partial.vm") ## admin by default sees the project requests

@@ -21,6 +21,7 @@ var setUpLinks = function () {
 
 var projects = function () {
     $('#button').click(function(){
+        document.getElementById("tableTitle").innerHTML = "Projects";
         getProjects();
     });
 }
@@ -60,6 +61,7 @@ var createProject = function () {
 
 var users = function () {
     $('#userButton').click(function () {
+        document.getElementById("tableTitle").innerHTML = "Manage users";
         getUsers();
     });
 
@@ -173,6 +175,7 @@ var sendEmail = function () {
 
 var email = function () {
     $('#emailButton').click(function () {
+        document.getElementById("tableTitle").innerHTML = "Email Inbox";
         getEmail();
 
 
@@ -208,6 +211,7 @@ var getEmail = function () {
 
 var adminRequests = function () {
     $('#requestButton').click(function () {
+        document.getElementById("tableTitle").innerHTML = "Requests";
         getAdminRequests();
     });
 }
@@ -239,6 +243,7 @@ var getAdminRequests = function () {
 
 var profRequests = function () {
     $('#requestButton').click(function () {
+        document.getElementById("tableTitle").innerHTML = "Requests";
         getProfRequests();
     });
 }
@@ -285,6 +290,7 @@ $(document).ready(function(){
     //admin view: show project requests
     if($('#dynView').attr('data-viewType') == 0){
         console.log('Calling admin requests');
+        document.getElementById("tableTitle").innerHTML = "Manage users";
         adminRequests();
         getAdminRequests();
         users();
