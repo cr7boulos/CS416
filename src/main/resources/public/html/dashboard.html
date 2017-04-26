@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Carrois Gothic SC">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,24 +22,14 @@
     <link href="../css/dashboard.css" rel="stylesheet">
 
     <style>
-        .large{
-            font-size: 750%;
-        }
 
-        .icon{
 
-            margin-right: 10px;
-        }
+
         /*Redefined the bootstap btn-sm class
           to only kick-in at the desired breakpoints
          */
         @media (min-width: 768px) and (max-width: 850px){
-            .sm-btn{
-                padding: 5px 10px;
-                font-size: 12px;
-                line-height: 1.5;
-                border-radius: 3px;
-            }
+
         }
 
     </style>
@@ -59,14 +51,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Help</a></li>
+                <li><a href="Home.html">Homepage</a></li>
+                <li><a href="public/html/login.html">Logout</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
+
         </div>
     </div>
 </nav>
@@ -74,111 +62,101 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Reports</a></li>
-                <li><a href="#">Analytics</a></li>
-                <li><a href="#">Export</a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="">Nav item</a></li>
-                <li><a href="">Nav item again</a></li>
-                <li><a href="">One more nav</a></li>
-                <li><a href="">Another nav item</a></li>
-                <li><a href="">More navigation</a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="">Nav item again</a></li>
-                <li><a href="">One more nav</a></li>
-                <li><a href="">Another nav item</a></li>
-            </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Dashboard</h1>
+            <img class="img-circle" src="images/logo.png">
 
-            <div class="row placeholders">
-
-
-            </div>
-
-            <h2 class="sub-header">Section title</h2>
-            <div id="dynView" data-viewType="$viewType" data-userId="$userId" class="table-responsive">
-
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>name</th>
-                        <th>Description</th>
-                        <th>Start Date</th>
-                        <th>Manager</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td><div class="btn btn-primary col-sm-3">Request Access</div></td>
-                    </tr>
-                    <tr>
-                        <td>1,002</td>
-                        <td>amet</td>
-                        <td>consectetur</td>
-                        <td>adipiscing</td>
-                        <td><div class="btn btn-success col-sm-3">Project Page</div></td>
-                    </tr>
-                    <tr>
-                        <td>1,003</td>
-                        <td>Integer</td>
-                        <td>nec</td>
-                        <td>odio</td>
-                        <td><div class="btn btn-primary col-sm-3">Request Access</div></td>
-                    </tr>
-                    <tr>
-                        <td>1,003</td>
-                        <td>libero</td>
-                        <td>Sed</td>
-                        <td>cursus</td>
-                        <td><div class="btn btn-success col-sm-3">Project Page</div></td>
-                    </tr>
-                    <tr>
-                        <td>1,004</td>
-                        <td>dapibus</td>
-                        <td>diam</td>
-                        <td>Sed</td>
-                        <td><div class="btn btn-primary col-sm-3">Request Access</div></td>
-                    </tr>
-                    <tr>
-                        <td>1,005</td>
-                        <td>Nulla</td>
-                        <td>quis</td>
-                        <td>sem</td>
-                        <td><div class="btn btn-success col-sm-3">Project Page</div></td>
-                    </tr>
-                    <tr>
-                        <td>1,006</td>
-                        <td>nibh</td>
-                        <td>elementum</td>
-                        <td>imperdiet</td>
-                        <td><div class="btn btn-success col-sm-3">Project Page</div></td>
-                    </tr>
-                    <tr>
-                        <td>1,007</td>
-                        <td>sagittis</td>
-                        <td>ipsum</td>
-                        <td>Praesent</td>
-                        <td><div class="btn btn-success col-sm-3">Project Page</div></td>
-                    </tr>
-
-                    </tbody>
-                </table>
-
-            </div>
+            <h3> Name </h3>
+            <h3> Academic year </h3>
+            <h3> Department </h3>
         </div>
     </div>
 </div>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1 class="page-header">Dashboard</h1>
+
+    <div class="row placeholders">
+
+
+    </div>
+
+
+    <div id="dynView" data-viewType="$viewType" data-userId="$userId" class="table-responsive">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>name</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>Manager</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1,001</td>
+                <td>Lorem</td>
+                <td>ipsum</td>
+                <td>dolor</td>
+                <td><div class="btn btn-primary col-sm-6">Request Access</div></td>
+            </tr>
+            <tr>
+                <td>1,002</td>
+                <td>amet</td>
+                <td>consectetur</td>
+                <td>adipiscing</td>
+                <td><div class="btn btn-success col-sm-6">Project Page</div></td>
+            </tr>
+            <tr>
+                <td>1,003</td>
+                <td>Integer</td>
+                <td>nec</td>
+                <td>odio</td>
+                <td><div class="btn btn-primary col-sm-6">Request Access</div></td>
+            </tr>
+            <tr>
+                <td>1,003</td>
+                <td>libero</td>
+                <td>Sed</td>
+                <td>cursus</td>
+                <td><div class="btn btn-success col-sm-6">Project Page</div></td>
+            </tr>
+            <tr>
+                <td>1,004</td>
+                <td>dapibus</td>
+                <td>diam</td>
+                <td>Sed</td>
+                <td><div class="btn btn-primary col-sm-6">Request Access</div></td>
+            </tr>
+            <tr>
+                <td>1,005</td>
+                <td>Nulla</td>
+                <td>quis</td>
+                <td>sem</td>
+                <td><div class="btn btn-success col-sm-6">Project Page</div></td>
+            </tr>
+            <tr>
+                <td>1,006</td>
+                <td>nibh</td>
+                <td>elementum</td>
+                <td>imperdiet</td>
+                <td><div class="btn btn-success col-sm-6">Project Page</div></td>
+            </tr>
+            <tr>
+                <td>1,007</td>
+                <td>sagittis</td>
+                <td>ipsum</td>
+                <td>Praesent</td>
+                <td><div class="btn btn-success col-sm-6">Project Page</div></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -186,7 +164,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!--<script src="../js/jquery-3.2.0.min.js"></script>-->
 <!--<script> $(document).ready(function(){-->
-    <!--console.log('jquery loaded');-->
+<!--console.log('jquery loaded');-->
 <!--});-->
 <!--</script>-->
 <!--<script>window.jQuery || document.write('<script src="../js/jquery-3.2.0.min.js"><\/script>')</script>-->
