@@ -31,6 +31,11 @@ var getProjects = function () {
         $('#dynView').attr('data-userId'),
         function (data) {
             $('#dynView').html(data);
+            $(".requests").click(function(){
+                $(this).css('background-color', 'green');
+                $(this).text('Request Pending');
+            });
+
             //setUpLinks();
             createProject(); //sets up the create-project btn
 
