@@ -168,6 +168,18 @@ public class DAO {
         }
     }
 
+    public static int getManagerByProjectId(int pId){
+        String sql = "SELECT manager FROM project WHERE projectId = :pId";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .executeScalar(Integer.class);
+        }catch( Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
     //Update project with set parameters. Set parameters to null to not change it. pId is required.
     //Time format: YYYY-MM-DD HH-MM-SS Ex. "2010-12-30 15:30:12"
     public static boolean updateProjectName(int pId, String name){
