@@ -1,5 +1,7 @@
 package longbottom.chat;
 
+// copied from here: https://github.com/tipsy/spark-websocket/blob/master/src/main/java/ChatWebSocketHandler.java
+
 import longbottom.accounts.User;
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
