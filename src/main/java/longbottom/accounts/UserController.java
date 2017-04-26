@@ -82,13 +82,14 @@ public class UserController {
 
        int typeOfUser = Integer.parseInt(request.queryParams("userType"));
 
-       if(DAO.getUserIdByEmail(request.queryParams("email")) == -1)
-       {
-           DAO.createUser(request.queryParams("firstname"),
+
+       boolean creationUser =   DAO.createUser(request.queryParams("firstname"),
                             request.queryParams("lastname"),
                             request.queryParams("email"),
                             request.queryParams("password"));
 
+       if(creationUser == true)
+       {
            int userId = DAO.getUserIdByEmail(request.queryParams("email"));
 
            if(typeOfUser == 0)
@@ -105,7 +106,10 @@ public class UserController {
            }
 
        }
-
+       else
+       {
+           return "User not created.";
+       }
 
 
 
