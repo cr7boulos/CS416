@@ -68,6 +68,7 @@ public class LongBottomUniversity {
         post("/deleteUser", UserController.deleteUser);
         post("/updateUser", UserController.updateUser);
         post("/createUser", UserController.createUser);
+        get("/getAllProjects", ProjectController.getAllProjects);
         post("/updateProject", ProjectController.updateProject);
         post("/newProject", ProjectController.newProject);
         post("/email", Dashboard.emailPartial);

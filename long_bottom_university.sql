@@ -102,13 +102,13 @@ DROP TABLE IF EXISTS `posts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `posts` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) DEFAULT NULL,
   `header` varchar(45) DEFAULT NULL,
   `body` varchar(500) DEFAULT NULL,
   `time_stamp` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,6 +117,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` VALUES (1,1,'123','456','2017-04-25 14:14:04');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +145,7 @@ CREATE TABLE `professor` (
 
 LOCK TABLES `professor` WRITE;
 /*!40000 ALTER TABLE `professor` DISABLE KEYS */;
-INSERT INTO `professor` VALUES (80000,'2017-04-06',1,1);
+INSERT INTO `professor` VALUES (80000,'2017-04-06',1,0);
 /*!40000 ALTER TABLE `professor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,7 +201,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES ('Undeclared',1,0),('Undeclared',2,0),('Undeclared',3,0),('Undeclared',4,0),('Undeclared',5,0),('Undeclared',6,0),('Undeclared',7,0);
+INSERT INTO `student` VALUES ('Undeclared',1,1),('Undeclared',2,2),('Undeclared',3,3),('Undeclared',4,4),('Undeclared',5,5),('Undeclared',6,6),('Undeclared',7,7);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -247,7 +248,7 @@ CREATE TABLE `works_in` (
   PRIMARY KEY (`id`),
   KEY `projectId_idx` (`projectId`),
   CONSTRAINT `projectId` FOREIGN KEY (`projectId`) REFERENCES `projects` (`projectId`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,7 +257,7 @@ CREATE TABLE `works_in` (
 
 LOCK TABLES `works_in` WRITE;
 /*!40000 ALTER TABLE `works_in` DISABLE KEYS */;
-INSERT INTO `works_in` VALUES (1,1,1,NULL),(1,2,2,1),(1,3,3,1),(1,4,4,1),(1,5,5,1),(1,6,6,1),(1,7,7,1),(1,1,8,0),(1,1,9,0),(1,1,10,0);
+INSERT INTO `works_in` VALUES (1,1,1,NULL),(1,2,2,1),(1,3,3,1),(1,4,4,1),(1,5,5,1),(1,6,6,1),(1,7,7,1),(1,1,8,0),(1,1,9,0),(1,1,10,0),(1,0,11,0),(2,0,12,0),(2,0,13,0),(1,0,14,0),(1,0,15,0),(1,0,16,0),(2,0,17,0),(2,0,18,0),(2,0,19,0),(1,0,20,0),(2,0,21,0),(2,0,22,0),(1,0,23,0),(1,0,24,0),(1,1,25,0),(1,1,26,0),(1,1,27,0),(1,1,28,0),(1,1,29,0),(1,1,30,0),(1,1,31,0),(1,1,32,0),(1,1,33,0),(1,1,34,0),(1,1,35,0),(1,1,36,0),(1,1,37,0),(1,0,38,1);
 /*!40000 ALTER TABLE `works_in` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -269,4 +270,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-18 14:13:12
+-- Dump completed on 2017-04-25 20:45:44
