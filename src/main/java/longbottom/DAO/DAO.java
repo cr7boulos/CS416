@@ -22,10 +22,10 @@ public class DAO {
     //See: http://www.sql2o.org/docs/configuration/
     static{
         //CONNECT TO MYSQL DATABASE
-        //DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
+        DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
 
         //This connects to the hosted database
-        DAO.sql2o = new Sql2o("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_d4c6b1cbcafb5a7", "b97ef38c93ad46", "9a133bff");
+        //DAO.sql2o = new Sql2o("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_d4c6b1cbcafb5a7", "b97ef38c93ad46", "9a133bff");
     }
 
     public static List<Map<String, Object>> getUsersFromProject(int pId){
