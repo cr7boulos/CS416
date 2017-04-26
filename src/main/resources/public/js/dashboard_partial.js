@@ -106,7 +106,7 @@ var getUsers = function () {
                 $('#createUser').click(function (){
 
                     $.post('/createUser?userType=' +
-                        $('input[name=userType]:checked').val()+
+                        $('input[name=User]:checked').val()+
                         '&firstname=' +
                         $("#FirstName").val() +
                         '&lastname=' +
