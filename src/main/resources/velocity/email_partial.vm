@@ -90,7 +90,7 @@
 -->
 <!--repeat this block of code for each email-->
 #foreach($map in $email)
-<div class="modal fade" id="email$foreach.count" tabindex="-1" >
+<div class="modal" id="email$foreach.count" tabindex="-1" >
     <div class="modal-dialog" >
         <div class="modal-content">
             <div class="modal-header">
