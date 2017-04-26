@@ -19,7 +19,8 @@ public class Dashboard {
     public static Route userDashboard = (Request request, Response response) -> {
         int userId = DAO.login(request.queryParams("username"), request.queryParams("password"));
         request.session().attribute("userId", userId); //add userId to session
-        //System.out.println("Hello");
+        String username = DAO.getUser(userId).getFullName();
+        String userType;
         Map<String, Object> model3 = new HashMap<>();
 
         int userIdentity = DAO.getIdentity(userId);
@@ -27,21 +28,25 @@ public class Dashboard {
         if(userIdentity != DAO.NA){
 
             model3.put("userId", userId);
+            model3.put("username", username);
 
             if(userIdentity == DAO.ADMIN){
                 model3.put("buttonOptions", "/velocity/adminView");
                 model3.put("users", DAO.getAllUsers());
+                model3.put("userType", "Admin");
                 System.out.println("Got to admin");
                 model3.put("viewType", DAO.ADMIN); // this is a flag for the JS
             }
             else{ //user is a student or professor
                 if(userIdentity == DAO.PROFESSOR){
                     model3.put("buttonOptions", "/velocity/professorView");
+                    model3.put("userType", "Professor");
                     System.out.println("Got to professor");
                     model3.put("viewType", DAO.PROFESSOR); // this is a flag for the JS
                 }
                 if(userIdentity == DAO.STUDENT){
                     model3.put("buttonOptions", "/velocity/studentView");
+                    model3.put("userType", "Student");
                     System.out.println("Got to student");
                     model3.put("viewType", DAO.STUDENT); // this is a flag for the JS
                 }
