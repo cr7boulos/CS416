@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BlogPost template by Adobe Dreamweaver CC</title>
+    <title>Longbottom University | Project page</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/blogPostStyle.css" rel="stylesheet">
     <link href="../css/chatStyles.css" rel="stylesheet">
@@ -36,11 +36,9 @@
                     <button type="button" class="pull-right btn btn-success" data-toggle="modal" data-target="#post">Compose Message</button>
 
                 <br>
-                #foreach( $post in $postList )
-                    <h1>$post.header</h1>
-                    <p>$post.body</p>
-                    <span style="cursor: pointer; font-size: 120%" type="button" data-toggle="modal" data-target="#deletePostModal" data-eid="$post.id" class="glyphicon glyphicon-trash"></span>
-                #end
+                <div id="post_partial">
+
+                </div>
                 
             </section>
         </div>

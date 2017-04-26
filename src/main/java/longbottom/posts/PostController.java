@@ -1,9 +1,14 @@
 package longbottom.posts;
 
 import longbottom.DAO.DAO;
+import longbottom.util.ViewUtil;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Maxwell on 4/25/2017.
@@ -31,6 +36,14 @@ public class PostController {
             return "Delete successful.";
         else
             return "Delete failed.";
+    };
+
+    public static Route getAllPosts = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        int projectId = Integer.parseInt(request.queryParams("projectId"));
+        List<Map<String, Object>> postList = DAO.getPostsByProjectId(projectId);
+        model.put("postList", postList);
+        return ViewUtil.render(model, "/velocity/post_partial.vm");
     };
 
 }

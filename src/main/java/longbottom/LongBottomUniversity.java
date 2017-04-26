@@ -85,6 +85,8 @@ public class LongBottomUniversity {
         // professor accepts/denies project join request
         post("/professorDecision", studentRequestsController.serveStudentRequest);
 
+        post("/getPostPartial", PostController.getAllPosts);
+
     }
 
     //Method to get port on Heroku server
