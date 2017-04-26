@@ -514,7 +514,7 @@ public class DAO {
     }
 
     public static List<Map<String, Object>> getPostsByProjectId(int pId){
-        String sql = "SELECT * FROM posts WHERE projectId = :pId";
+        String sql = "SELECT * FROM posts WHERE projectId = :pId ORDER BY time_stamp DESC";
 
         try(Connection con = sql2o.open()) {
             return con.createQuery(sql)
