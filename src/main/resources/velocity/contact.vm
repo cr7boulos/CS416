@@ -1,0 +1,80 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Contact Us</title>
+
+    <link rel="stylesheet" href="../css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Carrois Gothic SC">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Playball">
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="../../Web Development/jquery.infinitecarousel3.min.js"></script>
+    <script type="text/javascript" src="../../Web Development/easing.js"></script>
+    <script src="../../Web Development/finalProject/javascript.js"></script>
+    <script>
+        $(function(){
+            $('#carousel').infiniteCarousel({
+                imagePath: '../images/',
+                transitionSpeed:300,
+                displayTime: 5000,
+                internalThumbnails: false,
+                thumbnailType: 'buttons',
+                customClass: 'myCarousel',
+                progressRingColorOpacity: '0,0,0,.9',
+                progressRingBackgroundOn: false,
+                margin: 10,
+                easeLeft: 'easeOutExpo',
+                easeRight:'easeOutQuart',
+                inView: 1,
+                advance: 1,
+                autoPilot: true,
+                prevNextInternal: true,
+                autoHideCaptions: false
+            });
+
+        });
+
+    </script>
+    <style>
+        .outline {
+            border:solid black medium;
+            background-color: black;
+        }
+
+        #wrapper {width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body onLoad = "setupCanvas()">
+<div id="container">
+    <div id="divf" >
+        <div id="diva" class="font2"> Longbottom University <p><img id="logo" src="../images/logo.png"></p></div>
+    </div>
+
+    <div>
+
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="/sponsor">Sponsors</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <h1 align="center">Contact us: </h1>
+    <h1 align="center">Phone Number: 1 (219)-808-2106 </h1>
+    <h1 align="center">Email: admin@longbottom.edu</h1>
+    <h1 align="center">Address: 2200 169th Street</h1>
+    <h1 align="center">Hammond, IN 46323-2094</h1>
+
+</div>
+
+</body>
+</html>

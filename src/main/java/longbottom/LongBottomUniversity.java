@@ -56,7 +56,7 @@ public class LongBottomUniversity {
         get("/contact", contactPageController.serveContactPage);
         get("/about", aboutPageController.serveAboutPage);
         get("/home", homePageController.serveHomePage);
-        get("/sponsors", sponsorsPageController.serveSponsorsPage);
+        get("/sponsor", sponsorsPageController.serveSponsorsPage);
 
         // student/professor asks to join a project
         post("/requestJoin", requestJoinController.serveToJoin);
