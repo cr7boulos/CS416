@@ -14,6 +14,8 @@
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Carrois Gothic SC">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Playball">
 
 
     <!-- Custom styles for this template -->
