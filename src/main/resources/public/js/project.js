@@ -15,7 +15,7 @@ var createPost = function () {
 var deletePost = function () {
     $('.deletePostButton').click(function (){
         console.log()
-        $.post('/deletePost?id=' +
+        $.post('/deletePost?postId=' +
             $("#id").val(),
             function (data) {
                 console.log(data);
