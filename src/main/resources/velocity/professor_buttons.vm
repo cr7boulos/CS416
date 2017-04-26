@@ -21,15 +21,7 @@
 
         </div>
 
-        <div id="user">
-            <div class="pull-right col-xs-6 col-sm-3 placeholder">
 
-
-                <button id="userCreateButton" type="button" data-toggle="modal" data-target="#userCreateFormButton" class="btn sm-btn btn-primary col-sm-12">
-                    <span class="glyphicon glyphicon-user icon" ></span> Create User</button>
-
-            </div>
-        </div>
 
 
 

@@ -1,19 +1,16 @@
 package longbottom;
 import longbottom.email.EmailController;
 import longbottom.chat.ChatWebSocketHandler;
+import longbottom.pages.*;
 import longbottom.posts.PostController;
 import longbottom.projects.*;
 
 import longbottom.dashboard.Dashboard;
 import longbottom.accounts.UserController;
 import longbottom.login.LoginController;
-import longbottom.pages.homePageController;
-import longbottom.pages.sponsorsPageController;
 import longbottom.projects.requestJoinController;
 import longbottom.util.DemoController; //import the needed controller classes here
 import longbottom.chat.ChatController;
-import longbottom.pages.contactPageController;
-import longbottom.pages.aboutPageController;
 import org.sql2o.Sql2o;
 
 import static spark.Spark.*;
@@ -55,8 +52,8 @@ public class LongBottomUniversity {
         post("/dashboard", Dashboard.userDashboard);
         get("/contact", contactPageController.serveContactPage);
         get("/about", aboutPageController.serveAboutPage);
-        get("/home", homePageController.serveHomePage);
-        get("/sponsors", sponsorsPageController.serveSponsorsPage);
+        get("/index", homePageController.serveHomePage);
+        get("/sponsor", sponsorsPageController.serveSponsorsPage);
 
         // student/professor asks to join a project
         post("/requestJoin", requestJoinController.serveToJoin);

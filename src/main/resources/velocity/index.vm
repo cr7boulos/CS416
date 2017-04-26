@@ -3,15 +3,15 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>About</title>
+    <title>Longbottom University | Home</title>
 
-    <link rel="stylesheet" href="../css/styles.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Carrois Gothic SC">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Playball">
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="../../Web Development/jquery.infinitecarousel3.min.js"></script>
+    <script src="js/jquery.infinitecarousel3.min.js"></script>
     <script type="text/javascript" src="../../Web Development/easing.js"></script>
-    <script src="../../Web Development/finalProject/javascript.js"></script>
+    <script src="js/javascript.js"></script>
     <script>
         $(function(){
             $('#carousel').infiniteCarousel({
@@ -51,7 +51,7 @@
 <body onLoad = "setupCanvas()">
 <div id="container">
     <div id="divf" >
-        <div id="diva" class="font2"> Longbottom University <p><img id="logo" src="../images/logo.png"></p></div>
+        <div id="diva" class="font2"> Longbottom University <p><img id="logo" src="images/logo.png"></p></div>
     </div>
 
     <div>
@@ -68,27 +68,21 @@
         </nav>
     </div>
 
-    <table align="center" class="table table-striped">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Manager</th>
-            <th>Manager Email</th>
-        </tr>
-        </thead>
-        <tbody>
-            #foreach($map in $projects)
+    <div class ="Title box diva">
+        <h1 class="font2">Welcome!</h1>
+    </div>
 
-            <tr>
-                <td>$!map.name</td>
-                <td>$!map.description</td>
-                <td>$!map.firstname $!map.lastname</td>
-                <td>$!map.email</td>
-            </tr>
-            #end
-        </tbody>
-    </table>
+    <ul id="carousel">
+        <li><img width="600" height="380" alt="" src="images/slide1.jpg"/></li>
+        <li><img width="600" height="380" alt="" src="images/slide2.jpg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide3.jpg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide4.jpeg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide5.jpeg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide6.jpeg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide7.jpeg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide8.jpeg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide9.jpeg" /></li>
+    </ul>
 
 </div>
 

@@ -4,7 +4,7 @@ body{font-family: Carrois Gothic SC;
 }
 
 #mainwrapper header {
-    background-color: rgba(208,207,207,1.00);
+
     overflow: auto;
     font-weight: 400;
 }
@@ -80,7 +80,7 @@ header nav a {
 }
 #mainwrapper #content #sidebar {
     /* Sidebar*/
-    width: 19%;
+    width: 26%;
     padding-left: 2%;
     padding-right: 2%;
     float: left;

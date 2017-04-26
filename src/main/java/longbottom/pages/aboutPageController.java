@@ -14,6 +14,6 @@ public class aboutPageController {
     public static Route serveAboutPage = (Request request, Response response) -> {
 
         Map<String, Object> model = new HashMap<>();
-        return ViewUtil.render(model, "velocity/contactpage.vm");
+        return ViewUtil.render(model, "velocity/about.vm");
     };
 }
