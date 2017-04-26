@@ -6,6 +6,8 @@ insert into professor (salary, hiredDate, userId) values (120000, now(), 10);
 insert into user (userId, lastName, firstName, email, password) values (11, "Alan", "Turing", "aTurning@longbottom.edu", "password");
 insert into professor (salary, hiredDate, userId) values (1212000, now(), 11);
 
+-- set admin account name to admin admin
+update user set firstName = "Admin", lastName = "1" where userId = 8;
 -- Create projects
 insert into projects (name, description, time_stamp, manager) values ("Learn you a Haskell", "Learn the functional programming language Haskell", now(), 10);
 insert into projects (name, description, time_stamp, manager) values ("Cyber Security", "Research project involving cyber security.", now(), 10);
