@@ -38,6 +38,7 @@
                 <h2>Author Name</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </aside>
+            <button type="button" class="pull-right btn btn-success" data-toggle="modal" data-target="#post">Create Post</button>
         </section>
         <section id="sidebar">
             <!--************************************************************************
@@ -71,20 +72,19 @@
             <!--************************************************************************
           Footer starts here
           ****************************************************************************-->
+
+            #foreach( $post in $postList )
             <article>
-                <h3>Footer1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h3>$post.header</h3>
+                <p>$post.body</p>
+                <span style="cursor: pointer; font-size: 120%"  data-eid="$post.id"  class=" glyphicon glyphicon-trash deletePost"></span>
             </article>
-            <article>
-                <h3>Footer2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </article>
+            #end
+
         </footer>
     </div>
     <div id="footerbar"><!-- Small footerbar at the bottom --></div>
 </div>
-
-<button type="button" class="pull-right btn btn-success" data-toggle="modal" data-target="#post">Create Post</button>
 
 <div class = "modal" id="post" tabindex="-1">
     <div class = "modal-dialog" >
