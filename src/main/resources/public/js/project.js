@@ -13,10 +13,10 @@ var createPost = function () {
 }
 
 var deletePost = function () {
-    $('.deletePostButton').click(function (){
+    $('.deletePost').click(function (){
         console.log()
-        $.post('/deletePost?id=' +
-            $("#id").val(),
+        $.post('/deletePost?postId=' +
+            $(this).attr('data-eid'),
             function (data) {
                 console.log(data);
             });

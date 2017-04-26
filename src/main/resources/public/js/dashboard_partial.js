@@ -6,6 +6,8 @@ var setUpLinks = function () {
         console.log("/requestJoin?projectId=" +
             $(this).attr('data-request') + "&userId=" +
             $('#dynView').attr('data-userId'));
+        $(this).css('background-color', 'green');
+        $(this).text('Request Pending');
         $.post("/requestJoin?projectId=" +
             $(this).attr('data-request') + "&userId=" +
             $('#dynView').attr('data-userId')
@@ -29,6 +31,11 @@ var getProjects = function () {
         $('#dynView').attr('data-userId'),
         function (data) {
             $('#dynView').html(data);
+            $(".requests").click(function(){
+                $(this).css('background-color', 'green');
+                $(this).text('Request Pending');
+            });
+
             //setUpLinks();
             createProject(); //sets up the create-project btn
 
@@ -64,14 +71,18 @@ var getUsers = function () {
         function (data) {
             $('#dynView').html(data);
             $('#userCreateButton').show();
+
             //set up users for deleting
-            $('.deleteUser').click(function (){
-                $.post('/deleteUser?userId=' +
-                    $(this).attr('data-userId'),
-                    function (data) {
-                        console.log(data);
-                        getUsers();
-                    });
+            $('#deleteModal').on('show.bs.modal', function (event) {
+                var btn = $(event.relatedTarget);
+                $('#submitDelete').click(function () {
+                    $.post('/deleteUser?userId=' +
+                        btn.attr('data-userId'),
+                        function (data) {
+                            console.log(data);
+                            getUsers();
+                        });
+                });
             });
 
             //set up users for potential updates

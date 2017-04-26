@@ -3,31 +3,7 @@
     https://github.com/tipsy/spark-websocket/blob/master/src/main/resources/public/style.css
 */
 
-/** {*/
-    /*box-sizing: border-box;*/
-/*}*/
 
-/*html {*/
-    /*overflow-y: scroll;*/
-/*}*/
-
-/*body {*/
-    /*font-family: monospace;*/
-    /*font-size: 14px;*/
-    /*max-width: 480px;*/
-    /*margin: 0 auto;*/
-    /*padding: 20px*/
-/*}*/
-
-/*input {*/
-    /*width: 100%;*/
-    /*padding: 5px;*/
-    /*margin: 5px 0;*/
-/*}*/
-
-/*button {*/
-    /*float: right;*/
-/*}*/
 
 li {
     margin: 5px 0;
@@ -46,12 +22,11 @@ li {
     background: #f0f0f9;
     padding: 5px 10px;
     /*width: 150px;*/
-    /*top: 11px;*/
 }
 
 #chat p {
     margin: 5px 0;
-    font-weight: 300
+    font-weight: 300;
 }
 
 #chat .timestamp {
