@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+</head>
+<body>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Manager</th>
+        <th>Manager Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    #foreach($map in $projects)
+
+    <tr>
+        <td>$!map.name</td>
+        <td>$!map.description</td>
+        <td>$!map.firstname $!map.lastname</td>
+        <td>$!map.email</td>
+    </tr>
+    #end
+    </tbody>
+</table>
+</body>
+</html>
