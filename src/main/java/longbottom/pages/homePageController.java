@@ -15,6 +15,6 @@ public class homePageController {
 
     public static Route serveHomePage = (Request request, Response response) -> {
         Map<String, Object> model = new HashMap<>();
-        return ViewUtil.render(model, "velocity/homepage.vm");
+        return ViewUtil.render(model, "velocity/index.vm");
     };
 }
