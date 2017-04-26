@@ -270,10 +270,6 @@ footer {
         /* Title under maincontent, if any */
         font-size: 14px;
     }
-    #content footer article {
-        /* Each foter article */
-        width: 96%;
-    }
 }
 
 #blog {
