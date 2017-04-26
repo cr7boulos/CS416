@@ -28,34 +28,25 @@
             <!-- This search box is displayed only in mobile and tablet laouts and not in desktop layouts -->
             <input type="text" placeholder="Enter Message">
         </div>
+
+
         <div id="blog">
             <section id="mainContent">
-                <!--************************************************************************
-              Main Blog content starts here
-              ****************************************************************************-->
+
+                    <button type="button" class="pull-right btn btn-success" data-toggle="modal" data-target="#post">Compose Message</button>
+
+                <br>
+                #foreach( $post in $postList )
+                    <h1>$post.header</h1>
+                    <p>$post.body</p>
+                    <span style="cursor: pointer; font-size: 120%" type="button" data-toggle="modal" data-target="#deletePostModal" data-eid="$post.id" class="glyphicon glyphicon-trash"></span>
+                #end
 
                 <h1><!-- Blog title -->Post Title</h1>
-                <h3><!-- Tagline -->SOME AWESOME HERO TAGLINE</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                <aside id="authorInfo">
-                    <!-- The author information is contained here -->
-                    <h2>Author Name</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </aside>
-
-                <h1><!-- Blog title -->Post Title</h1>
-                <h3><!-- Tagline -->SOME AWESOME HERO TAGLINE</h3>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                <aside id="authorInfo">
-                    <!-- The author information is contained here -->
-                    <h2>Author Name</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </section>
-
         </div>
         <div id="liveChat">
             <section id="sidebar">
@@ -87,23 +78,10 @@
                 </nav>
             </section>
         </div>
-
         <footer>
-            <!--************************************************************************
-          Footer starts here
-          ****************************************************************************-->
-
-            #foreach( $post in $postList )
-            <article>
-                <h3>$post.header</h3>
-                <p>$post.body</p>
-                <span style="cursor: pointer; font-size: 120%"  data-eid="$post.id"  class=" glyphicon glyphicon-trash deletePost"></span>
-            </article>
-            #end
 
         </footer>
     </div>
-
 </div>
 
 <div class = "modal" id="post" tabindex="-1">
@@ -137,6 +115,26 @@
                 <button id="createPostButton" data-dismiss="modal"  type="button" class="btn btn-primary createPostButton">
                     Send
                 </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="deletePostModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
+            </div>
+
+            <div class="modal-body">
+                <h2>Are you sure you wish to delete this post?</h2>
+            </div>
+
+            <div class="modal-footer">
+                <button  type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button id="submitDeletePost" data-dismiss="modal" type="button" class="btn btn-primary">Confirm Deletion</button>
             </div>
         </div>
     </div>
