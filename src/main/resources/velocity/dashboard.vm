@@ -97,7 +97,7 @@
             <h1 class="page-header">Dashboard</h1>
 
             <div class="row placeholders">
-##                add conditional logic to render buttons based on user type.
+            ##                add conditional logic to render buttons based on user type.
             #if($viewType == 0) ## admin login
                 #parse("/velocity/admin_buttons.vm")
             #elseif($viewType == 1) ## professor login
@@ -109,22 +109,36 @@
             </div>
 
             <h2 class="sub-header">Section title
-            #if($viewType == 0)
-                <div class="pull-right col-xs-6 col-sm-3 placeholder">
+                #if($viewType == 0)
+                    <div class="pull-right col-xs-6 col-sm-3 placeholder">
 
 
-                    <div id="creationUser" data-toggle="modal" type="button" data-target="#userCreateFormButton" class="btn sm-btn btn-primary col-sm-12">
-                        <span class="glyphicon glyphicon-user icon" ></span> Create User</div>
+                        <button id="userCreateButton" type="button" data-toggle="modal" data-target="#userCreateFormButton" class="btn sm-btn btn-primary col-sm-12">
+                            <span class="glyphicon glyphicon-user icon" ></span> Create User</button>
 
-                </div>
+                    </div>
+                #end
+            </h2>
+            <div id="dynView" data-viewType="$viewType" data-userId="$userId" class="table-responsive">
+                #if ($viewType == 0) ## admin
+                    #parse("/velocity/admin_partial.vm") ## admin by default sees the project requests
+                #else
+                    #parse("/velocity/project_partial.vm") ## students/professors by default see the project listing
+                #end
 
 
-            <div class="modal" id="userCreateFormButton" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
-                        </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="userCreateFormButton" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            </div>
 
                         <div class="modal-body">
                             <form>
@@ -159,48 +173,31 @@
                                 </div>
                             </form>
 
-                        </div>
+            </div>
 
-                        <div class="modal-footer">
-                            <button  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button id="createUser" data-dismiss="modal" type="button" class="btn btn-primary">Submit Changes</button>
-                        </div>
-                    </div>
-                </div>
-            #end
-            </h2>
-            <div id="dynView" data-viewType="$viewType" data-userId="$userId" class="table-responsive">
-                #if ($viewType == 0) ## admin
-                    #parse("/velocity/admin_partial.vm") ## admin by default sees the project requests
-                #else
-                    #parse("/velocity/project_partial.vm") ## students/professors by default see the project listing
-                #end
-
-
+            <div class="modal-footer">
+                <button  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="createUser" data-dismiss="modal" type="button" class="btn btn-primary">Submit Changes</button>
             </div>
         </div>
     </div>
-</div>
 
 
 
-
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
-<script src="../js/jquery-3.2.0.min.js"></script>
-<script> $(document).ready(function(){
-    console.log('jquery loaded');
-});
-</script>
-<!--<script>window.jQuery || document.write('<script src="../js/jquery-3.2.0.min.js"><\/script>')</script>-->
-<script src="../js/bootstrap.js"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<!--<script src="../../../../../../../Bootstrap/bootstrap-3.3.7/bootstrap-3.3.7/docs/assets/js/vendor/holder.min.js"></script>-->
-<script src="../js/dashboard_partial.js"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <script src="../js/jquery-3.2.0.min.js"></script>
+    <script> $(document).ready(function(){
+        console.log('jquery loaded');
+    });
+    </script>
+    <!--<script>window.jQuery || document.write('<script src="../js/jquery-3.2.0.min.js"><\/script>')</script>-->
+    <script src="../js/bootstrap.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <!--<script src="../../../../../../../Bootstrap/bootstrap-3.3.7/bootstrap-3.3.7/docs/assets/js/vendor/holder.min.js"></script>-->
+    <script src="../js/dashboard_partial.js"></script>
 
 </body>
 </html>

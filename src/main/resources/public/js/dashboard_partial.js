@@ -24,7 +24,7 @@ var projects = function () {
 }
 
 var getProjects = function () {
-    $('#creationUser').hide();
+    $('#userCreateButton').hide();
     $.post("/projects?userId=" +
         $('#dynView').attr('data-userId'),
         function (data) {
@@ -63,7 +63,7 @@ var getUsers = function () {
     $.post("/getAllUsers",
         function (data) {
             $('#dynView').html(data);
-
+            $('#userCreateButton').show();
             //set up users for deleting
             $('.deleteUser').click(function (){
                 $.post('/deleteUser?userId=' +
@@ -107,6 +107,10 @@ var getUsers = function () {
                     $.post('/createUser?' +
                         'firstname=' +
                         $("#FirstName").val() +
+                    $.post('/createUser?userType=' +
+                        $('input[name=userType]:checked').val()+
+                        '&firstname=' +
+                        $("#newFirstName").val() +
                         '&lastname=' +
                         $("#LastName").val() +
                         '&email=' +
@@ -200,6 +204,7 @@ var adminRequests = function () {
 }
 
 var getAdminRequests = function () {
+    $('#userCreateButton').hide();
     $.post("/adminRequests?userId=" +
         $('#dynView').attr('data-userId'),
         function (data) {
@@ -230,6 +235,7 @@ var profRequests = function () {
 }
 
 var getProfRequests = function () {
+    $('#userCreateButton').hide();
     console.log("Hello from professor requests");
     $.post("/projectRequests?userId=" +
         $('#dynView').attr('data-userId'),
