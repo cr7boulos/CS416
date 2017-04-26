@@ -2,11 +2,21 @@ package longbottom.projects;
 
 import longbottom.DAO.DAO;
 import longbottom.login.LoginController;
+import longbottom.util.ViewUtil;
 import spark.Response;
 import spark.Request;
 import spark.Route;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProjectController {
+    public static Route getAllProjects = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        model.put("projects", DAO.getAllProjects());
+
+        return ViewUtil.render(model, "/velocity/projectHome.vm");
+    };
 
     public static Route newProject = (Request request, Response response) -> {
         LoginController.isAuthenticated(request, response);
@@ -65,4 +75,5 @@ public class ProjectController {
 
         return "Update complete";
     };
+
 }
