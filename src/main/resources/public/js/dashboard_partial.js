@@ -99,27 +99,28 @@ var getUsers = function () {
                 });
             });
 
-            $('#userCreateButton').click(function (event) {
+            // $('#userCreateFormButton').click(function () {
 
-                var btn = $(event.relatedTarget); // button that toggled the modal
-                console.log(btn.attr('data-userId'));
+
+
                 $('#createUser').click(function (){
+
                     $.post('/createUser?userType=' +
-                        $('input[name=userType]:checked').val()+
+                        $('input[name=User]:checked').val()+
                         '&firstname=' +
-                        $("#newFirstName").val() +
+                        $("#FirstName").val() +
                         '&lastname=' +
-                        $("#newLastName").val() +
+                        $("#LastName").val() +
                         '&email=' +
-                        $("#newEmail").val() +
+                        $("#Email").val() +
                         '&password=' +
-                        $("#newPassword").val(),
+                        $("#Password").val(),
                         function (data) {
                             console.log(data);
                             getUsers();
                         });
                 });
-            });
+            // });
 
         });
 }
@@ -171,7 +172,7 @@ var getEmail = function () {
         $('#dynView').attr('data-userId'),
         function (data) {
             $('#dynView').html(data);
-            $('#userCreateButton').hide();
+            $('#creationUser').hide();
 
             sendEmail();
             replyEmail();
