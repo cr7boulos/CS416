@@ -22,7 +22,7 @@ public class DAO {
     //See: http://www.sql2o.org/docs/configuration/
     static{
         //CONNECT TO MYSQL DATABASE
-        DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
+        //DAO.sql2o = new Sql2o("jdbc:mysql://localhost:3306/long_bottom_university", "admin", "$80k");
 
         //This connects to the hosted database
         DAO.sql2o = new Sql2o("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_d4c6b1cbcafb5a7", "b97ef38c93ad46", "9a133bff");
@@ -64,6 +64,19 @@ public class DAO {
         try(Connection con = sql2o.open()){
             return con.createQuery(sql)
                     .addParameter("userId", userId)
+                    .executeAndFetchTable().asList();
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static List<Map<String, Object>> getAllProjects(){
+
+        String sql = "select name, description, firstName, lastName, email from projects " +
+                "inner join user on user.userId = projects.manager";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
                     .executeAndFetchTable().asList();
         }catch(Exception e){
             e.printStackTrace();
