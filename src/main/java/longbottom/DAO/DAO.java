@@ -501,6 +501,19 @@ public class DAO {
         }
     }
 
+    public static List<Map<String, Object>> getPostsByProjectId(int pId){
+        String sql = "SELECT * FROM posts WHERE projectId = :pId";
+
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("pId", pId)
+                    .executeAndFetchTable().asList();
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static boolean deletePost(int postId){
         String sql =
                 "DELETE FROM posts WHERE id = :postId";
