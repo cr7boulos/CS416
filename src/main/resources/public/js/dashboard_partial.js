@@ -6,6 +6,8 @@ var setUpLinks = function () {
         console.log("/requestJoin?projectId=" +
             $(this).attr('data-request') + "&userId=" +
             $('#dynView').attr('data-userId'));
+        $(this).css('background-color', 'green');
+        $(this).text('Request Pending');
         $.post("/requestJoin?projectId=" +
             $(this).attr('data-request') + "&userId=" +
             $('#dynView').attr('data-userId')
