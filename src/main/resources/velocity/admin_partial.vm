@@ -19,8 +19,8 @@
                 <td><div style="padding-top: 5px;">$!map.password</div></td>
 
                 <td>
-                    <span style="padding-top: 5px; cursor: pointer" class="glyphicon glyphicon-pencil" type="button" data-userId="$!map.userId" data-toggle="modal" data-target="#updateModal"></span>
-                    <span style="padding-top: 5px; cursor: pointer"  type="button" data-userId="$!map.userId" class="glyphicon glyphicon-trash deleteUser"></span>
+                    <span style="padding-top: 5px; cursor: pointer" class="glyphicon glyphicon-pencil" type="button" data-userId="$!map.userId" data-toggle="modal" data-target="#updateModal" ></span>
+                    <span style="padding-top: 5px; cursor: pointer" class="glyphicon glyphicon-trash" type="button" data-userId="$!map.userId" data-toggle="modal" data-target="#deleteModal" ></span>
                 </td>
             </tr>
         #end
@@ -61,5 +61,26 @@
                 <button  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button id="submitChanges" data-dismiss="modal" type="button" class="btn btn-primary">Submit Changes</button>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
+        </div>
+
+        <div class="modal-body">
+            <h2>Are you sure you wish to delete this user?</h2>
+        </div>
+
+        <div class="modal-footer">
+            <button  type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id="submitDelete" data-dismiss="modal" type="button" class="btn btn-primary">Confirm Deletion</button>
+        </div>
+        </div>
     </div>
 </div>
