@@ -1,5 +1,7 @@
 package longbottom.login;
 
+// based off code from here: https://github.com/tipsy/spark-basic-structure/blob/master/src/main/java/app/login/LoginController.java
+
 import java.util.*;
 import spark.*;
 import longbottom.DAO.*;

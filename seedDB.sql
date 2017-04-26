@@ -11,6 +11,8 @@ insert into professor (salary, hiredDate, userId) values (120000, now(), 10);
 insert into user (userId, lastName, firstName, email, password) values (11, "Alan", "Turing", "aTurning@longbottom.edu", "password");
 insert into professor (salary, hiredDate, userId) values (1212000, now(), 11);
 
+-- set admin account name to admin admin
+update user set firstName = "Admin", lastName = "1" where userId = 8;
 -- Create projects
 insert into projects (name, description, time_stamp, manager) VALUES ("Software Engineering", "Software engineering", now(), 0);
 insert into projects (name, description, time_stamp, manager) values ("Big Data", "Parallel Programming", now(), 0);
