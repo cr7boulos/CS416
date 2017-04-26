@@ -80,7 +80,7 @@ public class UserController {
     public static Route createUser = (Request request, Response response) -> {
         LoginController.isAuthenticated(request, response);
 
-       int typeOfUser = Integer.parseInt(request.queryParams("User"));
+       int typeOfUser = Integer.parseInt(request.queryParams("userType"));
 
        if(DAO.getUserIdByEmail(request.queryParams("email")) == -1)
        {

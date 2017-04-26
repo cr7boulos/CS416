@@ -17,6 +17,10 @@ body {font-family: Carrois Gothic SC;}
 	padding: .5%;
 }
 
+.sponsor {
+	font-family: 'Open Sans', sans-serif;
+}
+
 ul {
     list-style-type: none;
     margin: 0;

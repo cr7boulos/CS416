@@ -24,7 +24,7 @@ var projects = function () {
 }
 
 var getProjects = function () {
-    $('#creationUser').hide();
+    $('#userCreateButton').hide();
     $.post("/projects?userId=" +
         $('#dynView').attr('data-userId'),
         function (data) {
@@ -63,7 +63,7 @@ var getUsers = function () {
     $.post("/getAllUsers",
         function (data) {
             $('#dynView').html(data);
-
+            $('#userCreateButton').show();
             //set up users for deleting
             $('.deleteUser').click(function (){
                 $.post('/deleteUser?userId=' +
@@ -104,8 +104,8 @@ var getUsers = function () {
                 var btn = $(event.relatedTarget); // button that toggled the modal
                 console.log(btn.attr('data-userId'));
                 $('#createUser').click(function (){
-                    $.post('/createUser?userId=' +
-                        btn.attr('data-userId') +
+                    $.post('/createUser?userType=' +
+                        $('input[name=userType]:checked').val()+
                         '&firstname=' +
                         $("#newFirstName").val() +
                         '&lastname=' +
@@ -171,7 +171,7 @@ var getEmail = function () {
         $('#dynView').attr('data-userId'),
         function (data) {
             $('#dynView').html(data);
-            $('#creationUser').hide();
+            $('#userCreateButton').hide();
 
             sendEmail();
             replyEmail();
@@ -201,6 +201,7 @@ var adminRequests = function () {
 }
 
 var getAdminRequests = function () {
+    $('#userCreateButton').hide();
     $.post("/adminRequests?userId=" +
         $('#dynView').attr('data-userId'),
         function (data) {
@@ -231,6 +232,7 @@ var profRequests = function () {
 }
 
 var getProfRequests = function () {
+    $('#userCreateButton').hide();
     console.log("Hello from professor requests");
     $.post("/projectRequests?userId=" +
         $('#dynView').attr('data-userId'),
