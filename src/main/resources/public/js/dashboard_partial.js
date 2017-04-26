@@ -99,21 +99,20 @@ var getUsers = function () {
                 });
             });
 
-            $('#userCreateButton').click(function (event) {
+            $('#userCreateFormButton').click(function () {
 
-                var btn = $(event.relatedTarget); // button that toggled the modal
-                console.log(btn.attr('data-userId'));
+
+
                 $('#createUser').click(function (){
-                    $.post('/createUser?userId=' +
-                        btn.attr('data-userId') +
-                        '&firstname=' +
-                        $("#newFirstName").val() +
+                    $.post('/createUser?' +
+                        'firstname=' +
+                        $("#FirstName").val() +
                         '&lastname=' +
-                        $("#newLastName").val() +
+                        $("#LastName").val() +
                         '&email=' +
-                        $("#newEmail").val() +
+                        $("#Email").val() +
                         '&password=' +
-                        $("#newPassword").val(),
+                        $("#Password").val(),
                         function (data) {
                             console.log(data);
                             getUsers();
