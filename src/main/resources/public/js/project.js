@@ -13,15 +13,19 @@ var createPost = function () {
 }
 
 var deletePost = function () {
-    $('.deletePost').click(function (){
+
+    $('#deletePostModal').on('show.bs.modal', function (event) {
+        var btn = $(event.relatedTarget);
+        $('#submitDeletePost').click(function () {
         console.log()
         $.post('/deletePost?postId=' +
-            $(this).attr('data-eid'),
+            btn.attr('data-eid'),
             function (data) {
                 console.log(data);
             });
+        });
     });
 }
 
-createPost()
-deletePost()
+createPost();
+deletePost();
