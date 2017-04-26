@@ -25,11 +25,11 @@
     -->
 #foreach($map in $email)
 <tr>
-    <td><div style="padding-top: 5px;">$DAO.getEmailByUserId($!map.from)</div></td>
+    <td><div style="padding-top: 5px;">$!DAO.getEmailByUserId($!map.from)</div></td>
     <td><div style="padding-top: 5px;" type="button" data-toggle="modal" data-target="#email$foreach.count"><a href="#">$!map.subject</a></div></td>
     <td><div style="padding-top: 5px;">$!map.time</div></td>
     <td><span style="cursor: pointer; font-size: 120%"  data-eid="$!map.id"  class=" glyphicon glyphicon-trash deleteEmail"></span>
-        <span data-subject="$!map.subject" data-toggle="modal" data-target="#emailReply$foreach.count" data-from="$DAO.getEmailByUserId($!map.from)" style="padding-left: 20px; font-size: 150%; cursor: pointer" class=" glyphicon glyphicon-share-alt "></span></td>
+        <span data-subject="$!map.subject" data-toggle="modal" data-target="#emailReply$foreach.count" data-from="$!DAO.getEmailByUserId($!map.from)" style="padding-left: 20px; font-size: 150%; cursor: pointer" class=" glyphicon glyphicon-share-alt "></span></td>
 </tr>
 #end
 </tbody>
@@ -120,7 +120,7 @@
                     <div class="form-group">
                         <label for="toInput">To Address</label>
                         <input type="text" class="form-control"
-                               id="replyTo" value=$DAO.getEmailByUserId($!map.from) />
+                               id="replyTo" value=$!DAO.getEmailByUserId($!map.from) />
                     </div>
                     <div class="form-group">
                         <label for="subjectInput">Subject</label>

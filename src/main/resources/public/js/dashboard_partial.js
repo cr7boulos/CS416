@@ -66,7 +66,7 @@ var users = function () {
 }
 
 var getUsers = function () {
-    $('#creationUser').show();
+    $('#userCreateButton').show();
     $.post("/getAllUsers",
         function (data) {
             $('#dynView').html(data);
