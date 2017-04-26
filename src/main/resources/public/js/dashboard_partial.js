@@ -71,14 +71,18 @@ var getUsers = function () {
         function (data) {
             $('#dynView').html(data);
             $('#userCreateButton').show();
+
             //set up users for deleting
-            $('.deleteUser').click(function (){
-                $.post('/deleteUser?userId=' +
-                    $(this).attr('data-userId'),
-                    function (data) {
-                        console.log(data);
-                        getUsers();
-                    });
+            $('#deleteModal').on('show.bs.modal', function (event) {
+                var btn = $(event.relatedTarget);
+                $('#submitDelete').click(function () {
+                    $.post('/deleteUser?userId=' +
+                        btn.attr('data-userId'),
+                        function (data) {
+                            console.log(data);
+                            getUsers();
+                        });
+                });
             });
 
             //set up users for potential updates
