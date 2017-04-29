@@ -1,0 +1,86 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        #foreach($map in $users)
+            <tr>
+                <td><div style="padding-top: 5px;">$!map.userId</div></td>
+                <td><div style="padding-top: 5px;">$!map.firstName</div></td>
+                <td><div style="padding-top: 5px;">$!map.lastName</div></td>
+                <td><div style="padding-top: 5px;">$!map.email</div></td>
+                <td><div style="padding-top: 5px;">$!map.password</div></td>
+
+                <td>
+                    <span style="padding-top: 5px; cursor: pointer" class="glyphicon glyphicon-pencil" type="button" data-userId="$!map.userId" data-toggle="modal" data-target="#updateModal" ></span>
+                    <span style="padding-top: 5px; cursor: pointer" class="glyphicon glyphicon-trash" type="button" data-userId="$!map.userId" data-toggle="modal" data-target="#deleteModal" ></span>
+                </td>
+            </tr>
+        #end
+    </tbody>
+</table>
+
+<div class="modal" id="updateModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit User</h4>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="newFirstName">First name</label>
+                        <input type="text" class="form-control" id="newFirstName" placeholder="Enter the user's first name.">
+                    </div>
+                    <div class="form-group">
+                        <label for="newLastName">Last name</label>
+                        <input type="text" class="form-control" id="newLastName" placeholder="Enter the user's last name.">
+                    </div>
+                    <div class="form-group">
+                        <label for="newEmail">Email</label>
+                        <input type="text" class="form-control" id="newEmail" placeholder="Enter the user's email.">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">Password</label>
+                        <input type="text" class="form-control" id="newPassword" placeholder="Enter the new password.">
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="modal-footer">
+                <button  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="submitChanges" data-dismiss="modal" type="button" class="btn btn-primary">Submit Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
+        </div>
+
+        <div class="modal-body">
+            <h2>Are you sure you wish to delete this user?</h2>
+        </div>
+
+        <div class="modal-footer">
+            <button  type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id="submitDelete" data-dismiss="modal" type="button" class="btn btn-primary">Confirm Deletion</button>
+        </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+
+        <div class="col-xs-6 col-sm-2 placeholder">
+
+        </div>
+        <div class="col-xs-6 col-sm-4 placeholder">
+
+            <button type="button" id="button" class="btn sm-btn btn-primary col-sm-12">
+                <span  class="glyphicon glyphicon-folder-open icon" ></span> Projects</button>
+
+        </div>
+
+        <div class="col-xs-6 col-sm-4 placeholder">
+
+            <button id="emailButton"  type="button" class="btn sm-btn btn-primary col-sm-12">
+                <span class="glyphicon glyphicon-envelope icon" ></span> Email</button>
+        </div>
+        <div class="col-xs-6 col-sm-2 placeholder">
+
+        </div>
+
+
+

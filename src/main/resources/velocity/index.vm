@@ -1,0 +1,90 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Longbottom University | Home</title>
+
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Carrois Gothic SC">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Playball">
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery.infinitecarousel3.min.js"></script>
+    <script type="text/javascript" src="../../Web Development/easing.js"></script>
+    <script src="js/javascript.js"></script>
+    <script>
+        $(function(){
+            $('#carousel').infiniteCarousel({
+                imagePath: '../images/',
+                transitionSpeed:300,
+                displayTime: 5000,
+                internalThumbnails: false,
+                thumbnailType: 'buttons',
+                customClass: 'myCarousel',
+                progressRingColorOpacity: '0,0,0,.9',
+                progressRingBackgroundOn: false,
+                margin: 10,
+                easeLeft: 'easeOutExpo',
+                easeRight:'easeOutQuart',
+                inView: 1,
+                advance: 1,
+                autoPilot: true,
+                prevNextInternal: true,
+                autoHideCaptions: false
+            });
+
+        });
+
+    </script>
+    <style>
+        .outline {
+            border:solid black medium;
+            background-color: black;
+        }
+
+        #wrapper {width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body onLoad = "setupCanvas()">
+<div id="container">
+    <div id="divf" >
+        <div id="diva" class="font2"> Longbottom University <p><img id="logo" src="images/logo.png"></p></div>
+    </div>
+
+    <div>
+
+        <nav>
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/sponsor">Sponsors</a></li>
+                <li><a href="/getAllProjects">Projects</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class ="Title box diva">
+        <h1 class="font2">Welcome!</h1>
+    </div>
+
+    <ul id="carousel">
+        <li><img width="600" height="380" alt="" src="images/slide1.jpg"/></li>
+        <li><img width="600" height="380" alt="" src="images/slide2.jpeg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide3.jpeg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide4.jpeg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide5.jpeg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide6.jpg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide7.jpg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide8.jpeg" /></li>
+        <li><img width="600" height="380" alt="" src="images/slide9.jpeg" /></li>
+    </ul>
+
+</div>
+
+</body>
+</html>

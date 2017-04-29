@@ -1,0 +1,12 @@
+#foreach( $post in $postList )
+      <h1><!-- Blog title -->$post.header</h1>
+      <h3><!-- Tagline --></h3>
+
+      <p>$post.body</p>
+      <aside id="authorInfo">
+          <!-- The author information is contained here -->
+          <h2>AUTHOR</h2>
+  </aside>
+    <span style="cursor: pointer; font-size: 120%" type="button" data-toggle="modal" data-target="#deletePostModal" data-eid="$post.id" class="glyphicon glyphicon-trash">
+    </span>
+#end
